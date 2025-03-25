@@ -1,0 +1,150 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Sign In | Adam Automotive</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css1/css/style.css' %}">
+
+    <style>
+        .blur-background {
+            position: fixed;
+            top: -12px;
+            left: -12px;
+            width: 103%;
+            height: 104%;
+            background-image: url({% static 'images/car2.jpeg' %});
+            background-size: cover;
+            filter: blur(8px); /* Adjust the blur intensity as needed */
+            z-index: -1;
+        }
+
+        .signup-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3c4043;
+            background-color: #ffffff;
+            border: 1px solid #dadce0;
+            height: 40px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .signup-button:hover {
+            background-color: #f6f9fe;
+            color: #174ea6;
+        }
+
+        .signup-button .fa-user-plus {
+            margin-right: 8px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert {
+            --bs-alert-bg: #1f1f1f !important;
+            margin: 10px;
+            padding: 10px;
+            position: fixed;
+            top: 20px; /* Adjust the distance from the top */
+            right: 20px; /* Adjust the distance from the right */
+            z-index: 1000; /* Ensure it appears above other content */
+            background-color: #f8d7da; /* Light red background */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb; /* Border color */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-footer {
+            bottom: -37px;
+        }
+    </style>
+    
+    <script src="https://accounts.google.com/gsi/client" async></script>
+</head>
+<body class="img js-fullheight">
+<div class="blur-background"></div>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-1">
+                <h2 class="heading-section">Sign In</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <h3 class="mb-4 text-center">Have an account?</h3>
+                    <form method="post" action="" class="signin-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="password-field" type="password" class="form-control" placeholder="Password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="" style="width: 100%; padding: 10px 20px; border-radius: 50px; background-color: white; color: black; border: none; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease;"
+                            onmouseover="this.style.backgroundColor='black'; this.style.color='white';"
+                            onmouseout="this.style.backgroundColor='white'; this.style.color='black';">
+                            Sign In
+                            </button>
+                        </div>
+                        <div class="form-group d-md-flex">
+                           <div class="w-50">
+                                <!-- <label class="checkbox-wrap checkbox-primary">Remember Me
+                                    <input type="checkbox" name="remember" checked>
+                                    <span class="checkmark"></span>
+                                </label>-->
+                            </div>
+                            <div class="w-50 text-md-right">
+                                <a href="{% url 'request_password_reset' %}" style="color: #fff">Forgot Password</a>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                    <div class="social d-flex text-center">
+                        <a href="{% url 'register' %}" class="signup-button px-2 py-2 ml-md-1 rounded">
+                          <span class="fa fa-user-plus mr-2"></span> Sign up
+                        </a>
+                        <a  class="signup-button px-2 py-2 ml-md-1 rounded">Login with Google</a>
+                        
+                        <div class="g_id_signin" data-type="standard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

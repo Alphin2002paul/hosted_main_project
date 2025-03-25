@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="{% static 'css/accounts.css' %}" rel="stylesheet" />
+    <style>
+      .error {
+        color: red;
+        font-size: 15px;
+      }
+      .k {
+        border-radius: 10%;
+      }
+      body {
+        background-color: #333;
+        color: #fff;
+        background-image: url('{% static 'images/car2.jpg' %}')
+      }
+      element.style {
+        margin-left: 870px;
+      }
+      .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Details | Adam Automotive</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+   
+    <h1 align="center">Feedback Details</h1><hr>
+    <div class="container mt-5">
+      {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+              {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+      <div class="row">
+        <div class="col-lg-4 pb-5">
+          <!-- Account Sidebar -->
+          <div class="author-card pb-3">
+            <div class="author-card-cover" style="background-image: url('{% static 'images/logo.png' %}');"></div>
+            <div class="author-card-profile">
+              <div class="author-card-avatar">
+                <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Customer Photo" class="k" />
+              </div>
+              <div class="author-card-details">
+                <h5 class="author-card-name text-lg">{{ user.first_name }} {{ user.last_name }}</h5>
+                <span class="author-card-position">Joined on<br />{{ user.date_joined }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush">
+              <a class="list-group-item" href="{% url 'account_dtl' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Overview</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'account_edit' %}"><i class="fe-icon-user text-muted"></i>Edit Profile Settings</a>
+              <a class="list-group-item" href="#">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Change Password</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item  active" href="{% url 'mybookings' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Purchase History</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'main' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-tag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Home page</div>
+                  </div>
+                  <span class="badge badge-secondary"></span>
+                </div>
+              </a>
+            </nav>
+          </div>
+        </div>
+       
+        <div class="col-lg-8 pb-5">
+            <form method="post" id="feedbackForm">
+              {% csrf_token %}
+              <input type="hidden" name="car_id" value="{{ car.id }}">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="manufacturer_name">Manufacturer Name</label>
+                    <input class="form-control" type="text" id="manufacturer_name" name="manufacturer_name" value="{{ manufacturer }}" readonly required>
+                    <div class="error-message" id="manufacturer_name_error"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="model_name">Model Name</label>
+                    <input class="form-control" type="text" id="model_name" name="model_name" value="{{ model }}" readonly required>
+                    <div class="error-message" id="model_name_error"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="year">Year</label>
+                    <input class="form-control" type="number" id="year" name="year" value="{{ year }}" readonly required>
+                    <div class="error-message" id="year_error"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    <div class="error-message" id="description_error"></div>
+                  </div>
+                </div>
+                
+                <!-- Rating scales -->
+                {% for rating in rating_list %}
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="{{ rating }}_rating">{{ rating|title }} Rating</label>
+                      <input type="range" class="form-control-range" id="{{ rating }}_rating" name="{{ rating }}_rating" min="1" max="10" step="1">
+                      <small class="form-text text-muted">1 (Poor) - 10 (Excellent)</small>
+                    </div>
+                  </div>
+                {% endfor %}
+                
+                <div class="col-12">
+                  <hr class="mt-2 mb-3">
+                  <div class="d-flex flex-wrap justify-content-between align-items-center">
+                    <button class="btn btn-style-1 btn-primary" type="submit" id="submitButton">Submit Feedback</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    
+  </div>
+
+  <!-- ... (previous HTML remains unchanged) ... -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('feedbackForm');
+      const manufacturerName = document.getElementById('manufacturer_name');
+      const modelName = document.getElementById('model_name');
+      const year = document.getElementById('year');
+      const submitButton = document.getElementById('submitButton');
+      const description = document.getElementById('description');
+      const descriptionError = document.getElementById('description_error');
+      const manufacturerNameError = document.getElementById('manufacturer_name_error');
+      const modelNameError = document.getElementById('model_name_error');
+      const yearError = document.getElementById('year_error');
+  
+      function validateInput(input, errorElement, regex, errorMessage) {
+        if (!regex.test(input.value)) {
+          errorElement.textContent = errorMessage;
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+  
+      function validateYear(input, errorElement) {
+        const yearValue = parseInt(input.value);
+        if (isNaN(yearValue) || yearValue < 2011 || yearValue > 2024) {
+          errorElement.textContent = 'Please enter a valid year between 2011 and 2024';
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+  
+      function validateForm() {
+        let isValid = true;
+        
+        isValid = validateInput(manufacturerName, manufacturerNameError, /^[a-zA-Z\s-]+$/, 'Only letters, spaces, and hyphens are allowed') && isValid;
+        isValid = validateInput(modelName, modelNameError, /^[a-zA-Z0-9\s-]+$/, 'Only letters, numbers, spaces, and hyphens are allowed') && isValid;
+        isValid = validateYear(year, yearError) && isValid;
+  
+        submitButton.disabled = !isValid;
+      }
+  
+      manufacturerName.addEventListener('input', validateForm);
+      modelName.addEventListener('input', validateForm);
+      year.addEventListener('input', validateForm);
+  
+      form.addEventListener('submit', function(event) {
+        validateForm();
+        if (submitButton.disabled) {
+          event.preventDefault();
+        }
+      });
+      
+  
+      // Initial validation
+      validateForm();
+    });
+  </script>
+  </body>
+  </html>

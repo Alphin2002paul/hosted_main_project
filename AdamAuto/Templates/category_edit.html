@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam Automotive Admin Panel</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable()
+      })
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0 0 0 / 63%));
+        color: #fff;
+        overflow-x: hidden;
+      }
+      
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+      }
+      
+      #sidebar.active {
+        margin-left: -250px;
+      }
+      
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #444;
+      }
+      
+      #sidebar ul.components {
+        padding: 20px 0;
+      }
+      
+      #sidebar ul li a {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      #sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      #sidebar ul li.active > a {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      
+      #content {
+        width: 100%;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .card-header {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid #444;
+      }
+      
+      .navbar {
+        padding: 15px 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+      }
+      .btn-darkish {
+        background-color: #333;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 75px;
+        padding:4px 7px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-darkish:hover {
+        background-color: #555;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      
+      .btn-darkish:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .sidebar-footer {
+        bottom: -37px;
+      }
+      {% comment %} div.dataTables_wrapper div.dataTables_filter input {
+        margin-left: -4.5em;
+        display: inline-block;
+        width: auto;
+    } {% endcomment %}
+    </style>
+  </head>
+  <body>
+    <div class="d-flex">
+      <nav id="sidebar" class="bg-dark text-light ">
+        <div class="sidebar-header">
+          <h3 class="mb-0">Adam</h3><h3><span style="color: #d39e00;">Automotive</span></h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li >
+            <a href="{% url 'adminindex' %}"><i class="fas fa-user-circle"></i> User Details</a>
+          </li>
+          <li>
+            <a href="{% url 'adminadd_dtl' %}"><i class="fas fa-folder-plus"></i> Add Categories</a>
+          </li>
+          <li class="active">
+            <a href="{% url 'category_edit' %}"><i class="fas fa-list-alt"></i> View Categories</a>
+        </li>
+
+          <li>
+            <a href="{% url 'admincaradd_dtl' %}"><i class="fas fa-car"></i> List New Car</a>
+          </li>
+          <li>
+            <a href="{% url 'edit_listing' %}"><i class="fas fa-edit"></i> Edit Listing</a>
+
+          </li>
+          <li>
+            <a href="{% url 'admintestdrive' %}"><i class="fas fa-phone"></i> Slot Request</a>
+          </li>
+          <li>
+            <a href="{% url 'salereq_dsply' %}"><i class="fas fa-dollar-sign"></i> Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'certified_admin_req' %}"><i class="fas fa-award"></i> Certified Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'wholeseller_admin' %}"><i class="fas fa-warehouse fa-xs"></i> Wholesale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'service_request_view' %}"><i class="fas fa-tools"></i> Service Request</a>
+          </li>
+          <li>
+            <a href="{% url 'soldcarinfo' %}"><i class="fas fa-car-side"></i> Sold Cars</a>
+          </li>
+          <li>
+            <a href="{% url 'adminenquiry' %}"><i class="fas fa-question-circle"></i> Car Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'adminfeedback' %}"><i class="fas fa-comments"></i> Feedback Details</a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="btn btn-light btn-block">LOGOUT</a>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content" class="flex-grow-1">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-align-left"></i></button>
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/logo.png' %}" alt="User" class="rounded-circle" height="30" width="35" />
+                  <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'adminprofile' %}"><i class="fas fa-user me-2"></i>Profile</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="container-fluid mt-4">
+          <h2 class="mb-4">View <span style="color: #d39e00;">Categories</span></h2><hr>
+          
+          <!-- Companies Table -->
+          <div class="row mb-4">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h5 class="card-title mb-0">Companies</h5>
+                      </div>
+                      <div class="card-body">
+                          <table id="companiesTable" class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>Company Name</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for company in companies %}
+                                      <tr>
+                                          <td>
+                                              <span class="category-name">{{ company.company_name }}</span>
+                                              <input type="text" class="form-control edit-input" style="display: none;" value="{{ company.company_name }}">
+                                          </td>
+                                          <td>
+                                              <button class="btn btn-primary btn-sm edit-btn" data-type="company" data-id="{{ company.id }}">Edit</button>
+                                              <button class="btn btn-success btn-sm update-btn" style="display: none;" data-type="company" data-id="{{ company.id }}">Update</button>
+                                              <button class="btn btn-danger btn-sm delete-btn" data-type="company" data-id="{{ company.id }}">Delete</button>
+                                          </td>
+                                      </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Models Table -->
+          <div class="row mb-4">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h5 class="card-title mb-0">Models</h5>
+                      </div>
+                      <div class="card-body">
+                          <table id="modelsTable" class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>Model Name</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for model in models %}
+                                      <tr>
+                                          <td>
+                                              <span class="category-name">{{ model.model_name }}</span>
+                                              <input type="text" class="form-control edit-input" style="display: none;" value="{{ model.model_name }}">
+                                          </td>
+                                          <td>
+                                              <button class="btn btn-primary btn-sm edit-btn" data-type="model" data-id="{{ model.id }}">Edit</button>
+                                              <button class="btn btn-success btn-sm update-btn" style="display: none;" data-type="model" data-id="{{ model.id }}">Update</button>
+                                              <button class="btn btn-danger btn-sm delete-btn" data-type="model" data-id="{{ model.id }}">Delete</button>
+                                          </td>
+                                      </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Colors Table -->
+          <div class="row mb-4">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h5 class="card-title mb-0">Colors</h5>
+                      </div>
+                      <div class="card-body">
+                          <table id="colorsTable" class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>Color Name</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for color in colors %}
+                                      <tr>
+                                          <td>
+                                              <span class="category-name">{{ color.color_name }}</span>
+                                              <input type="text" class="form-control edit-input" style="display: none;" value="{{ color.color_name }}">
+                                          </td>
+                                          <td>
+                                              <button class="btn btn-primary btn-sm edit-btn" data-type="color" data-id="{{ color.id }}">Edit</button>
+                                              <button class="btn btn-success btn-sm update-btn" style="display: none;" data-type="color" data-id="{{ color.id }}">Update</button>
+                                              <button class="btn btn-danger btn-sm delete-btn" data-type="color" data-id="{{ color.id }}">Delete</button>
+                                          </td>
+                                      </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Car Types Table -->
+          <div class="row mb-4">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h5 class="card-title mb-0">Car Types</h5>
+                      </div>
+                      <div class="card-body">
+                          <table id="carTypesTable" class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>Car Type</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for car_type in car_types %}
+                                      <tr>
+                                          <td>
+                                              <span class="category-name">{{ car_type.name }}</span>
+                                              <input type="text" class="form-control edit-input" style="display: none;" value="{{ car_type.name }}">
+                                          </td>
+                                          <td>
+                                              <button class="btn btn-primary btn-sm edit-btn" data-type="car_type" data-id="{{ car_type.id }}">Edit</button>
+                                              <button class="btn btn-success btn-sm update-btn" style="display: none;" data-type="car_type" data-id="{{ car_type.id }}">Update</button>
+                                              <button class="btn btn-danger btn-sm delete-btn" data-type="car_type" data-id="{{ car_type.id }}">Delete</button>
+                                          </td>
+                                      </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+            </div>
+        </div>
+          <!-- Add Details Section -->
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Toggle Sidebar
+        document.getElementById('sidebarCollapse').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.toggle('active')
+        })
+      })
+    </script>
+    
+    <script>
+      $(document).ready(function() {
+        $('#companiesTable').DataTable();
+        $('#modelsTable').DataTable();
+        $('#carTypesTable').DataTable();
+        $('#colorsTable').DataTable();
+    
+        // Edit button click handler
+        $('.edit-btn').on('click', function() {
+            var row = $(this).closest('tr');
+            row.find('.category-name').hide();
+            row.find('.edit-input').show();
+            $(this).hide();
+            row.find('.update-btn').show();
+        });
+    
+        // Input validation
+        $('.edit-input').on('input', function() {
+            var input = $(this);
+            var type = input.closest('tr').find('.update-btn').data('type');
+            var newName = input.val();
+            
+            if (!validateCategoryName(newName, type)) {
+                input.addClass('is-invalid');
+                input.removeClass('is-valid');
+            } else {
+                input.addClass('is-valid');
+                input.removeClass('is-invalid');
+            }
+        });
+    
+        // Update button click handler
+        $('.update-btn').on('click', function() {
+            var type = $(this).data('type');
+            var id = $(this).data('id');
+            var row = $(this).closest('tr');
+            var newName = row.find('.edit-input').val();
+    
+            if (!validateCategoryName(newName, type)) {
+                alert('Invalid ' + type + ' name. It should contain only letters.');
+                return;
+            }
+    
+            $.ajax({
+                url: '/update_category/',
+                type: 'POST',
+                data: {
+                    'type': type,
+                    'id': id,
+                    'new_name': newName,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        row.find('.category-name').text(newName).show();
+                        row.find('.edit-input').hide();
+                        row.find('.update-btn').hide();
+                        row.find('.edit-btn').show();
+                        alert(type + ' updated successfully.');
+                    } else {
+                        alert('Error updating ' + type + ': ' + response.error);
+                    }
+                },
+                error: function() {
+                    alert('An error occurred while trying to update the ' + type + '.');
+                }
+            });
+        });
+    
+        // Delete button click handler
+        $('.delete-btn').on('click', function() {
+            var type = $(this).data('type');
+            var id = $(this).data('id');
+            var row = $(this).closest('tr');
+    
+            if (confirm('Are you sure you want to delete this ' + type + '?')) {
+                $.ajax({
+                    url: '/delete_category/',
+                    type: 'POST',
+                    data: {
+                        'type': type,
+                        'id': id,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            row.remove();
+                            alert(type + ' deleted successfully.');
+                        } else {
+                            alert('Error deleting ' + type + ': ' + response.error);
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while trying to delete the ' + type + '.');
+                    }
+                });
+            }
+        });
+    });
+    function validateCategoryName(name, type) {
+      if (type === 'model') return true; // No validation for model names
+      const regex = /^[A-Za-z ]+$/;
+      return regex.test(name);
+  }
+  </script>
+
+  </script>
+  </body>
+</html>

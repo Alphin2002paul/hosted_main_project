@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - Adam Automotive Admin Panel</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable()
+      })
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.63));
+        color: #fff;
+        overflow-x: hidden;
+      }
+      
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+      }
+      
+      #sidebar.active {
+        margin-left: -250px;
+      }
+      
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #444;
+      }
+      
+      #sidebar ul.components {
+        padding: 20px 0;
+      }
+      
+      #sidebar ul li a {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      #sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      #sidebar ul li.active > a {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      
+      #content {
+        width: 100%;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .card-header {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid #444;
+      }
+      
+      .navbar {
+        padding: 15px 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+      }
+      
+      .btn-darkish {
+        background-color: #333;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 75px;
+        padding: 10px 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-darkish:hover {
+        background-color: #555;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      
+      .btn-darkish:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      
+      .sidebar-footer {
+        bottom: -37px;
+      }
+      .img-fluid {
+        max-width: 62%;
+        height: 155px;
+    }
+      {% comment %} .btn-success {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #2a2a2a;
+        --bs-btn-border-color: #303633;
+      }
+      .btn:hover {
+        color: #0f0f0f;
+        background-color: #2c2d2d;
+        border-color: #161616;
+    } {% endcomment %}
+    .mt-3 {
+        margin-top: 8rem !important;
+        margin-left:6px;
+        margin-bottom:10px;
+    }
+    
+    </style>
+  </head>
+  <body>
+    <div class="d-flex">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="bg-dark text-light">
+        <div class="sidebar-header">
+          <h3 class="mb-0">Adam</h3><h3><span style="color: #d39e00;">Automotive</span></h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li class="active">
+            <a href="{% url 'adminindex' %}"><i class="fas fa-user-circle"></i> User Details</a>
+          </li>
+          <li>
+            <a href="{% url 'adminadd_dtl' %}"><i class="fas fa-folder-plus"></i> Add Categories</a>
+          </li>
+          <li>
+            <a href="{% url 'category_edit' %}"><i class="fas fa-list-alt"></i> View Categories</a>
+        </li>
+          <li>
+            <a href="{% url 'admincaradd_dtl' %}"><i class="fas fa-car"></i> List New Car</a>
+          </li>
+          <li>
+            <a href="{% url 'edit_listing' %}"><i class="fas fa-edit"></i> Edit Listing</a>               
+          </li>
+          <li>
+            <a href="{% url 'admintestdrive' %}"><i class="fas fa-phone"></i> Slot Request</a>
+          </li>
+          <li>
+            <a href="{% url 'salereq_dsply' %}"><i class="fas fa-dollar-sign"></i> Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'wholeseller_admin' %}"><i class="fas fa-warehouse fa-xs"></i> Wholesale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'service_request_view' %}"><i class="fas fa-tools"></i> Service Request</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-car-side"></i> Sold Cars</a>
+          </li>
+          <li>
+            <a href="{% url 'adminenquiry' %}"><i class="fas fa-question-circle"></i> Car Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'adminfeedback' %}"><i class="fas fa-comments"></i> Feedback Details</a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="btn btn-light btn-block">LOGOUT</a>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content" class="flex-grow-1">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-align-left"></i></button>
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/logo.png' %}" alt="User" class="rounded-circle" height="30" width="35" />
+                  <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'adminprofile' %}"><i class="fas fa-user me-2"></i>Profile</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid mt-4">
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">User Details</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4 text-center">
+                      <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Customer Photo" class="img-fluid rounded-circle user-image" />
+                      <button type="button" id="toggleButton" class="btn btn-lg mt-3">
+                        {% if user.status == 1 %}
+                          Disable User
+                        {% else %}
+                          Enable User
+                          <button type="button" id="reasonButton" class="btn btn-info btn-lg mt-3 ms-2" style="display: none;">
+                            Reason
+                          </button>
+                        {% endif %}
+                      </button>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="firstName" class="form-label">First Name</label>
+                          <input type="text" class="form-control" id="firstName" value="{{ user.first_name }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="lastName" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="lastName" value="{{ user.last_name }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="userType" class="form-label">Mail Id</label>
+                          <input type="text" class="form-control" id="userType" value="{{ user.email }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="phoneNumber" class="form-label">Phone Number</label>
+                          <input type="text" class="form-control" id="phoneNumber" value="{{ user.Phone_number }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="username" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="username" value="{{ user.username }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="joinDate" class="form-label">Created On</label>
+                          <input type="text" class="form-control" id="joinDate" value="{{ user.date_joined }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="address" class="form-label">Street Address</label>
+                          <input type="text" class="form-control" id="address" value="{{ user.address }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="address" class="form-label">City</label>
+                          <input type="text" class="form-control" id="address" value="{{ user.city }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="address" class="form-label">State</label>
+                          <input type="text" class="form-control" id="address" value="{{ user.state }}" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="address" class="form-label">Zipcode</label>
+                          <input type="text" class="form-control" id="address" value="{{ user.zipcode }}" disabled />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      
+        <script>
+          $(document).ready(function () {
+            var button = $('#toggleButton');
+            var reasonButton = $('#reasonButton');
+            var initialStatus = {{ user.status }};
+            var disableUserModal = new bootstrap.Modal(document.getElementById('disableUserModal'));
+            var reasonModal = new bootstrap.Modal(document.getElementById('reasonModal'));
+          
+            // Update the button state based on the user's initial status
+            updateButtonState(initialStatus);
+          
+            // Handle toggle button click
+            button.on('click', function () {
+              var newStatus = button.hasClass('btn-success') ? 0 : 1;
+          
+              if (newStatus === 0) {
+                // Show the modal to get the reason for disabling the user
+                disableUserModal.show();
+              } else {
+                // If enabling the user, no reason is needed
+                updateUserStatus(newStatus);
+              }
+            });
+          
+            // Handle the confirmation of disabling the user
+            $('#confirmDisableUser').on('click', function () {
+              var reason = $('#disableReason').val();
+              if (validateReason(reason)) {
+                updateUserStatus(0, reason); // Disable user with the reason
+              }
+            });
+          
+            // Handle reason button click
+            reasonButton.on('click', function () {
+              $.ajax({
+                url: "{% url 'get_disable_reason' user.id %}",
+                type: "GET",
+                success: function(response) {
+                  if (response.success) {
+                    $('#reasonModalBody').text(response.reason);
+                    reasonModal.show();
+                  } else {
+                    alert('Failed to fetch disable reason.');
+                  }
+                },
+                error: function() {
+                  alert('An error occurred while fetching disable reason.');
+                }
+              });
+            });
+          
+            // Function to validate the reason
+            function validateReason(reason) {
+              if (reason.length < 10) {
+                $('#reasonError').text('Please enter at least 10 characters.');
+                return false;
+              }
+              if (/[^a-zA-Z0-9\s]/.test(reason)) {
+                $('#reasonError').text('Special characters are not allowed.');
+                return false;
+              }
+              $('#reasonError').text('');
+              return true;
+            }
+          
+            // Function to update the user status via AJAX
+            function updateUserStatus(newStatus, reason = '') {
+              $.ajax({
+                url: "{% url 'update_user_status' user.id %}",
+                type: "POST",
+                data: {
+                  csrfmiddlewaretoken: '{{ csrf_token }}',
+                  status: newStatus,
+                  reason: reason
+                },
+                success: function(response) {
+                  if (response.success) {
+                    updateButtonState(newStatus);
+                    disableUserModal.hide();
+                    if (newStatus === 0) {
+                      alert('User disabled. Reason: ' + reason);
+                      sendDisableEmail(reason);
+                    } else {
+                      alert('User enabled.');
+                    }
+                    location.reload(); // Reload the page to reflect the changes
+                  } else {
+                    alert('Failed to update user status.');
+                  }
+                },
+                error: function() {
+                  alert('An error occurred while updating user status.');
+                }
+              });
+            }
+          
+            // Function to update the button state (text and class)
+            function updateButtonState(status) {
+              if (status === 1) {
+                button.removeClass('btn-danger').addClass('btn-success').text('Disable User');
+                reasonButton.hide();
+              } else {
+                button.removeClass('btn-success').addClass('btn-danger').text('Enable User');
+                reasonButton.show();
+              }
+            }
+          
+            function sendDisableEmail(reason) {
+              $.ajax({
+                url: "{% url 'send_disable_email' user.id %}",
+                type: "POST",
+                data: {
+                  csrfmiddlewaretoken: '{{ csrf_token }}',
+                  reason: reason
+                },
+                success: function(response) {
+                  if (response.success) {
+                    console.log('Disable email sent successfully');
+                  } else {
+                    console.error('Failed to send disable email');
+                  }
+                },
+                error: function() {
+                  console.error('An error occurred while sending disable email');
+                }
+              });
+            }
+          
+            // Clear the reason field and error message when the modal is hidden
+            $('#disableUserModal').on('hidden.bs.modal', function () {
+              $('#disableReason').val('');
+              $('#reasonError').text('');
+            });
+          });
+          </script>
+      
+                  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    
+                  <div class="modal fade" id="disableUserModal" tabindex="-1" aria-labelledby="disableUserModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content text-dark">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="disableUserModalLabel">Disable User</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to disable this user?</p>
+                          <div class="mb-3">
+                            <label for="disableReason" class="form-label">Reason for disabling:</label>
+                            <textarea class="form-control" id="disableReason" rows="3" required></textarea>
+                            <div id="reasonError" class="text-danger"></div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-danger" id="confirmDisableUser">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>   
+              </div>
+              
+
+              <div class="modal fade" id="reasonModal" tabindex="-1" aria-labelledby="reasonModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content text-dark">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="reasonModalLabel">Disable Reason</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="reasonModalBody">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+     </body>
+   </html>

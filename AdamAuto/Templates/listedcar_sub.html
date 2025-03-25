@@ -1,0 +1,1095 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="{% static 'css/accounts.css' %}" rel="stylesheet" />
+    <style>
+      .error {
+        color: red;
+        font-size: 15px;
+      }
+      .k {
+        border-radius: 10%;
+      }
+      body {
+        background-color: #333; /* Darkish grey background */
+        color: #fff; /* White text color for better contrast */
+        background-image: url("{% static 'images/car2.jpg' %}");
+      }
+      element.style {
+        margin-left: 870px;
+    }
+    .purchase-card {
+      width: 80%; /* Further reduced width */
+      max-width: 350px; /* Smaller maximum width */
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      margin-bottom: 15px;
+    }
+
+    .purchase-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .purchase-card-header {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 12px;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .purchase-card-body {
+      padding: 12px;
+    }
+
+    .purchase-card-body p {
+      margin-bottom: 0.3rem;
+      font-size: 0.85em;
+    }
+
+    .purchase-card-footer {
+      background-color: #f1f3f5;
+      padding: 8px 12px;
+      text-align: right;
+    }
+
+    .btn-receipt, .btn-feedback {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 0.8em;
+    }
+
+    .btn-receipt {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      margin-right: 10px;
+    }
+
+    .btn-receipt:hover {
+      background-color: #218838;
+    }
+
+    .btn-feedback {
+      background-color: #ffc107;
+      color: #212529;
+      border: none;
+    }
+
+    .btn-feedback:hover {
+      background-color: #e0a800;
+    }
+
+    #pageIndicator {
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    #prevButton, #nextButton {
+      min-width: 100px;
+    }
+
+    .car-image {
+      width: 100%;
+      height: 120px; /* Further reduced height */
+      object-fit: cover;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .purchase-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .listing-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .listing-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .listing-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .listing-details {
+      padding: 15px;
+      color: #333;
+    }
+
+    .listing-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #007bff;
+    }
+
+    .listing-info {
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+
+    .listing-info i {
+      width: 20px;
+      color: #666;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .status-pending {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    .status-approved {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .status-rejected {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+      text-decoration: none;
+      color: white;
+    }
+
+    .back-button i {
+      margin-right: 8px;
+    }
+
+    .no-cars-container {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .no-cars-container i {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .no-cars-container h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .no-cars-container p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .btn-list-car {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-list-car:hover {
+      background-color: #0056b3;
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Add new styles for the carousel */
+    .carousel-inner {
+      height: 250px;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 10%;
+      opacity: 0.8;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+      opacity: 1;
+    }
+
+    .carousel-indicators {
+      bottom: 0;
+    }
+
+    .carousel-indicators li {
+      background-color: rgba(255,255,255,0.5);
+    }
+
+    .carousel-indicators .active {
+      background-color: #fff;
+    }
+
+    /* Add styles for the action buttons */
+    .card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .btn-edit,
+    .btn-cancel {
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-edit {
+      background-color: #007bff;
+      color: white;
+      margin-right: 8px;
+    }
+
+    .btn-edit:hover {
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+    }
+
+    .btn-cancel {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn-cancel:hover {
+      background-color: #c82333;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Add disabled button styles */
+    .btn-edit.disabled,
+    .btn-cancel.disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    /* Update modal styles */
+    .modal-confirm {
+      color: #636363;
+    }
+    .modal-confirm .modal-content {
+      padding: 20px;
+      border-radius: 12px;
+      border: none;
+      text-align: center;
+      background: #fff;
+    }
+    .modal-confirm .modal-header {
+      border-bottom: none;   
+      position: relative;
+      justify-content: center;
+      padding: 30px 0 15px;
+    }
+    .modal-confirm h4 {
+      text-align: center;
+      font-size: 26px;
+      margin: 0;
+      font-weight: bold;
+      color: #333;
+    }
+    .modal-confirm .modal-body {
+      padding: 20px;
+    }
+    .modal-confirm .modal-body p {
+      color: #666;
+      font-size: 16px;
+      margin: 0;
+    }
+    .modal-confirm .modal-footer {
+      border: none;
+      text-align: center;
+      border-radius: 5px;
+      padding: 20px 0;
+      margin-top: 0;
+    }
+    .modal-confirm .btn {
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 50px;
+      padding: 10px 30px;
+      min-width: 150px;
+      margin: 0 10px;
+    }
+    .modal-confirm .btn-secondary {
+      background: #c1c1c1;
+      border: none;
+    }
+    .modal-confirm .btn-secondary:hover {
+      background: #999;
+    }
+    .modal-confirm .btn-danger {
+      background: #3085d6;
+      border: none;
+    }
+    .modal-confirm .btn-danger:hover {
+      background: #2872b9;
+    }
+    .modal-confirm .btn-success {
+      background: #47c9a2;
+      border: none;
+    }
+    .modal-confirm .btn-success:hover {
+      background: #39b390;
+    }
+    .modal-confirm .icon-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      border-radius: 50%;
+      z-index: 9;
+      text-align: center;
+      border: 3px solid #f15e5e;
+    }
+    .modal-confirm .icon-box.success {
+      border-color: #47c9a2;
+    }
+    .modal-confirm .icon-box i {
+      color: #f15e5e;
+      font-size: 46px;
+      display: inline-block;
+      margin-top: 13px;
+    }
+    .modal-confirm .icon-box.success i {
+      color: #47c9a2;
+    }
+    /* End modal styles */
+
+    /* Add styles for edit modal */
+    .modal-edit {
+      max-width: 600px;
+      margin: 1.75rem auto;
+    }
+    .modal-edit .modal-content {
+      padding: 20px;
+      border-radius: 12px;
+      border: none;
+    }
+    .modal-edit .modal-header {
+      border-bottom: 1px solid #e9ecef;
+      padding: 1rem;
+    }
+    .modal-edit .modal-title {
+      font-weight: bold;
+      color: #333;
+    }
+    .modal-edit .form-group label {
+      font-weight: 600;
+      color: #555;
+    }
+    .modal-edit .form-control {
+      border-radius: 8px;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      transition: border-color 0.15s ease-in-out;
+    }
+    .modal-edit .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+    /* End edit modal styles */
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Listed Cars | Adam Automotive</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+   
+    <h1 align="center">Purchase Deatils </h1><hr>
+    <div class="container mt-5">
+      {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+              {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+      <div class="row justify-content-center">
+        <div class="col-lg-4 pb-5">
+          <!-- Account Sidebar -->
+          <div class="author-card pb-3">
+            <div class="author-card-cover" style="background-image: url('{% static 'images/logo.png' %}');"></div>
+            <div class="author-card-profile">
+              <div class="author-card-avatar">
+                <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Customer Photo" class="k" />
+
+            </div>
+              <div class="author-card-details">
+                <h5 class="author-card-name text-lg">{{ user.first_name }} {{ user.last_name }}</h5>
+                <span class="author-card-position">Joined on<br />{{ user.date_joined }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush">
+              <a class="list-group-item" href="{% url 'account_dtl' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Overview</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'account_edit' %}"><i class="fe-icon-user text-muted"></i>Edit Profile Settings</a>
+              <a class="list-group-item" href="{% url 'enquirecar' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Enquire a Car</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'mybookings' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Purchase History</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item active" href="{% url 'sub_details' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Subscription Details</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'main' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-tag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Home page</div>
+                  </div>
+                  <span class="badge badge-secondary"></span>
+                </div>
+              </a>
+            </nav>
+          </div>
+        </div>
+        <!-- New Purchase Cards with Pagination -->
+        <div class="col-lg-8">
+          <h2 class="mb-4">My Listed Cars</h2><hr>
+          <a href="{% url 'sub_details' %}" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Subscription Details
+          </a>
+          {% if listings %}
+            <div class="row">
+              {% for listing in listings %}
+                <div class="col-md-6">
+                  <div class="listing-card">
+                    <!-- Carousel -->
+                    <div id="carouselCar{{ listing.id }}" class="carousel slide" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        {% for image in listing.images.all %}
+                          <li data-target="#carouselCar{{ listing.id }}" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                        {% endfor %}
+                      </ol>
+
+                      <!-- Slides -->
+                      <div class="carousel-inner">
+                        {% for image in listing.images.all %}
+                          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ image.image.url }}" alt="{{ listing.model_name }} - Image {{ forloop.counter }}" class="d-block w-100">
+                          </div>
+                        {% empty %}
+                          <div class="carousel-item active">
+                            <img src="{% static 'images/default-car.jpg' %}" alt="Default Car" class="d-block w-100">
+                          </div>
+                        {% endfor %}
+                      </div>
+
+                      <!-- Controls -->
+                      {% if listing.images.count > 1 %}
+                        <a class="carousel-control-prev" href="#carouselCar{{ listing.id }}" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselCar{{ listing.id }}" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      {% endif %}
+                    </div>
+
+                    <div class="listing-details">
+                      <div class="listing-title">{{ listing.manufacturer }} {{ listing.model_name }}</div>
+                      <div class="listing-info">
+                        <i class="fas fa-calendar-alt"></i> Year: {{ listing.year }}
+                      </div>
+                      <div class="listing-info">
+                        <i class="fas fa-tachometer-alt"></i> Mileage: {{ listing.kilometers }} km
+                      </div>
+                      <div class="listing-info">
+                        <i class="fas fa-money-bill-wave"></i> Price: ₹{{ listing.price }}
+                      </div>
+                      <div class="listing-info">
+                        <i class="fas fa-gas-pump"></i> Fuel: {{ listing.fuel_type }}
+                      </div>
+                      <div class="listing-info">
+                        <i class="fas fa-cog"></i> Transmission: {{ listing.transmission }}
+                      </div>
+                      <div class="card-actions">
+                        <span class="status-badge {% if listing.car_status == 'Pending' %}status-pending{% elif listing.car_status == 'Approved' %}status-approved{% else %}status-rejected{% endif %}">
+                          {{ listing.car_status }}
+                        </span>
+                        <div>
+                          <a href="#" class="btn-edit" 
+                             data-id="{{ listing.id }}">
+                            <i class="fas fa-edit"></i> Edit
+                          </a>
+                          <a href="#" class="btn-cancel" 
+                             data-toggle="modal" data-target="#confirmModal" 
+                             data-id="{{ listing.id }}">
+                            <i class="fas fa-times"></i> Cancel
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="no-cars-container">
+              <i class="fas fa-car fa-3x"></i>
+              <h3>No Cars Listed Yet</h3>
+              <p>You haven't listed any certified cars for sale. Start listing your cars today!</p>
+              <a href="{% url 'certifiedusersale_cars' %}" class="btn-list-car">
+                <i class="fas fa-plus-circle"></i> List a Car
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Update Confirm Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-confirm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="icon-box">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+          </div>
+          <h4 class="modal-title">Are you sure?</h4>
+          <div class="modal-body">
+            <p>You won't be able to revert this!</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDelete">Yes, delete it!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Update Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-confirm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="icon-box success">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <h4 class="modal-title">Success!</h4>
+          <div class="modal-body">
+            <p>Car listing has been cancelled successfully.</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-edit modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit Car Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editCarForm" enctype="multipart/form-data">
+              <input type="hidden" id="editCarId" name="car_id">
+              
+              <!-- Current Images Display -->
+              <div class="form-group">
+                <label>Current Images</label>
+                <div id="currentImages" class="d-flex flex-wrap">
+                  <!-- Images will be loaded here dynamically -->
+                </div>
+              </div>
+
+              <!-- New Images Upload -->
+              <div class="form-group">
+                <label for="newImages">Add New Images (Optional)</label>
+                <input type="file" class="form-control-file" id="newImages" name="new_images" multiple accept="image/*">
+                <small class="text-muted">You can select multiple images. Maximum 5 images allowed.</small>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="manufacturer">Manufacturer</label>
+                    <input type="text" class="form-control" id="manufacturer" name="manufacturer" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="model_name">Model Name</label>
+                    <input type="text" class="form-control" id="model_name" name="model_name" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="number" class="form-control" id="year" name="year" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="price">Price (₹)</label>
+                    <input type="number" class="form-control" id="price" name="price" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="kilometers">Mileage (km)</label>
+                    <input type="number" class="form-control" id="kilometers" name="kilometers" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fuel_type">Fuel Type</label>
+                    <select class="form-control" id="fuel_type" name="fuel_type" required>
+                      <option value="Petrol">Petrol</option>
+                      <option value="Diesel">Diesel</option>
+                      <option value="Electric">Electric</option>
+                      <option value="Hybrid">Hybrid</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="transmission">Transmission</label>
+                    <select class="form-control" id="transmission" name="transmission" required>
+                      <option value="Manual">Manual</option>
+                      <option value="Automatic">Automatic</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="text" class="form-control" id="color" name="color" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="reg_number">Registration Number</label>
+                    <input type="text" class="form-control" id="reg_number" name="reg_number" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="car_cc">Car CC</label>
+                    <input type="number" class="form-control" id="car_cc" name="car_cc" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="insurance_validity">Insurance Validity</label>
+                    <input type="date" class="form-control" id="insurance_validity" name="insurance_validity" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="pollution_validity">Pollution Validity</label>
+                    <input type="date" class="form-control" id="pollution_validity" name="pollution_validity" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="tax_validity">Tax Validity</label>
+                    <input type="date" class="form-control" id="tax_validity" name="tax_validity" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="car_type">Car Type</label>
+                    <input type="text" class="form-control" id="car_type" name="car_type" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="owner_status">Owner Status</label>
+                    <input type="number" class="form-control" id="owner_status" name="owner_status" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="condition">Condition</label>
+                <textarea class="form-control" id="condition" name="condition" rows="3" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="saveChanges">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+        var currentIndex = 0;
+        var totalPages = {{ purchases|length }};
+        var $purchaseCards = $('.purchase-card');
+        var $currentPage = $('#currentPage');
+        var $prevButton = $('#prevButton');
+        var $nextButton = $('#nextButton');
+
+        function showCard(index) {
+          $purchaseCards.hide();
+          $purchaseCards.eq(index).show();
+          $currentPage.text(index + 1);
+          $prevButton.prop('disabled', index === 0);
+          $nextButton.prop('disabled', index === totalPages - 1);
+        }
+
+        $prevButton.click(function() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            showCard(currentIndex);
+          }
+        });
+
+        $nextButton.click(function() {
+          if (currentIndex < totalPages - 1) {
+            currentIndex++;
+            showCard(currentIndex);
+          }
+        });
+
+        // Initialize
+        showCard(currentIndex);
+
+        // Initialize all carousels
+        $('.carousel').carousel({
+          interval: 5000, // Change slides every 5 seconds
+          wrap: true     // Continue from last to first slide
+        });
+        
+        // Pause carousel on hover
+        $('.carousel').hover(
+          function() {
+            $(this).carousel('pause');
+          },
+          function() {
+            $(this).carousel('cycle');
+          }
+        );
+
+        var carIdToDelete = null;
+
+        // When cancel button is clicked
+        $('.btn-cancel').click(function(e) {
+          e.preventDefault();
+          carIdToDelete = $(this).data('id');
+        });
+
+        // When confirm delete button in modal is clicked
+        $('#confirmDelete').click(function() {
+          if (carIdToDelete) {
+            $.ajax({
+              url: "{% url 'cancel_car_listing' 0 %}".replace('0', carIdToDelete),
+              type: 'POST',
+              headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+              },
+              success: function(response) {
+                if (response.status === 'success') {
+                  // Hide the confirmation modal
+                  $('#confirmModal').modal('hide');
+                  
+                  // Show success modal
+                  $('#successModal').modal('show');
+                  
+                  // When success modal is hidden, reload the page
+                  $('#successModal').on('hidden.bs.modal', function () {
+                    location.reload();
+                  });
+                } else {
+                  alert('Error: ' + response.message);
+                }
+              },
+              error: function(xhr, status, error) {
+                alert('Error: ' + error);
+              }
+            });
+          }
+        });
+
+        // Function to get CSRF token from cookies
+        function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+
+        // When edit button is clicked
+        $('.btn-edit').click(function(e) {
+          e.preventDefault();
+          var carId = $(this).data('id');
+          
+          // Clear previous images
+          $('#currentImages').empty();
+          
+          // Fetch car details including images
+          $.ajax({
+            url: `/get_car_details/${carId}/`,
+            type: 'GET',
+            success: function(response) {
+              if (response.status === 'success') {
+                var car = response.car;
+                
+                // Populate form fields
+                $('#editCarId').val(car.id);
+                $('#manufacturer').val(car.manufacturer);
+                $('#model_name').val(car.model_name);
+                $('#year').val(car.year);
+                $('#kilometers').val(car.kilometers);
+                $('#price').val(car.price);
+                $('#fuel_type').val(car.fuel_type);
+                $('#transmission').val(car.transmission);
+                $('#color').val(car.color);
+                $('#reg_number').val(car.reg_number);
+                $('#car_cc').val(car.car_cc);
+                $('#insurance_validity').val(car.insurance_validity);
+                $('#pollution_validity').val(car.pollution_validity);
+                $('#tax_validity').val(car.tax_validity);
+                $('#car_type').val(car.car_type);
+                $('#owner_status').val(car.owner_status);
+                $('#condition').val(car.condition);
+                
+                // Display current images
+                car.images.forEach(function(image, index) {
+                  var imageHtml = `
+                    <div class="position-relative mr-2 mb-2" id="image-container-${image.id}">
+                      <img src="${image.url}" alt="Car Image ${index + 1}" style="width: 100px; height: 100px; object-fit: cover;">
+                      <button type="button" class="btn btn-danger btn-sm position-absolute" style="top: 0; right: 0;"
+                              onclick="deleteImage(${image.id}, this)">×</button>
+                    </div>
+                  `;
+                  $('#currentImages').append(imageHtml);
+                });
+                
+                // Show the edit modal
+                $('#editModal').modal('show');
+              } else {
+                alert('Error: ' + response.message);
+              }
+            },
+            error: function(xhr, status, error) {
+              alert('Error: ' + error);
+            }
+          });
+        });
+
+        // Function to delete an image
+        window.deleteImage = function(imageId, buttonElement) {
+          if (confirm('Are you sure you want to delete this image?')) {
+            $.ajax({
+              url: `/delete_car_image/${imageId}/`,
+              type: 'POST',
+              headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+              },
+              beforeSend: function() {
+                // Disable the delete button and show loading state
+                $(buttonElement).prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span>');
+              },
+              success: function(response) {
+                if (response.status === 'success') {
+                  // Remove the image container with animation
+                  $(`#image-container-${imageId}`).fadeOut(300, function() {
+                    $(this).remove();
+                  });
+                } else {
+                  alert('Error: ' + response.message);
+                  // Reset the button state
+                  $(buttonElement).prop('disabled', false).text('×');
+                }
+              },
+              error: function(xhr, status, error) {
+                alert('Error: ' + error);
+                // Reset the button state
+                $(buttonElement).prop('disabled', false).text('×');
+              }
+            });
+          }
+        };
+
+        // When save changes button is clicked
+        $('#saveChanges').click(function() {
+          var formData = new FormData($('#editCarForm')[0]);
+          
+          // Show loading state
+          $('#saveChanges').prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...');
+          
+          $.ajax({
+            url: `/edit_car/${$('#editCarId').val()}/`,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+              'X-CSRFToken': getCookie('csrftoken')
+            },
+            success: function(response) {
+              if (response.status === 'success') {
+                $('#editModal').modal('hide');
+                // Show success modal
+                $('#successModal').find('.modal-body p').text('Car details updated successfully.');
+                $('#successModal').modal('show');
+                
+                // When success modal is hidden, reload the page
+                $('#successModal').on('hidden.bs.modal', function () {
+                  location.reload();
+                });
+              } else {
+                // Show error in the modal
+                alert('Error: ' + response.message);
+              }
+            },
+            error: function(xhr, status, error) {
+              let errorMessage = 'An error occurred while saving changes.';
+              
+              try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.message) {
+                  errorMessage = response.message;
+                }
+              } catch (e) {
+                console.error('Error parsing error response:', e);
+              }
+              
+              alert('Error: ' + errorMessage);
+            },
+            complete: function() {
+              // Reset button state
+              $('#saveChanges').prop('disabled', false).text('Save Changes');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

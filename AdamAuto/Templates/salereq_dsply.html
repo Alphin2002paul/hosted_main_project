@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam Automotive Admin Panel</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable()
+      })
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0 0 0 / 63%));
+        color: #fff;
+        overflow-x: hidden;
+      }
+      
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+      }
+      
+      #sidebar.active {
+        margin-left: -250px;
+      }
+      
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #444;
+      }
+      
+      #sidebar ul.components {
+        padding: 20px 0;
+      }
+      
+      #sidebar ul li a {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      #sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      #sidebar ul li.active > a {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      
+      #content {
+        width: 100%;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .card-header {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid #444;
+      }
+      
+      .navbar {
+        padding: 15px 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+      }
+      .btn-darkish {
+        background-color: #333;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 75px;
+        padding:4px 7px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-darkish:hover {
+        background-color: #555;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      
+      .btn-darkish:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .sidebar-footer {
+        bottom: -1px;
+      }
+      .block-27 ul li a, .block-27 ul li span {
+        color: #c4781f;
+        text-align: center;
+        display: inline-block;
+        width: 46px;
+        height: 45px;
+        line-height: 36px;
+        border-radius: 80%;
+        border: 1px solid #c4781f;
+    }
+      .block-27 ul li.active a, .block-27 ul li.active span {
+        background: black!important;
+        color: #fff;
+        border: 1px solid transparent; }
+        .ftco-section {
+        padding: 3em 0;
+    }
+    .ftco-section + .ftco-section {
+        padding-top: 0;
+    }
+    .mb-4 {
+        margin-bottom: -1.0rem !important;
+    }
+    .btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #0c0c0d;
+        --bs-btn-border-color: #0b0b0b;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #111112;
+        --bs-btn-hover-border-color: #0c0c0d;
+        --bs-btn-focus-shadow-rgb: 49, 132, 253;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #0c0c0d;
+        --bs-btn-active-border-color: #0e0f0f;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #191a1b;
+        --bs-btn-disabled-border-color: #131313;
+    }
+    .sidebar-footer {
+        bottom: -37px;
+    }
+    </style>
+  </head>
+  <body>
+    
+    <div class="d-flex">
+      <nav id="sidebar" class="bg-dark text-light ">
+        <div class="sidebar-header">
+          <h3 class="mb-0">Adam</h3><h3><span style="color: #d39e00;">Automotive</span></h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li>
+            <a href="{% url 'adminindex' %}"><i class="fas fa-user-circle"></i> User Details</a>
+          </li>
+          <li>
+            <a href="{% url 'adminadd_dtl' %}"><i class="fas fa-folder-plus"></i> Add Categories</a>
+          </li>
+          <li>
+            <a href="{% url 'category_edit' %}"><i class="fas fa-list-alt"></i> View Categories</a>
+        </li>
+          <li>
+            <a href="{% url 'admincaradd_dtl' %}"><i class="fas fa-car"></i> List New Car</a>
+          </li>
+          
+          <li>
+            <a href="{% url 'edit_listing' %}"><i class="fas fa-edit"></i> Edit Listing</a>
+          </li>
+          <li>
+            <a href="{% url 'admintestdrive' %}"><i class="fas fa-phone"></i> Slot Request</a>
+          </li>
+          <li class="active">
+            <a href="{% url 'salereq_dsply' %}"><i class="fas fa-dollar-sign"></i> Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'certified_admin_req' %}"><i class="fas fa-award"></i> Certified Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'wholeseller_admin' %}"><i class="fas fa-warehouse fa-xs"></i> Wholesale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'service_request_view' %}"><i class="fas fa-tools"></i> Service Request</a>
+          <li>
+            <a href="{% url 'soldcarinfo' %}"><i class="fas fa-car-side"></i> Sold Cars</a>
+          </li>
+          <li>
+            <a href="{% url 'adminenquiry' %}"><i class="fas fa-question-circle"></i> Car Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'adminfeedback' %}"><i class="fas fa-comments"></i> Feedback Details</a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="btn btn-light btn-block">LOGOUT</a>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content" class="flex-grow-1">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-align-left"></i></button>
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/logo.png' %}" alt="User" class="rounded-circle" height="30" width="35" />
+                  <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'adminprofile' %}"><i class="fas fa-user me-2"></i>Profile</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="container-fluid mt-4">
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <h2>Sale <span style="color: #d39e00;">Requests</span></h2>
+                </div>
+                <div class="card-body">
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% if sell_cars %}
+                      {% for car in sell_cars %}
+                        <div class="col">
+                          <div class="car-wrap rounded ftco-animate bg-white p-3 h-100 d-flex flex-column">
+                            <div id="carImageCarousel{{ car.id }}" class="carousel slide" data-bs-ride="carousel">
+                              <div class="carousel-inner">
+                                {% if car.images.all %}
+                                  {% for image in car.images.all %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                      <img src="{{ image.image.url }}" class="d-block w-100" alt="Car Image" style="object-fit: cover; height: 200px;">
+                                    </div>
+                                  {% endfor %}
+                                {% else %}
+                                  <div class="carousel-item active">
+                                    <img src="{% static 'images/no_image_available.jpg' %}" class="d-block w-100" alt="No Image Available" style="object-fit: cover; height: 200px;">
+                                  </div>
+                                {% endif %}
+                              </div>
+                              {% if car.images.count > 1 %}
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carImageCarousel{{ car.id }}" data-bs-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carImageCarousel{{ car.id }}" data-bs-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="visually-hidden">Next</span>
+                                </button>
+                              {% endif %}
+                            </div>
+                            <div class="text mt-3 flex-grow-1 d-flex flex-column justify-content-between">
+                              <div>
+                                <h2 class="mb-0 text-dark">{{ car.manufacturer }}</h2>
+                                <div class="d-flex mb-3">
+                                  <span class="mb-0" style="color:#d39e00">Model: <span class="text-dark">{{ car.model }}</span></span>
+                                </div>
+                                <div class="d-flex mb-3">
+                                  <span class="mb-0" style="color:#d39e00">Price: <span class="text-dark">₹ {{ car.price }}</span></span>
+                                </div>
+                                <div class="d-flex mb-3">
+                                  <span class="mb-0" style="color:#d39e00">Status: <span class="text-secondary">{{ car.status }}</span></span>
+                                </div>
+                              </div>
+                              <div class="mt-auto">
+                                <a href="{% url 'salemore_dtl' car_id=car.id %}" class="btn btn-primary py-2 px-3 w-100">More Details</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    {% else %}
+                      <div class="col-12">
+                        <p>No sale requests found.</p>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+          <!-- Pagination -->
+          <div class="row mt-5">
+            <div class="col text-center">
+              <div class="block-27">
+                <ul class="pagination">
+                  {% if sell_cars.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&lt;&lt;</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ sell_cars.previous_page_number }}">&lt;</a></li>
+                  {% endif %}
+                  
+                  {% for num in sell_cars.paginator.page_range %}
+                    {% if sell_cars.number == num %}
+                      <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > sell_cars.number|add:'-3' and num < sell_cars.number|add:'3' %}
+                      <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                  
+                  {% if sell_cars.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ sell_cars.next_page_number }}">&gt;</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ sell_cars.paginator.num_pages }}">&gt;&gt;</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Toggle Sidebar
+        document.getElementById('sidebarCollapse').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.toggle('active')
+        })
+    
+        // Handle delete/republish button clicks
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const carId = this.getAttribute('data-car-id');
+            const action = this.textContent.trim();
+    
+            fetch(`/toggle_car_status/${carId}/`, {
+              method: 'POST',
+              headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ action: action }),
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                // Reload the page after successful status update
+                window.location.reload();
+              } else {
+                console.error('Failed to update car status');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,811 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Adam Automotive - Website For Luxury Used Cars</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'displaycar/css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/bootstrap-datepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/jquery.timepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/icomoon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/style.css' %}" />
+
+    <style>
+      .custom-btn {
+        background: #d39e00;
+        border: 1px solid #d39e00 !important;
+      }
+      
+      .dropdown-menu {
+        margin-top: -1px;
+      }
+      
+      .ftco-footer {
+        font-size: 16px;
+        background: #000;
+        padding: 2em 0;
+      }
+      .ftco-navbar-light.scrolled.awake {
+        margin-top: 0px;
+        -webkit-transition: 0.3s all ease-out;
+        -o-transition: 0.3s all ease-out;
+        transition: 0.3s all ease-out;
+      }
+      .btn.btn-primary {
+        background: #000 !important;
+        border: 1px solid #212223 !important;
+        color: #fff !important;
+      }
+      .btn.btn-secondary {
+        background: #d84d4d !important;
+        border: 1px solid #f85555 !important;
+        color: #fff !important;
+      }
+      .btn.btn-secondary {
+        background: #121111 !important;
+        border: 1px solid #121111 !important;
+        color: #fff !important;
+      }
+      .block-27 ul li a,
+      .block-27 ul li span {
+        color: #c4781f;
+        text-align: center;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        border: 1px solid #c4781f;
+      }
+      .block-27 ul li.active a,
+      .block-27 ul li.active span {
+        background: black !important;
+        color: #fff;
+        border: 1px solid transparent;
+      }
+      .ftco-section {
+        padding: 3em 0;
+      }
+      .ftco-section + .ftco-section {
+        padding-top: 0;
+      }
+      a:hover, a:focus {
+        text-decoration: none;
+        color: #020202;
+        outline: none !important;
+    }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Adam&nbsp;<span>Automotive</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Menu</button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a href="{% url 'main' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'main' %}.#ab" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#con" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="carCollectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Car Collections
+              </a>
+              <div class="dropdown-menu" aria-labelledby="carCollectionDropdown">
+                <a class="dropdown-item" href="{% url 'userdisplaycars_dtl' %}">Adam Car Collection</a>
+                <a class="dropdown-item" href="{% url 'certified_cars' %}">Adam Certified Cars</a>
+              </div>
+            </li>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ user.first_name }}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left:-50px">
+                  <a class="dropdown-item" href="{% url 'account_dtl' %}">Account Details</a>
+                  <a class="dropdown-item" href="{% url 'liked_list' %}">Liked List</a>
+                  <a class="dropdown-item" href="{% url 'sellcar_dtl' %}">Sell Your Car</a>
+                  <a class="dropdown-item" href="{% url 'bookservice_dtl' %}">Book A Service</a>
+                  <a class="dropdown-item" href="{% url 'request_dtl' %}">Requests</a>
+                  <a class="dropdown-item" href="{% url 'perfect_car' %}">Perfect Car</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  <!-- Add more options as needed, such as profile settings -->
+                </div>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero-wrap ftco-degree-bg" style="background-image: url('{% static 'images/car8.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+          <div class="col-lg-8 ftco-animate">
+            <div class="text w-100 text-center mb-md-5 pb-md-5">
+              <h1 class="mb-4">Buy Your Dream Car Through Adam Automotive</h1>
+              <p style="font-size: 18px;">Buying A Car is Not Just Buying a Machine It's an Emotion For Every Auto Enthusiast</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+          <h2>More&nbsp;<span style="color: #d39e00;">Details</span></h2>
+          <hr/>
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-6" id="carImageSection">
+                <div id="carImageCarousel" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    {% for car_image in car_images %}
+                      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        {% if car_image.image %}
+                          <img src="{{ car_image.image.url }}" class="d-block w-100" alt="Car Image" style="object-fit: contain; height: 400px;">
+                        {% else %}
+                          <img src="{% static 'images/no_image_available.jpg' %}" class="d-block w-100" alt="No Image Available" style="object-fit: contain; height: 400px;">
+                        {% endif %}
+                      </div>
+                    {% empty %}
+                      <div class="carousel-item active">
+                        <img src="{% static 'images/no_image_available.jpg' %}" class="d-block w-100" alt="No Image Available" style="object-fit: contain; height: 400px;">
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <a class="carousel-control-prev" href="#carImageCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carImageCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+                <div class="mt-3 d-flex justify-content-between">
+                  <a href="#" class="btn btn-primary py-2 px-4 w-49" id="bookTestDriveBtn">Book A Test Drive</a>
+                  <a href="#" class="btn custom-btn py-2 px-4 w-49" id="purchaseCarBtn">Purchase The Car</a>
+                  <button id="predictionsBtn" class="btn btn-secondary py-2 px-4 w-49">Predictions</button>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div id="carDetails">
+                    <h2>{{ car.manufacturer.company_name }} {{ car.model_name.model_name }}</h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                      <p><strong>Year:</strong> {{ car.year }}</p>
+                      <p><strong>Fuel Type:</strong> {{ car.fuel_type }}</p>
+                      <p><strong>Kilometers:</strong> {{ car.kilometers }}</p>
+                      <p><strong>Ownership Status:</strong> {{ car.owner_status }}</p>
+                      <p><strong>Car Type:</strong> {{ car.car_type.name }}</p>
+
+                    </div>
+                    <div class="col-md-6">
+                      <p><strong>Price:</strong> ₹{{ car.price }}</p>
+                      <p><strong>Transmission:</strong> {{ car.transmission }}</p>
+                      <p><strong>Color:</strong> {{ car.color.color_name }}</p>
+                      <p><strong>Car Status:</strong> {{ car.car_status }}</p>
+                      <p><strong>Engine CC:</strong> {{ car.car_cc }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="additionalInfo" class="row mt-4" style="display: none;">
+                    <h2 style="margin-left: 17px;">More&nbsp;<span style="color: #d39e00;">Informations</span></h2><hr>
+
+                  <div class="col-md-12">
+                    <p><strong>Registration Number:</strong> {{ car.reg_number }}</p>                  
+                </div>
+                  <div class="col-md-12">
+                    <p><strong>Pollution Validity:</strong> {{ car.pollution_validity }}</p>
+                  </div>
+                  <div class="col-md-12">
+                    <p><strong>Insurance Validity:</strong> {{ car.insurance_validity }}</p>
+                  </div>
+                  <div class="col-md-12">
+                    <p><strong>Registration Validity:</strong> {{ car.tax_validity }}</p>
+                  </div>
+                  <div class="col-md-12">
+                    <p><strong>Overall Condition:</strong> {{ car.condition }}</p>
+                  </div>
+                </div>
+                <button id="moreInfoBtn" class="btn btn-primary mt-3">More Information</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2"><a href="#" class="logo">Adam&nbsp;<span>Automotive</span></a></h2>
+              <p>Money may not buy happiness, but I'd rather cry in a Jaguar than on a bus.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate">
+                  <a href="https://twitter.com/"><span class="icon-twitter"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.facebook.com/"><span class="icon-facebook"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.instagram.com/"><span class="icon-instagram"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md" id="con">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="{% url 'main' %}.#ab" class="py-2 d-block">About</a>
+                </li>
+                <li>
+                  <a href="#" id="termsAndConditions" class="py-2 d-block">Terms and Conditions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Timing</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a class="py-2 d-block">Monday-Sunday</a>
+                </li>
+                <li>
+                  <a class="py-2 d-block">Working Hours: 9am-10pm</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li>
+                    <a><span class="icon icon-map-marker"></span><span class="text">Adam Towers, Edappally Kochi , Kerala - 683544</span></a>
+                  </li>
+                  <li>
+                    <a href="tel:+919876543210"><span class="icon icon-phone"></span><span class="text">+91 98765 43210</span></a>
+                  </li>
+                  <li>
+                    <a href="mailto:adamautomotive3@gmail.com"><span class="icon icon-envelope"></span><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adamautomotive3@gmail.com</span></a>
+                  </li> 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'displaycar/js/jquery.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/popper.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/aos.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/scrollax.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/main.js' %}"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const likeButtons = document.querySelectorAll('.like-btn')
+        likeButtons.forEach((button) => {
+          button.addEventListener('click', function () {
+            const carId = this.getAttribute('data-car-id')
+            fetch(`/toggle_like/${carId}/`, {
+              method: 'POST',
+              headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+              }
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.is_liked) {
+                  this.textContent = 'Remove Like'
+                  this.classList.remove('btn-primary')
+                  this.classList.add('btn-secondary')
+                } else {
+                  this.textContent = 'Add to Liked'
+                  this.classList.remove('btn-secondary')
+                  this.classList.add('btn-primary')
+                }
+              })
+          })
+        })
+      })
+    </script>
+    <script>
+        document.getElementById('moreInfoBtn').addEventListener('click', function () {
+          var additionalInfo = document.getElementById('additionalInfo');
+          
+          if (additionalInfo.style.display === 'none') {
+            additionalInfo.style.display = 'block';
+            this.textContent = 'Less Information';
+          } else {
+            additionalInfo.style.display = 'none';
+            this.textContent = 'More Information';
+          }
+        });
+      </script>
+
+    <!-- Add this modal at the end of the body -->
+    <div class="modal fade" id="predictionsModal" tabindex="-1" role="dialog" aria-labelledby="predictionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="predictionsModalLabel">Car Predictions</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="predictionsModalBody">
+            <!-- Predictions will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add this script at the end of the file -->
+    <script>
+    $(document).ready(function() {
+      $('#predictionsBtn').click(function() {
+        $.ajax({
+          url: '{% url 'get_predictions' car.id %}',
+          type: 'GET',
+          success: function(response) {
+            $('#predictionsModalBody').html(response.predictions_html);
+            $('#predictionsModal').modal('show');
+          },
+          error: function(xhr, status, error) {
+            console.error('Error fetching predictions:', error);
+            $('#predictionsModalBody').html('<p>Error fetching predictions. Please try again later.</p>');
+            $('#predictionsModal').modal('show');
+          }
+        });
+      });
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+$(document).ready(function() {
+  $('.custom-btn').click(function(e) {
+    e.preventDefault();
+    
+    // Calculate date range for expected delivery
+    const today = new Date();
+    const minDate = new Date(today);
+    minDate.setDate(minDate.getDate() + 10);
+    const maxDate = new Date(today);
+    maxDate.setMonth(maxDate.getMonth() + 1);
+
+    Swal.fire({
+      title: 'Choose Delivery Option',
+      html: `
+        <select id="deliveryOption" class="swal2-select">
+          <option value="showroom">Showroom Delivery</option>
+          <option value="home">Home Delivery</option>
+        </select>
+        <input type="text" id="ownerName" class="swal2-input" placeholder="Owner's Name">
+        <div id="ownerNameError" class="error-message"></div>
+        <input type="text" id="aadharNumber" class="swal2-input" placeholder="Aadhar Number">
+        <div id="aadharNumberError" class="error-message"></div>
+        <input type="text" id="panNumber" class="swal2-input" placeholder="PAN Card Number">
+        <div id="panNumberError" class="error-message"></div>
+        <input type="date" id="expectedDeliveryDate" class="swal2-input" placeholder="Expected Delivery Date">
+        <div id="expectedDeliveryDateError" class="error-message"></div>
+        <div id="homeDeliveryForm" style="display:none; margin-top: 15px;">
+          <input type="text" id="street" class="swal2-input" placeholder="Street Address">
+          <div id="streetError" class="error-message"></div>
+          <input type="text" id="city" class="swal2-input" placeholder="City">
+          <div id="cityError" class="error-message"></div>
+          <input type="text" id="state" class="swal2-input" placeholder="State">
+          <div id="stateError" class="error-message"></div>
+          <input type="number" id="pincode" class="swal2-input" placeholder="Pincode">
+          <div id="pincodeError" class="error-message"></div>
+        </div>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Proceed to Payment',
+      cancelButtonText: 'Cancel',
+      didOpen: () => {
+        const confirmButton = Swal.getConfirmButton();
+        confirmButton.disabled = true;
+
+        // Set min and max date for expected delivery date
+        $('#expectedDeliveryDate').attr('min', minDate.toISOString().split('T')[0]);
+        $('#expectedDeliveryDate').attr('max', maxDate.toISOString().split('T')[0]);
+
+        $('#deliveryOption').change(function() {
+          if ($(this).val() === 'home') {
+            $('#homeDeliveryForm').show();
+          } else {
+            $('#homeDeliveryForm').hide();
+          }
+          updateSubmitButton();
+        });
+
+        // Add input event listeners for validation
+        $('#street, #city, #state, #ownerName, #aadharNumber, #panNumber, #pincode').on('input', function() {
+          updateSubmitButton();
+        });
+
+        // Add change event listener for date
+        $('#expectedDeliveryDate').on('change', function() {
+          updateSubmitButton();
+        });
+      },
+      preConfirm: () => {
+        return new Promise((resolve) => {
+          if (validateAllFields()) {
+            resolve({
+              deliveryOption: $('#deliveryOption').val(),
+              ownerName: $('#ownerName').val(),
+              aadharNumber: $('#aadharNumber').val(),
+              panNumber: $('#panNumber').val(),
+              expectedDeliveryDate: $('#expectedDeliveryDate').val(),
+              street: $('#street').val(),
+              city: $('#city').val(),
+              state: $('#state').val(),
+              pincode: $('#pincode').val()
+            });
+          } else {
+            Swal.showValidationMessage('Please fill all required fields correctly');
+          }
+        });
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("Form submitted, creating Razorpay order...");
+        createRazorpayOrder(result.value);
+      }
+    });
+  });
+
+  function createRazorpayOrder(formData) {
+    // Use the car price as the amount
+    const amount = {{ car.price }} * 100; // Convert to paise
+
+    // Create a Razorpay order
+    const options = {
+      key: "rzp_test_JzWQBIcsdLXbrZ", // Replace with your actual Razorpay key ID
+      amount: amount,
+      currency: "INR",
+      name: "Adam Automotive",
+      description: "Car Purchase - {{ car.manufacturer.company_name }} {{ car.model_name.model_name }}",
+      image: "{% static 'images/logo.png' %}",
+      handler: function (response) {
+        console.log("Payment successful:", response);
+        // Send payment details to the server
+        $.ajax({
+          url: '{% url 'process_payment' %}',
+          type: 'POST',
+          data: {
+            payment_id: response.razorpay_payment_id,
+            car_id: '{{ car.id }}',
+            delivery_option: formData.deliveryOption,
+            street: formData.street,
+            city: formData.city,
+            state: formData.state,
+            pincode: formData.pincode,
+            owner_name: formData.ownerName,
+            aadhar_number: formData.aadharNumber,
+            pan_number: formData.panNumber,
+            payment_mode: response.method, // Use the payment method from Razorpay response
+            expected_delivery_date: formData.expectedDeliveryDate,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          },
+          success: function(serverResponse) {
+            if (serverResponse.status === 'success') {
+              Swal.fire({
+                title: 'Success',
+                text: 'Payment processed successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Redirect to userdisplaycars_dtl.html
+                  window.location.href = "{% url 'userdisplaycars_dtl' %}";
+                }
+              });
+            } else {
+              Swal.fire('Error', 'There was an error processing your payment.', 'error');
+            }
+          },
+          error: function(xhr) {
+            console.error('Error processing payment:', xhr.responseText);
+            Swal.fire('Error', 'There was an error processing your payment.', 'error');
+          }
+        });
+      },
+      prefill: {
+        name: $('#ownerName').val(),
+      },
+      theme: {
+        color: "#d39e00"
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+  }
+
+  function validateField(fieldId, value) {
+    const minLength = 3;
+    const regex = /^[a-zA-Z0-9\s]+$/;
+    const errorElement = $(`#${fieldId}Error`);
+
+    if (value.length < minLength) {
+      errorElement.text(`Minimum ${minLength} characters required`);
+      return false;
+    } else if (!regex.test(value)) {
+      errorElement.text('Special characters are not allowed');
+      return false;
+    } else {
+      errorElement.text('');
+      return true;
+    }
+  }
+
+  function validatePincode(value) {
+    const regex = /^[0-9]{1,6}$/;
+    const errorElement = $('#pincodeError');
+
+    if (!regex.test(value)) {
+      errorElement.text('Pincode must be up to 6 digits only');
+      return false;
+    } else {
+      errorElement.text('');
+      return true;
+    }
+  }
+
+  function validateName(value) {
+    const regex = /^[a-zA-Z\s]+$/;
+    const errorElement = $('#ownerNameError');
+
+    if (!regex.test(value)) {
+      errorElement.text('Only letters and spaces are allowed');
+      return false;
+    } else {
+      errorElement.text('');
+      return true;
+    }
+  }
+
+  function validateAadhar(value) {
+    const regex = /^[0-9]{10}$/;
+    const errorElement = $('#aadharNumberError');
+
+    if (!regex.test(value)) {
+      errorElement.text('Aadhar number must be exactly 10 digits');
+      return false;
+    } else {
+      errorElement.text('');
+      return true;
+    }
+  }
+
+  function validatePAN(value) {
+    const regex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    const errorElement = $('#panNumberError');
+
+    if (!regex.test(value)) {
+      errorElement.text('Invalid PAN number format');
+      return false;
+    } else {
+      errorElement.text('');
+      return true;
+    }
+  }
+
+  function validateExpectedDeliveryDate(value) {
+    if (!value) {
+      $('#expectedDeliveryDateError').text('Please select a delivery date');
+      return false;
+    }
+    const selectedDate = new Date(value);
+    const today = new Date();
+    const minDate = new Date(today);
+    minDate.setDate(minDate.getDate() + 10);
+    const maxDate = new Date(today);
+    maxDate.setMonth(maxDate.getMonth() + 1);
+
+    const errorElement = $('#expectedDeliveryDateError');
+
+    if (selectedDate < minDate) {
+      errorElement.text('Delivery date must be at least 10 days from today');
+      return false;
+    } else if (selectedDate > maxDate) {
+      errorElement.text('Delivery date must be within a month from today');
+      return false;
+    } else {
+      errorElement.text('');
+      return true;
+    }
+  }
+
+  function validateAllFields() {
+    const isHomeDelivery = $('#deliveryOption').val() === 'home';
+    return validateName($('#ownerName').val()) &&
+           validateAadhar($('#aadharNumber').val()) &&
+           validatePAN($('#panNumber').val()) &&
+           validateExpectedDeliveryDate($('#expectedDeliveryDate').val()) &&
+           (!isHomeDelivery || (
+             validateField('street', $('#street').val()) &&
+             validateField('city', $('#city').val()) &&
+             validateField('state', $('#state').val()) &&
+             validatePincode($('#pincode').val())
+           ));
+  }
+
+  function updateSubmitButton() {
+    const confirmButton = Swal.getConfirmButton();
+    confirmButton.disabled = !validateAllFields();
+  }
+});
+</script>
+</script>
+<script>
+  $(document).ready(function() {
+    $('#bookTestDriveBtn').click(function(e) {
+      e.preventDefault();
+      
+      // First, check if the user has already booked a test drive for this car
+      $.ajax({
+        url: '{% url 'check_existing_booking' %}',
+        data: {
+          car_id: '{{ car.id }}',
+        },
+        success: function(response) {
+          if (response.has_booking) {
+            Swal.fire('Booking Exists', 'You have already booked a test drive for this car.', 'info');
+          } else {
+            showBookingModal();
+          }
+        },
+        error: function(xhr) {
+          console.error('Error checking existing booking:', xhr);
+          Swal.fire('Error', 'Unable to check existing bookings. Please try again.', 'error');
+        }
+      });
+    });
+  
+    function showBookingModal() {
+      const today = new Date();
+      const maxDate = new Date(today);
+      maxDate.setDate(maxDate.getDate() + 10);
+      
+      const formatDate = (date) => {
+        const d = new Date(date);
+        let month = '' + (d.getMonth() + 1);
+        let day = '' + d.getDate();
+        const year = d.getFullYear();
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        return [year, month, day].join('-');
+      };
+  
+      const timeSlots = [
+        '09:00am - 10:00am',
+        '10:00am - 11:00am',
+        '11:00am - 12:00pm',
+        '12:00pm - 01:00pm',
+        '02:00pm - 03:00pm',
+        '03:00pm - 04:00pm',
+        '04:00pm - 05:00pm'
+      ];
+  
+      Swal.fire({
+        title: 'Book a Test Drive',
+        html: `
+          <input type="date" id="testDriveDate" class="swal2-input" min="${formatDate(today.setDate(today.getDate() + 1))}" max="${formatDate(maxDate)}">
+          <select id="testDriveTime" class="swal2-select">
+            <option value="">Select a time slot</option>
+            ${timeSlots.map(slot => `<option value="${slot}">${slot}</option>`).join('')}
+          </select>
+        `,
+        showCancelButton: true,
+        confirmButtonText: 'Book Test Drive',
+        cancelButtonText: 'Cancel',
+        didOpen: () => {
+          const dateInput = $('#testDriveDate');
+          const timeSelect = $('#testDriveTime');
+  
+          dateInput.change(function() {
+            const selectedDate = $(this).val();
+            if (selectedDate) {
+              $.ajax({
+                url: '{% url 'get_available_slots' %}',
+                data: {
+                  car_id: '{{ car.id }}',
+                  date: selectedDate
+                },
+                success: function(response) {
+                  timeSelect.find('option:not(:first)').remove();
+                  timeSlots.forEach(slot => {
+                    if (!response.booked_slots.includes(slot)) {
+                      timeSelect.append(`<option value="${slot}">${slot}</option>`);
+                    }
+                  });
+                },
+                error: function(xhr) {
+                  console.error('Error fetching available slots:', xhr);
+                }
+              });
+            }
+          });
+        },
+        preConfirm: () => {
+          const date = document.getElementById('testDriveDate').value;
+          const time = document.getElementById('testDriveTime').value;
+          if (!date || !time) {
+            Swal.showValidationMessage('Please select both date and time');
+          }
+          return { date, time };
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: '{% url 'book_test_drive' %}',
+            type: 'POST',
+            data: {
+              car_id: '{{ car.id }}',
+              date: result.value.date,
+              time: result.value.time,
+              csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(response) {
+              Swal.fire('Booked!', response.message, 'success');
+            },
+            error: function(xhr) {
+              Swal.fire('Error', xhr.responseJSON.message, 'error');
+            }
+          });
+        }
+      });
+    }
+  });
+  </script>
+  <style>
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  </style>
+  </body>
+</html>

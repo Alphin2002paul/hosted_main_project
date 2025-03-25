@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="{% static 'css/accounts.css' %}" rel="stylesheet" />
+    <style>
+      .error {
+        color: red;
+        font-size: 15px;
+      }
+      .k {
+        border-radius: 10%;
+      }
+      body {
+        background-color: #333; /* Darkish grey background */
+        color: #fff; /* White text color for better contrast */
+        background-image: url('{% static 'images/car2.jpg' %}')
+      }
+      element.style {
+        margin-left: 870px;
+    }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Details | Adam Automotive</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+   
+    <h1 align="center">Account Details </h1><hr>
+    <div class="container mt-5">
+      {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+              {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+      <div class="row">
+        <div class="col-lg-4 pb-5">
+          <!-- Account Sidebar -->
+          <div class="author-card pb-3">
+            <div class="author-card-cover" style="background-image: url('{% static 'images/logo.png' %}');"></div>
+            <div class="author-card-profile">
+              <div class="author-card-avatar">
+                <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Customer Photo" class="k" />
+
+            </div>
+              <div class="author-card-details">
+                <h5 class="author-card-name text-lg">{{ user.first_name }} {{ user.last_name }}</h5>
+                <span class="author-card-position">Joined on<br />{{ user.date_joined }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush">
+              <a class="list-group-item active" href="#">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Overview</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'account_edit' %}"><i class="fe-icon-user text-muted"></i>Edit Profile Settings</a>
+              {% if user.user_type != 'dealer' %}
+              <a class="list-group-item" href="{% url 'enquirecar' %}" >
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Enquire a Car</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'mybookings' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Purchase History</div>
+                  </div>
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'sub_details' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Subscription Details</div>
+                  </div>
+                </div>
+              </a>
+              {% endif %}
+              <a class="list-group-item" href="{% if user.user_type == 'dealer' %}{% url 'wholeseller' %}{% else %}{% url 'main' %}{% endif %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-tag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Home page</div>
+                  </div>
+                  <span class="badge badge-secondary"></span>
+                </div>
+              </a>
+            </nav>
+          </div>
+        </div>
+   
+        <!-- Profile Settings -->
+        <div class="col-lg-8 pb-5">
+          <form class="row" action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          
+        
+            <div class="col-12 mb-4">
+                <h4>Personal Information</h4><hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-fn">First Name</label>
+                            <input class="form-control" type="text" id="txt1" pattern="^.{2,12}$" title="Invalid Name" name="first_name" value="{{ user.first_name }}" disabled>
+                            <span id="text1"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-fn">Last Name</label>
+                            <input class="form-control" pattern="^.{2,12}$" title="Invalid Name" type="text" id="txt2" name="last_name" value="{{ user.last_name }}" disabled>
+                            <span id="text2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-12 mb-4">
+                <h4>Contact Information</h4><hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-ln">User Name</label>
+                            <input class="form-control" type="text" id="txt3" name="username" value="{{ user.username }}" disabled>
+                            <span id="text3"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="account-email">E-mail Address</label>
+                            <input class="form-control" type="email" id="Email" name="email" value="{{ user.email }}" disabled>
+                            <span id="text4"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="account-phone">Phone Number</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text">+91</span>
+                              </div>
+                              <input class="form-control" type="text" id="phone" name="Phone_number" pattern="^[6-9]\d{9}$" title="Enter Valid 10-digit Phone Number" value="{{ user.Phone_number}}" placeholder="10-digit number" disabled>
+                          </div>
+                          <span id="text5"></span>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        
+            <div class="col-12 mb-4">
+                <h4>Address</h4> <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="street_address">Street Address</label>
+                            <input class="form-control" type="text" id="address" name="address" pattern="^.{5,100}$" title="Enter a valid street address (5-100 characters)" value="{{ user.address }}" disabled>
+                            <span id="text_street"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input class="form-control" type="text" id="city" name="city" pattern="^[a-zA-Z\s]{2,50}$" title="Enter a valid city name (2-50 characters)" value="{{ user.city }}" disabled>
+                            <span id="text_city"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input class="form-control" type="text" id="state" name="state" pattern="^[a-zA-Z\s]{2,50}$" title="Enter a valid state name (2-50 characters)" value="{{ user.state }}" disabled>
+                            <span id="text_state"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="zipcode">Zipcode</label>
+                            <input class="form-control" type="text" id="zipcode" name="zipcode" pattern="^\d{6}(-\d{4})?$" title="Enter a valid zipcode (5 digits or 5+4 format)" value="{{ user.zipcode }}" disabled>
+                            <span id="text_zipcode"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-12">
+              <hr class="mt-2 mb-3" />
+              <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div class="custom-control custom-checkbox d-block">
+                  <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="" />
+                  <a href="{% url 'main' %}" class="btn btn-style-1 btn-primary">Back</a>
+                </div>
+                <a href="{% url 'logout' %}" class="btn btn-style-1 btn-primary">Logout</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>

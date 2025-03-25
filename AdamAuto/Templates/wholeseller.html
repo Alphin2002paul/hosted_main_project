@@ -1,0 +1,469 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Adam Automotive - Website For Luxury Used Cars</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'displaycar/css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/bootstrap-datepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/jquery.timepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/icomoon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/style.css' %}" />
+
+     <!-- Add Font Awesome CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    });
+    </script>
+
+    <style>
+      .custom-btn {
+        background: #d39e00;
+        border: 1px solid #d39e00 !important;
+      }
+      
+      .dropdown-menu {
+        margin-top: -1px;
+      }
+      
+      .ftco-footer {
+        font-size: 16px;
+        background: #000;
+        padding: 2em 0;
+      }
+      
+      .error-message {
+        color: red;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Adam&nbsp;<span>Automotive</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Menu</button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a href="{% url 'wholeseller' %}" class="nav-link">Home</a>
+              </li>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ user.first_name }}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left:-50px">
+                    <a class="dropdown-item" href="{% url 'account_dtl' %}">Account Details</a>
+                    <a class="dropdown-item" href="{% url 'wholeseller_req' %}">Requests</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </div>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero-wrap ftco-degree-bg" style="background-image: url('{% static 'images/def.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+          <div class="col-lg-8 ftco-animate">
+            <div class="text w-100 text-center mb-md-5 pb-md-5">
+              <h1 class="mb-4">Buy Your Dream Car Through Adam Automotive</h1>
+              <p style="font-size: 18px;">Buying A Car is Not Just Buying a Machine It's an Emotion For Every Auto Enthusiast</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <h2>Wholeseller Dashboard</h2>
+        <hr />
+        <div class="container mt-5">
+          <form id="sellCarForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="manufacturer">Manufacturer Name</label>
+                  <input type="text" class="form-control" id="manufacturer" name="manufacturer" required />
+                  <span class="error-message" id="manufacturerError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="model">Model Name</label>
+                  <input type="text" class="form-control" id="model" name="model" required />
+                  <span class="error-message" id="modelError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="year">Year</label>
+                  <input type="number" class="form-control" id="year" name="year" min="1886" max="{{ current_year }}" required />
+                  <span class="error-message" id="yearError"></span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="number" class="form-control" id="price" name="price" required />
+                  <span class="error-message" id="priceError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="color">Color</label>
+                  <input type="text" class="form-control" id="color" name="color" required />
+                  <span class="error-message" id="colorError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fuel_type">Fuel Type</label>
+                  <select class="form-control" id="fuel_type" name="fuel_type" required>
+                    <option value="" disabled selected>Select Fuel Type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                  </select>
+                  <span class="error-message" id="fuelTypeError"></span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="kilometers">Kilometers</label>
+                  <input type="number" class="form-control" id="kilometers" name="kilometers" required />
+                  <span class="error-message" id="kilometersError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="transmission">Transmission</label>
+                  <select class="form-control" id="transmission" name="transmission" required>
+                    <option value="" disabled selected>Select Transmission Type</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                  </select>
+                  <span class="error-message" id="transmissionError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="condition">Condition</label>
+                  <textarea class="form-control" id="condition" name="condition" rows="3" required></textarea>
+                  <span class="error-message" id="conditionError"></span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="reg_number">Registration Number</label>
+                  <input type="text" class="form-control" id="reg_number" placeholder="AA-00-A-0000" name="reg_number" required />
+                  <span class="error-message" id="regNumberError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="insurance_validity">Insurance Validity</label>
+                  <input type="date" class="form-control" id="insurance_validity" name="insurance_validity" required />
+                  <span class="error-message" id="insuranceValidityError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pollution_validity">Pollution Validity</label>
+                  <input type="date" class="form-control" id="pollution_validity" name="pollution_validity" required />
+                  <span class="error-message" id="pollutionValidityError"></span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="tax_validity">Tax Validity</label>
+                  <input type="date" class="form-control" id="tax_validity" name="tax_validity" required />
+                  <span class="error-message" id="taxValidityError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="car_type">Car Type</label>
+                  <select class="form-control" id="car_type" name="car_type" required>
+                    <option value="" disabled selected>Select Car Type</option>
+                    <option value="SUV">SUV</option>
+                    <option value="MPV">MPV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Compact SUV">Compact SUV</option>
+                    <option value="Coupe">Coupe</option>
+                  </select>
+                  <span class="error-message" id="carTypeError"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="owner_status">Owner Status</label>
+                  <input type="number" class="form-control" id="owner_status" name="owner_status" min="1" max="9" required />
+                  <span class="error-message" id="ownerStatusError"></span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="car_cc">Car CC</label>
+                  <input type="number" class="form-control" id="car_cc" name="car_cc" required />
+                  <span class="error-message" id="carCCError"></span>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="images">Upload Images (Up to 5)</label>
+                  <input type="file" class="form-control" id="images" name="images" accept=".jpg,.jpeg,.png" multiple required />
+                  <small class="form-text text-muted">You can select up to 5 images.</small>
+                  <span class="error-message" id="imagesError"></span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary custom-btn">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2"><a href="#" class="logo">Adam&nbsp;<span>Automotive</span></a></h2>
+              <p>Money may not buy happiness, but I'd rather cry in a Jaguar than on a bus.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate">
+                  <a href="https://twitter.com/"><span class="icon-twitter"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.facebook.com/"><span class="icon-facebook"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.instagram.com/"><span class="icon-instagram"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md" id="con">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a class="py-2 d-block">Adam's</a>
+                </li>
+                <li>
+                  <a href="#" id="termsAndConditions" class="py-2 d-block">Terms and Conditions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Timing</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a class="py-2 d-block">Monday-Sunday</a>
+                </li>
+                <li>
+                  <a class="py-2 d-block">Working Hours: 9am-10pm</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li>
+                    <a><span class="icon icon-map-marker"></span><span class="text">Adam Towers, Edappally Kochi , Kerala - 683544</span></a>
+                  </li>
+                  <li>
+                    <a href="tel:+919876543210"><span class="icon icon-phone"></span><span class="text">+91 98765 43210</span></a>
+                  </li>
+                  <li>
+                    <a href="mailto:adamautomotive3@gmail.com"><span class="icon icon-envelope"></span><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adamautomotive3@gmail.com</span></a>
+                  </li> 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'displaycar/js/jquery.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/popper.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/aos.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/scrollax.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/main.js' %}"></script>
+    <script>
+      $(document).ready(function() {
+        // Calculate minimum date (30 days from today)
+        const today = new Date();
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() + 30);
+        
+        const minDateStr = minDate.toISOString().split('T')[0];
+        
+        // Set minimum date for all date inputs
+        $('#insurance_validity, #pollution_validity, #tax_validity').attr('min', minDateStr);
+
+        // Date validation function
+        function validateDates() {
+          const insuranceDate = new Date($('#insurance_validity').val());
+          const pollutionDate = new Date($('#pollution_validity').val());
+          const taxDate = new Date($('#tax_validity').val());
+          const minimumDate = new Date(minDate);
+          
+          // Reset time parts for accurate date comparison
+          minimumDate.setHours(0, 0, 0, 0);
+          
+          let isValid = true;
+          
+          // Clear previous error messages
+          $('.error-message').text('');
+
+          // Insurance validity validation
+          if (insuranceDate < minimumDate) {
+            $('#insuranceValidityError').text('Validity date must be at least 30 days from today');
+            isValid = false;
+          }
+
+          // Pollution validity validation
+          if (pollutionDate < minimumDate) {
+            $('#pollutionValidityError').text('Validity date must be at least 30 days from today');
+            isValid = false;
+          }
+
+          // Tax validity validation
+          if (taxDate < minimumDate) {
+            $('#taxValidityError').text('Validity date must be at least 30 days from today');
+            isValid = false;
+          }
+
+          return isValid;
+        }
+
+        // Form submission handler
+        $('#sellCarForm').on('submit', function(e) {
+          e.preventDefault();
+          
+          if (!validateDates()) {
+            return false;
+          }
+
+          var formData = new FormData(this);
+          
+          $.ajax({
+            url: "{% url 'sellcar_dtl' %}",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              if (response.success) {
+                Swal.fire({
+                  title: 'Success!',
+                  text: 'Your car details have been submitted successfully.',
+                  icon: 'success'
+                }).then(() => {
+                  window.location.href = "{% url 'wholeseller' %}";
+                });
+              } else {
+                Swal.fire({
+                  title: 'Error!',
+                  text: response.message || 'Something went wrong.',
+                  icon: 'error'
+                });
+              }
+            },
+            error: function(xhr, status, error) {
+              Swal.fire({
+                title: 'Error!',
+                text: 'Something went wrong. Please try again.',
+                icon: 'error'
+              });
+            }
+          });
+        });
+
+        // Real-time validation on date changes
+        $('#insurance_validity, #pollution_validity, #tax_validity').on('change', validateDates);
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        document.getElementById('termsAndConditions').addEventListener('click', function (e) {
+          e.preventDefault()
+          Swal.fire({
+            title: 'Terms and Conditions of Adam Automotive',
+            html: `
+                <p>1. All sales are final.</p>
+                <p>2. No Vehilces Which Has Any Kind Of Accidents And Flood Are Sold.</p>
+                <p>3. Adam Automotive reserves the right to refuse service to anyone.</p>
+                <p>4. Test drives are subject to approval and require a valid driver's license.</p>
+                <p>5. Prices are subject to change without notice.</p>
+              `,
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#d39e00'
+          })
+        })
+      </script>
+  </body>
+</html>

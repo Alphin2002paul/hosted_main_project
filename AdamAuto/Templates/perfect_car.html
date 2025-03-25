@@ -1,0 +1,1693 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Adam Automotive - Website For Luxury Used Cars</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'displaycar/css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/bootstrap-datepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/jquery.timepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/icomoon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/style.css' %}" />
+
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .custom-btn {
+            background: #d39e00;
+            border: 1px solid #d39e00 !important;
+        }
+
+        .dropdown-menu {
+            margin-top: -1px;
+        }
+
+        .ftco-footer {
+            font-size: 16px;
+            background: #000;
+            padding: 2em 0;
+        }
+        .ftco-navbar-light.scrolled.awake {
+          margin-top: 0px;
+          -webkit-transition: .3s all ease-out;
+          -o-transition: .3s all ease-out;
+          transition: .3s all ease-out;
+      }
+      .btn.btn-primary {
+        background: #000 !important;
+        border: 1px solid #212223 !important;
+        color: #fff !important;
+    }
+      .btn.btn-secondary {
+        background: #d84d4d !important;
+        border: 1px solid #f85555 !important;
+        color: #fff !important;
+    }
+    .btn.btn-secondary {
+      background: #121111 !important;
+      border: 1px solid #121111 !important;
+      color: #fff !important;
+  }
+  .block-27 ul li a, .block-27 ul li span {
+    color: #c4781f;
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #c4781f; }
+  .block-27 ul li.active a, .block-27 ul li.active span {
+    background: black!important;
+    color: #fff;
+    border: 1px solid transparent; }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">Adam&nbsp;<span>Automotive</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Menu</button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="{% url 'main' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main' %}.#ab" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#con" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="carCollectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Car Collections
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="carCollectionDropdown">
+                        <a class="dropdown-item" href="{% url 'userdisplaycars_dtl' %}">Adam Car Collection</a>
+                        <a class="dropdown-item" href="{% url 'certified_cars' %}">Adam Certified Cars</a>
+                      </div>
+                    </li>
+                    <ul class="navbar-nav ms-auto">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ user.first_name }}</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left:-50px">
+                          <a class="dropdown-item" href="{% url 'account_dtl' %}">Account Details</a>
+                          <a class="dropdown-item" href="{% url 'liked_list' %}">Liked List</a>                          
+                          <a class="dropdown-item" href="{% url 'sellcar_dtl' %}">Sell Your Car</a>
+                          <a class="dropdown-item" href="{% url 'bookservice_dtl' %}">Book A Service</a>
+                          <a class="dropdown-item" href="{% url 'request_dtl' %}">Requests</a>
+                          <a class="dropdown-item" href="{% url 'perfect_car' %}">Perfect Car</a>
+                          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                          <!-- Add more options as needed, such as profile settings -->
+                        </div>
+                      </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-wrap ftco-degree-bg" style="background-image: url('{% static 'images/mac10.jpg' %}');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+                <div class="col-lg-8 ftco-animate">
+                    <div class="text w-100 text-center mb-md-5 pb-md-5">
+                        <h1 class="mb-4">Buy Your Dream Car Through Adam Automotive</h1>
+                        <p style="font-size: 18px;">Buying A Car is Not Just Buying a Machine It's an Emotion For Every Auto Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <h2>Mention Your Requirements</h2>
+            <hr />
+            
+            <!-- Add form for car preferences -->
+            <form method="POST" class="row g-3">
+                {% csrf_token %}
+                
+                <!-- Usage Type -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Primary Usage</label>
+                    <select class="form-control" name="usage" required onchange="handleUsageChange()">
+                        <option value="">Select Primary Usage</option>
+                        <option value="city">City Driving</option>
+                        <option value="highway">Highway Driving</option>
+                        <option value="both">Both City & Highway</option>
+                        <option value="luxury">Luxury/Special Occasions</option>
+                        <option value="offroad">Off-roader</option>
+                    </select>
+                </div>
+
+                <!-- Budget Range (moved to second position) -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Budget Range</label>
+                    <select class="form-control" name="budget" required>
+                        <option value="">Select Budget Range</option>
+                        <option value="30-75">30-75 Lakhs</option>
+                        <option value="75-100">75-100 Lakhs</option>
+                        <option value="100-150">1-1.5 Crore</option>
+                        <option value="150+">Above 1.5 Crore</option>
+                    </select>
+                </div>
+
+                <!-- Vehicle Type -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Vehicle Type</label>
+                    <select class="form-control" name="vehicle_type" id="vehicle_type" required onchange="handleVehicleTypeChange()">
+                        <option value="">Select Vehicle Type</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="hatchback">Hatchback</option>
+                        <option value="mpv">Mpv</option>
+                        <option value="sportz">Sportz</option>
+                    </select>
+                </div>
+
+                <!-- Fuel Type -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Fuel Type</label>
+                    <select class="form-control" name="fuel_type" id="fuel_type" required onchange="handleFuelTypeChange()">
+                        <option value="">Select Fuel Type</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="electric">Electric</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <!-- Transmission -->
+                <div class="col-md-6 mb-3" id="transmission_div">
+                    <label class="form-label">Transmission</label>
+                    <select class="form-control" name="transmission" id="transmission" required>
+                        <option value="">Select Transmission</option>
+                        <option value="automatic">Automatic</option>
+                        <option value="manual">Manual</option>
+                    </select>
+                </div>
+
+                <!-- Seating Capacity -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Seating Capacity</label>
+                    <select class="form-control" name="seating" id="seating" required>
+                        <option value="">Select Seating Capacity</option>
+                        <option value="2" class="sportz-option" style="display: none;">2 Seater</option>
+                        <option value="4" class="sportz-option" style="display: none;">4 Seater</option>
+                        <option value="5" class="regular-option">5 Seater</option>
+                        <option value="7" class="regular-option">7 Seater</option>
+                    </select>
+                </div>
+
+                <!-- Add this after the Seating Capacity field and before the Submit Button -->
+                <div class="col-12 mb-3">
+                    <label class="form-label">Additional Requirements (Optional)</label>
+                    <textarea 
+                        class="form-control" 
+                        name="description" 
+                        id="description" 
+                        rows="3" 
+                        placeholder="Describe any specific features or requirements you're looking for (e.g., panoramic sunroof, premium sound system, advanced safety features, etc.)"
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn custom-btn px-5" id="findCarBtn">Find My Perfect Car</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <style>
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            border: 1px solid #ced4da;
+        }
+        .form-control:focus {
+            border-color: #d39e00;
+            box-shadow: 0 0 0 0.2rem rgba(211, 158, 0, 0.25);
+        }
+        .btn-primary {
+            background-color: #d39e00 !important;
+            border-color: #d39e00 !important;
+        }
+        .btn-primary:hover {
+            background-color: #b88a00 !important;
+            border-color: #b88a00 !important;
+        }
+    </style>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2"><a href="#" class="logo">Adam&nbsp;<span>Automotive</span></a></h2>
+              <p>Money may not buy happiness, but I'd rather cry in a Jaguar than on a bus.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate">
+                  <a href="https://twitter.com/"><span class="icon-twitter"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.facebook.com/"><span class="icon-facebook"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.instagram.com/"><span class="icon-instagram"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md" id="con">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="{% url 'main' %}.#ab" class="py-2 d-block">About</a>
+                </li>
+                <li>
+                  <a href="#" id="termsAndConditions" class="py-2 d-block">Terms and Conditions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Timing</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a class="py-2 d-block">Monday-Sunday</a>
+                </li>
+                <li>
+                  <a class="py-2 d-block">Working Hours: 9am-10pm</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                    <li>
+                        <a><span class="icon icon-map-marker"></span><span class="text">Adam Towers, Edappally Kochi , Kerala - 683544</span></a>
+                      </li>
+                      <li>
+                        <a href="tel:+919876543210"><span class="icon icon-phone"></span><span class="text">+91 98765 43210</span></a>
+                      </li>
+                      <li>
+                        <a href="mailto:adamautomotive3@gmail.com"><span class="icon icon-envelope"></span><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adamautomotive3@gmail.com</span></a>
+                      </li> 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'displaycar/js/jquery.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/popper.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/aos.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/scrollax.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/main.js' %}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const likeButtons = document.querySelectorAll('.like-btn');
+            likeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const carId = this.getAttribute('data-car-id');
+                    fetch(`/toggle_like/${carId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}',
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.is_liked) {
+                            // If the car is unliked, refresh the page
+                            window.location.reload();
+                        }
+                    });
+                });
+            });
+        });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        document.getElementById('termsAndConditions').addEventListener('click', function (e) {
+          e.preventDefault()
+          Swal.fire({
+            title: 'Terms and Conditions of Adam Automotive',
+            html: `
+                <p>1. All sales are final.</p>
+                <p>2. No Vehilces Which Has Any Kind Of Accidents And Flood Are Sold.</p>
+                <p>3. Adam Automotive reserves the right to refuse service to anyone.</p>
+                <p>4. Test drives are subject to approval and require a valid driver's license.</p>
+                <p>5. Prices are subject to change without notice.</p>
+              `,
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#d39e00'
+          })
+        })
+      </script>
+          <!-- Chatbot Integration -->
+          <div id="chatbot" style="position: fixed; bottom: 20px; right: 20px; width: 300px; max-width: 90vw; border: 1px solid #ccc; border-radius: 10px; background-color: white; display: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+            <!-- Header -->
+            <div style="padding: 12px; background-color: #000000; color: white; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; align-items: center;">
+              <div style="font-size: 14px;">
+                <span style="color: #999999;">Adam</span>
+                <span style="color: #ffc107;">Automotive</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                {% if user.is_authenticated %}
+                  <span style="font-size: 12px; color: #ffc107;">Hi, {{ user.first_name }}</span>
+                {% endif %}
+                <button onclick="toggleChatbot()" style="background: none; border: none; color: white; font-size: 18px;">×</button>
+              </div>
+            </div>
+            
+            <!-- Welcome Message -->
+            <div style="padding: 15px; text-align: left;">
+              <h4 style="margin: 0; font-size: 16px;">Hello, I am</h4>
+              <h2 style="margin: 5px 0; font-size: 24px;">
+                <span style="color: #999999;">Adam</span>
+                <span style="color: #ffc107;">Automotive</span>
+              </h2>
+              <p style="margin: 5px 0; color: #666; font-size: 14px;">Your True Automotive Assistant</p>
+            </div>
+      
+            <!-- Chat Messages -->
+            <div id="chatbot-messages" style="height: 200px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; font-size: 14px;">
+              <!-- Messages will appear here -->
+            </div>
+      
+            <!-- Input Area -->
+            <div style="padding: 10px; display: flex; gap: 5px;">
+              <input type="text" id="chatbot-input" placeholder="Type your message here..." 
+                     style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #ccc; font-size: 14px;" />
+              <button onclick="sendMessage()" 
+                      style="background-color: #000000; color: white; border: none; border-radius: 20px; padding: 8px 15px; cursor: pointer;">
+                Send
+              </button>
+            </div>
+          </div>
+      
+          <!-- Chat Toggle Button -->
+          <button id="chat-toggle-btn" onclick="toggleChatbot()" 
+                  style="position: fixed; bottom: 20px; right: 20px; 
+                         background-color: #000000; 
+                         color: #ffc107; 
+                         border: none; 
+                         border-radius: 50%; 
+                         width: 60px; 
+                         height: 60px; 
+                         cursor: pointer; 
+                         z-index: 1000;
+                         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         transition: transform 0.3s ease;">
+              <i class="fas fa-comments" style="font-size: 24px;"></i>
+          </button>
+      
+          <!-- Add Google AI SDK -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script>
+            const API_KEY = 'AIzaSyD1QO8FrKu4g9GcLu5APcYwlaqwjh0yrD8';
+            const API_URL = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent';
+      
+            // Get user's first name from Django template
+            let userName = '{{ user.first_name }}';
+            let isFirstMessage = userName ? false : true;
+      
+            function toggleChatbot() {
+              const chatbot = document.getElementById('chatbot');
+              const toggleBtn = document.getElementById('chat-toggle-btn');
+              
+              if (chatbot.style.display === 'none') {
+                chatbot.style.display = 'block';
+                toggleBtn.style.display = 'none';
+                
+                // Show different initial message based on login status
+                if (isFirstMessage) {
+                  const messages = document.getElementById('chatbot-messages');
+                  messages.innerHTML = `<div><strong>Bot:</strong> Please enter your name to get started.</div>`;
+                } else {
+                  // Show welcome message for logged-in users
+                  const messages = document.getElementById('chatbot-messages');
+                  showWelcomeMessage();
+                }
+              } else {
+                chatbot.style.display = 'none';
+                toggleBtn.style.display = 'block';
+              }
+            }
+      
+            // Add a new function to show welcome message
+            function showWelcomeMessage() {
+              const messagesDiv = document.getElementById('chatbot-messages');
+              const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+              const welcomeMessage = `Hi ${userName}, Welcome to Adam Automotive! How can I assist you today?`;
+              const points = [
+              { text: 'Our luxury car collection', url: "{% url 'userdisplaycars_dtl' %}" },
+              { text: 'Certified Car Collection', url: "{% url 'certified_cars' %}" },
+              { text: 'Booking a service', url: "{% url 'bookservice_dtl' %}" },
+              { text: 'Sell your car To Adam', url: "{% url 'sellcar_dtl' %}" },
+              { text: 'Liked List', url: "{% url 'liked_list' %}" },
+              { text: 'Account Details', url: "{% url 'account_dtl' %}" },
+              { text: 'Perfect Car', url: "{% url 'perfect_car' %}" },
+              { text: 'Subscription Details', url: "{% url 'sub_details' %}" },
+              { text: 'Requests', url: "{% url 'request_dtl' %}" }
+              ];
+      
+              messagesDiv.innerHTML = `
+                <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                  <div style="max-width: 80%;">
+                    <div style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                      <div id="welcome-text">${welcomeMessage}</div>
+                      <div id="points-container"></div>
+                    </div>
+                    <div style="font-size: 10px; color: #666;">
+                      ${timestamp}
+                    </div>
+                  </div>
+                </div>`;
+      
+              // Update the points display
+              const pointsContainer = document.getElementById('points-container');
+              points.forEach((point, index) => {
+                setTimeout(() => {
+                  pointsContainer.innerHTML += `
+                    <div style="margin-top: 5px;">
+                      • <a href="${point.url}" 
+                           style="color: #007bff; 
+                                  text-decoration: none; 
+                                  cursor: pointer;"
+                           onmouseover="this.style.textDecoration='underline'"
+                           onmouseout="this.style.textDecoration='none'">
+                          ${point.text}
+                        </a>
+                    </div>`;
+                  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                }, (index + 1) * 500);
+              });
+            }
+      
+            function redirectToService() {
+              window.location.href = "{% url 'bookservice_dtl' %}";
+            }
+      
+            function redirectToCars() {
+              window.location.href = "{% url 'userdisplaycars_dtl' %}";
+            }
+           
+      
+            async function sendMessage() {
+              const input = document.getElementById('chatbot-input');
+              const message = input.value.trim();
+              
+              if (!message) return;
+      
+              const messagesDiv = document.getElementById('chatbot-messages');
+              const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      
+              // Clear input immediately
+              input.value = '';
+      
+              // Add user message
+              messagesDiv.innerHTML += `
+                <div style="display: flex; justify-content: flex-end; margin: 8px 0;">
+                  <div style="max-width: 80%;">
+                    <div style="background-color: #000000; color: white; padding: 8px 12px; border-radius: 12px 12px 0 12px; margin-bottom: 2px;">
+                      ${message}
+                    </div>
+                    <div style="text-align: right; font-size: 10px; color: #666;">
+                      ${timestamp}
+                    </div>
+                  </div>
+                </div>`;
+      
+              if (isFirstMessage) {
+                // Remove typing indicator immediately for first message
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                  typingIndicator.remove();
+                }
+                
+                // Rest of first message handling
+                userName = message;
+                isFirstMessage = false;
+                
+                // Show welcome message with delayed points
+                const welcomeMessage = `Hi ${userName}, Welcome to Adam Automotive! How can I assist you today?`;
+                const points = [
+                  { text: 'Our luxury car collection', url: "{% url 'userdisplaycars_dtl' %}" },
+                  { text: 'Booking a service', url: "{% url 'bookservice_dtl' %}" },
+                  { text: 'Selling your car', url: "{% url 'sellcar_dtl' %}" },
+                  { text: 'Car pricing and availability', url: "{% url 'userdisplaycars_dtl' %}" },
+                  { text: 'Liked List', url: "{% url 'liked_list' %}" },
+                  { text: 'Account Details', url: "{% url 'account_dtl' %}" },
+                  { text: 'Requests', url: "{% url 'request_dtl' %}" }
+                ];
+      
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      <div style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                        <div id="welcome-text">${welcomeMessage}</div>
+                        <div id="points-container"></div>
+                      </div>
+                      <div style="font-size: 10px; color: #666;">
+                        ${timestamp}
+                      </div>
+                    </div>
+                  </div>`;
+      
+                // Update the points display code
+                const pointsContainer = document.getElementById('points-container');
+                points.forEach((point, index) => {
+                  setTimeout(() => {
+                    pointsContainer.innerHTML += `
+                      <div style="margin-top: 5px;">
+                        • <a href="${point.url}" 
+                             style="color: #007bff; 
+                                    text-decoration: none; 
+                                    cursor: pointer;"
+                             onmouseover="this.style.textDecoration='underline'"
+                             onmouseout="this.style.textDecoration='none'">
+                          ${point.text}
+                        </a>
+                      </div>`;
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                  }, (index + 1) * 500);
+                });
+                
+                // Update input placeholder
+                input.placeholder = "Type your message here...";
+              } else {
+                // Regular conversation handling
+                try {
+                  // Show typing indicator immediately
+                  messagesDiv.innerHTML += `
+                    <div id="typing-indicator" style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                      <div style="max-width: 80%;">
+                        <div class="typing-indicator">
+                          <div class="typing-dot"></div>
+                          <div class="typing-dot"></div>
+                          <div class="typing-dot"></div>
+                        </div>
+                        <div style="font-size: 10px; color: #666;">
+                          ${timestamp}
+                        </div>
+                      </div>
+                    </div>`;
+      
+                  // Wait for 5 seconds
+                  await new Promise(resolve => setTimeout(resolve, 5000));
+      
+                  // Remove typing indicator before showing response
+                  const typingIndicator = document.getElementById('typing-indicator');
+                  if (typingIndicator) {
+                    typingIndicator.remove();
+                  }
+      
+                  // Check for specific user data requests
+                  const userDataRequests = {
+                      'account details': fetchUserInfo,
+                      'profile': fetchUserInfo,
+                      'liked cars': fetchLikedCars,
+                      'liked list': fetchLikedCars,
+                      'service': fetchServiceInfo,
+                      'service info': fetchServiceInfo,
+                      'enquiry': fetchEnquiryInfo,
+                      'enquiries': fetchEnquiryInfo,
+                      'sale': fetchSaleInfo,
+                      'sale request': fetchSaleInfo,
+                      'test drive': fetchTestDriveInfo,
+                      'test drive booking': fetchTestDriveInfo
+                  };
+      
+                  const messageLower = message.toLowerCase();
+                  for (const [keyword, handler] of Object.entries(userDataRequests)) {
+                      if (messageLower.includes(keyword)) {
+                          const response = await handler();
+                          displayBotResponse(response);
+                          return;
+                      }
+                  }
+      
+                  // Check if message is contact-related
+                  const contactKeywords = ['contact', 'address', 'location', 'phone', 'email', 'reach', 'connect'];
+                  const isContactQuery = contactKeywords.some(keyword => 
+                    message.toLowerCase().includes(keyword)
+                  );
+      
+                  if (isContactQuery) {
+                    // Display formatted contact information
+                    messagesDiv.innerHTML += `
+                      <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                        <div style="max-width: 80%;">
+                          <div style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                            <p style="margin-bottom: 8px;">Here are our contact details:</p>
+                            <div style="margin-left: 5px;">
+                              <p style="margin: 5px 0;">
+                                <i class="icon icon-map-marker"></i> Adam Towers, Edappally Kochi, Kerala - 683544
+                              </p>
+                              <p style="margin: 5px 0;">
+                                <i class="icon icon-phone"></i> <a href="tel:+919876543210">+91 98765 43210</a>
+                              </p>
+                              <p style="margin: 5px 0;">
+                                <i class="icon icon-envelope"></i> <a href="mailto:adamautomotive3@gmail.com">adamautomotive3@gmail.com</a>
+                              </p>
+                              <p style="margin: 5px 0;">
+                                <i class="far fa-clock"></i> Working Hours: 9am-10pm (Monday-Sunday)
+                              </p>
+                            </div>
+                          </div>
+                          <div style="font-size: 10px; color: #666;">
+                            ${timestamp}
+                          </div>
+                        </div>
+                      </div>`;
+                  } else {
+                    // Inside sendMessage function, before the API call, add this check:
+                    const carCollectionKeywords = ['car collection', 'cars', 'collection', 'show cars', 'view cars', 'available cars'];
+                    if (carCollectionKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                      const carCollectionSteps = `
+                        <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                          <div style="margin-bottom: 8px;">
+                            <i class="fas fa-car" style="color: #ffc107; margin-right: 8px;"></i>
+                            <span style="font-weight: bold;">How to View Our Car Collection:</span>
+                          </div>
+                          
+                          <ol style="margin-left: 20px; margin-bottom: 10px;">
+                            <li style="margin-bottom: 8px;">Click on "Car Collections" in the navigation menu</li>
+                            <li style="margin-bottom: 8px;">Choose from two options:
+                              <ul style="margin-left: 20px; margin-top: 4px;">
+                                <li><a href="{% url 'userdisplaycars_dtl' %}" style="color: #007bff; text-decoration: none;">Adam Car Collection</a> - Our complete luxury car inventory</li>
+                                <li><a href="{% url 'certified_cars' %}" style="color: #007bff; text-decoration: none;">Adam Certified Cars</a> - Our certified pre-owned vehicles</li>
+                              </ul>
+                            </li>
+                            <li style="margin-bottom: 8px;">Use filters to narrow down your search by:
+                              <ul style="margin-left: 20px; margin-top: 4px;">
+                                <li>Brand</li>
+                                <li>Price range</li>
+                                <li>Year</li>
+                                <li>Mileage</li>
+                              </ul>
+                            </li>
+                            <li>Click on any car to view detailed information</li>
+                          </ol>
+                        </div>`;
+      
+                      messagesDiv.innerHTML += `
+                        <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                          <div style="max-width: 80%;">
+                            ${carCollectionSteps}
+                            <div style="font-size: 10px; color: #666;">
+                              ${timestamp}
+                            </div>
+                          </div>
+                        </div>`;
+                    
+                      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                      return;
+                    }
+      
+                    // Inside sendMessage function, before the API call, add this check:
+                    const certifiedCarKeywords = ['certified cars', 'certified', 'certified collection', 'adam certified'];
+                    if (certifiedCarKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                      const certifiedCarsInfo = `
+                        <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                          <div style="margin-bottom: 8px;">
+                            <i class="fas fa-certificate" style="color: #ffc107; margin-right: 8px;"></i>
+                            <span style="font-weight: bold;">Adam Certified Cars</span>
+                          </div>
+                          
+                          <div style="margin-bottom: 12px;">
+                            Our certified pre-owned vehicles undergo rigorous inspection and meet our highest quality standards.
+                          </div>
+                          
+                          <div style="margin-bottom: 12px;">
+                            <strong>Certification Benefits:</strong>
+                            <ul style="margin-left: 20px; margin-top: 4px;">
+                              <li>Comprehensive quality inspection</li>
+                              <li>Verified accident-free history</li>
+                              <li>Extended warranty coverage</li>
+                              <li>Premium maintenance service</li>
+                            </ul>
+                          </div>
+                          
+                          <div style="margin-top: 8px;">
+                            <a href="{% url 'certified_cars' %}" style="
+                              display: inline-block;
+                              padding: 8px 16px;
+                              background-color: #000000;
+                              color: #ffc107;
+                              text-decoration: none;
+                              border-radius: 4px;
+                              transition: transform 0.2s;">
+                              <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>View Certified Cars
+                            </a>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.innerHTML += `
+                        <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                          <div style="max-width: 80%;">
+                            ${certifiedCarsInfo}
+                            <div style="font-size: 10px; color: #666;">
+                              ${timestamp}
+                            </div>
+                          </div>
+                        </div>`;
+                    
+                      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                      return;
+                    }
+      
+                    // Add to the carCollectionKeywords check block, before the API call
+                    const subscriptionKeywords = ['subscription', 'subscribe', 'membership', 'premium access', 'subscription details', 'subscription plan'];
+                    if (subscriptionKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                      const subscriptionInfo = `
+                        <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                          <div style="margin-bottom: 8px;">
+                            <i class="fas fa-crown" style="color: #ffc107; margin-right: 8px;"></i>
+                            <span style="font-weight: bold;">Adam Automotive Subscriptions</span>
+                          </div>
+                          
+                          <div style="margin-bottom: 12px;">
+                            Unlock premium features and exclusive benefits with our subscription plans.
+                          </div>
+                          
+                          <div style="margin-bottom: 12px;">
+                            <strong>Subscription Benefits:</strong>
+                            <ul style="margin-left: 20px; margin-top: 4px;">
+                              <li>Priority access to new car listings</li>
+                              <li>Exclusive member discounts</li>
+                              <li>Premium customer support</li>
+                              <li>Early bird access to special events</li>
+                            </ul>
+                          </div>
+                          
+                          <div style="margin-top: 8px;">
+                            <a href="{% url 'sub_details' %}" style="
+                              display: inline-block;
+                              padding: 8px 16px;
+                              background-color: #000000;
+                              color: #ffc107;
+                              text-decoration: none;
+                              border-radius: 4px;
+                              transition: transform 0.2s;">
+                              <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>View Subscription Plans
+                            </a>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.innerHTML += `
+                        <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                          <div style="max-width: 80%;">
+                            ${subscriptionInfo}
+                            <div style="font-size: 10px; color: #666;">
+                              ${timestamp}
+                            </div>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                      return;
+                    }
+      
+                    // Add this check before the API call in the sendMessage function
+                    const perfectCarKeywords = ['perfect car', 'find perfect car', 'car finder', 'car recommendation', 'find me a car'];
+                    if (perfectCarKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                      const perfectCarGuide = `
+                        <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                          <div style="margin-bottom: 8px;">
+                            <i class="fas fa-search" style="color: #ffc107; margin-right: 8px;"></i>
+                            <span style="font-weight: bold;">How to Find Your Perfect Car:</span>
+                          </div>
+                          
+                          <ol style="margin-left: 20px; margin-bottom: 10px;">
+                            <li style="margin-bottom: 8px;">Click on your profile dropdown menu in the top navigation bar 
+                              <i class="fas fa-chevron-down" style="color: #ffc107; margin-left: 4px;"></i>
+                            </li>
+                            <li style="margin-bottom: 8px;">Look for the "Perfect Car" option in the dropdown menu 
+                              <i class="fas fa-car" style="color: #ffc107; margin-left: 4px;"></i>
+                            </li>
+                            <li style="margin-bottom: 8px;">Click on it to access our car recommendation system</li>
+                            <li style="margin-bottom: 8px;">Fill in your preferences:
+                              <ul style="margin-left: 20px; margin-top: 4px;">
+                                <li>Budget range</li>
+                                <li>Preferred brands</li>
+                                <li>Features you need</li>
+                                <li>Type of vehicle</li>
+                              </ul>
+                            </li>
+                          </ol>
+                          
+                          <div style="margin-top: 8px;">
+                            <a href="{% url 'perfect_car' %}" style="
+                              display: inline-block;
+                              padding: 8px 16px;
+                              background-color: #000000;
+                              color: #ffc107;
+                              text-decoration: none;
+                              border-radius: 4px;
+                              transition: transform 0.2s;">
+                              <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Find Perfect Car
+                            </a>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.innerHTML += `
+                        <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                          <div style="max-width: 80%;">
+                            ${perfectCarGuide}
+                            <div style="font-size: 10px; color: #666;">
+                              ${timestamp}
+                            </div>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                      return;
+                    }
+      
+                    // Add this check before the API call in the sendMessage function
+                    const carComplaintKeywords = ['car complaint', 'analyze complaint', 'car problem', 'analyze car', 'find problem'];
+                    if (carComplaintKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                      const complaintAnalysisGuide = `
+                        <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                          <div style="margin-bottom: 8px;">
+                            <i class="fas fa-search-plus" style="color: #ffc107; margin-right: 8px;"></i>
+                            <span style="font-weight: bold;">How to Analyze Car Complaints:</span>
+                          </div>
+                          
+                          <ol style="margin-left: 20px; margin-bottom: 10px;">
+                            <li style="margin-bottom: 8px;">Click on your profile dropdown menu in the top navigation bar 
+                              <i class="fas fa-chevron-down" style="color: #ffc107; margin-left: 4px;"></i>
+                            </li>
+                            <li style="margin-bottom: 8px;">Select "Book A Service" from the dropdown menu
+                              <i class="fas fa-wrench" style="color: #ffc107; margin-left: 4px;"></i>
+                            </li>
+                            <li style="margin-bottom: 8px;">On the Book A Service page, look for the "Analyze Car Complaints" button</li>
+                            <li style="margin-bottom: 8px;">Click the button and enter your car details:
+                              <ul style="margin-left: 20px; margin-top: 4px;">
+                                <li>Make and model</li>
+                                <li>Year</li>
+                                <li>Current issues/symptoms</li>
+                              </ul>
+                            </li>
+                          </ol>
+                          
+                          <div style="margin-top: 8px;">
+                            <a href="{% url 'bookservice_dtl' %}" style="
+                              display: inline-block;
+                              padding: 8px 16px;
+                              background-color: #000000;
+                              color: #ffc107;
+                              text-decoration: none;
+                              border-radius: 4px;
+                              transition: transform 0.2s;">
+                              <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Go to Book A Service
+                            </a>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.innerHTML += `
+                        <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                          <div style="max-width: 80%;">
+                            ${complaintAnalysisGuide}
+                            <div style="font-size: 10px; color: #666;">
+                              ${timestamp}
+                            </div>
+                          </div>
+                        </div>`;
+      
+                      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                      return;
+                    }
+      
+                    // Existing API call and response handling for non-contact queries
+                    const response = await fetch(API_URL + '?key=' + API_KEY, {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        contents: [{
+                          parts: [{
+                            text: `
+                              Context about Adam Automotive:
+                              - Luxury used car dealership
+                              - Services: Car sales, Car service/maintenance, Car buying
+                              - Working hours: Monday-Sunday, 9am-10pm
+                              - Location: Adam Towers, Edappally Kochi, Kerala - 683544
+                              - Features: Premium car collection including BMW, Mercedes, Audi
+                              - Services include car maintenance, buying and selling cars
+                              - All cars are accident-free and flood-free
+                              
+                              User query: ${message}
+                              
+                              Please provide a helpful, natural response as a car dealership assistant. Keep responses concise and professional.
+                            `
+                          }]
+                        }]
+                      })
+                    });
+      
+                    const data = await response.json();
+                    let botResponse = data.candidates[0].content.parts[0].text;
+      
+                    // Display bot response
+                    messagesDiv.innerHTML += `
+                      <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                        <div style="max-width: 80%;">
+                          <div style="background-color: #f0f0f0; padding: 8px 12px; 
+                            border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                            ${botResponse}
+                          </div>
+                          <div style="font-size: 10px; color: #666;">
+                            ${timestamp}
+                          </div>
+                        </div>
+                      </div>`;
+                  }
+                } catch (error) {
+                  // Remove typing indicator in case of error
+                  const typingIndicator = document.getElementById('typing-indicator');
+                  if (typingIndicator) {
+                    typingIndicator.remove();
+                  }
+                  
+                  // Show error message
+                  messagesDiv.innerHTML += `
+                    <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                      <div style="max-width: 80%;">
+                        <div style="background-color: #fff0f0; color: #d32f2f; padding: 8px 12px; border-radius: 12px 12px 12px 0;">
+                          I apologize, but I'm having trouble connecting right now. Please try again.
+                        </div>
+                        <div style="font-size: 10px; color: #666;">
+                          ${timestamp}
+                        </div>
+                      </div>
+                    </div>`;
+                }
+              }
+              
+              // Scroll to bottom after new messages
+              messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+      
+            async function fetchUserInfo() {
+              const response = await fetch('/chatbot/get_user_info/');
+              const data = await response.json();
+              return `Here are your account details:
+                  Name: ${data.name}
+                  Email: ${data.email}
+                  Phone: ${data.phone}
+                  Address: ${data.address}
+                  City: ${data.city}
+                  State: ${data.state}
+                  Zipcode: ${data.zipcode}`;
+            }
+      
+            function getHeaderForType(type) {
+              const headerConfig = {
+                account: {
+                  icon: 'fas fa-user-circle',
+                  title: 'Account Details'
+                },
+                liked: {
+                  icon: 'fas fa-heart',
+                  title: 'Liked Cars'
+                },
+                service: {
+                  icon: 'fas fa-wrench',
+                  title: 'Service Requests'
+                },
+                sale: {
+                  icon: 'fas fa-car',
+                  title: 'Sale Requests'
+                },
+                enquiry: {
+                  icon: 'fas fa-question-circle',
+                  title: 'Enquiries'
+                },
+                testdrive: {
+                  icon: 'fas fa-key',
+                  title: 'Test Drive Requests'
+                }
+              };
+      
+              const config = headerConfig[type];
+              return `
+                <div style="margin-bottom: 4px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="${config.icon}" style="color: #ffc107;"></i>
+                    <span style="font-size: 16px; color: #333;">${config.title}</span>
+                  </div>
+                  <div style="height: 2px; background-color: #ffc107; margin-top: 4px; width: 100%;"></div>
+                </div>
+              `;
+            }
+      
+            function formatResponseCard(type, content) {
+              return `
+                <div style="background-color: #fff; border-radius: 8px; max-width: 280px;">
+                  <div style="padding: 12px;">
+                    ${getHeaderForType(type)}
+                    <div style="display: grid; gap: 12px; margin-top: 12px;">
+                      ${content}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+      
+            async function fetchLikedCars() {
+              const response = await fetch('/chatbot/get_liked_cars/');
+              const data = await response.json();
+              const content = data.liked_cars.length === 0 
+                ? '<div style="color: #666;">No liked cars found.</div>'
+                : data.liked_cars.map(car => `
+                    <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                      <div style="color: #333; font-weight: 500;">${car.manufacturer} ${car.model}</div>
+                      <div style="color: #666;">Year: ${car.year}</div>
+                      <div style="color: #666;">Price: ₹${car.price}</div>
+                    </div>
+                  `).join('');
+              
+              return formatResponseCard('liked', content);
+            }
+      
+            async function fetchServiceInfo() {
+              const response = await fetch('/chatbot/get_service_info/');
+              const data = await response.json();
+              const content = data.services.length === 0
+                ? '<div style="color: #666;">No service requests found.</div>'
+                : data.services.map(service => `
+                    <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                      <div style="color: #333; font-weight: 500;">${service.manufacturer} ${service.model}</div>
+                      <div style="color: #666;">Date: ${service.service_date}</div>
+                      <div style="color: #666;">Status: ${service.status}</div>
+                      <div style="color: #666;">Problem: ${service.problem}</div>
+                    </div>
+                  `).join('');
+      
+              return formatResponseCard('service', content);
+            }
+      
+            async function fetchSaleInfo() {
+              const response = await fetch('/chatbot/get_sale_info/');
+              const data = await response.json();
+              const content = data.sales.length === 0
+                ? '<div style="color: #666;">No sale requests found.</div>'
+                : data.sales.map(sale => `
+                    <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                      <div style="color: #333; font-weight: 500;">${sale.manufacturer} ${sale.model}</div>
+                      <div style="color: #666;">Year: ${sale.year}</div>
+                      <div style="color: #666;">Price: ₹${sale.price}</div>
+                      <div style="color: #666;">Status: ${sale.status}</div>
+                    </div>
+                  `).join('');
+      
+              return formatResponseCard('sale', content);
+            }
+      
+            async function fetchEnquiryInfo() {
+              const response = await fetch('/chatbot/get_enquiry_info/');
+              const data = await response.json();
+              const content = data.enquiries.length === 0
+                ? '<div style="color: #666;">No enquiries found.</div>'
+                : data.enquiries.map(enquiry => `
+                    <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                      <div style="color: #333; font-weight: 500;">${enquiry.manufacturer} ${enquiry.model}</div>
+                      <div style="color: #666;">Year: ${enquiry.year}</div>
+                      <div style="color: #666;">Status: ${enquiry.status}</div>
+                      <div style="color: #666;">Description: ${enquiry.description}</div>
+                    </div>
+                  `).join('');
+      
+              return formatResponseCard('enquiry', content);
+            }
+      
+            async function fetchTestDriveInfo() {
+              const response = await fetch('/chatbot/get_test_drive_info/');
+              const data = await response.json();
+              const content = data.test_drives.length === 0
+                ? '<div style="color: #666;">No test drive bookings found.</div>'
+                : data.test_drives.map(booking => `
+                    <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                      <div style="color: #333; font-weight: 500;">${booking.car}</div>
+                      <div style="color: #666;">Date: ${booking.date}</div>
+                      <div style="color: #666;">Time: ${booking.time}</div>
+                      <div style="color: #666;">Status: ${booking.status}</div>
+                    </div>
+                  `).join('');
+      
+              return formatResponseCard('testdrive', content);
+            }
+      
+            function displayBotResponse(message) {
+              const messagesDiv = document.getElementById('chatbot-messages');
+              const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+              
+              if (message.includes('Name:') || message.includes('Email:')) {
+                const lines = message.split('\n').filter(line => line.trim());
+                const formattedMessage = `
+                  <div style="background-color: #fff; border-radius: 8px; max-width: 280px;">
+                    <div style="padding: 12px;">
+                      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                        <i class="fas fa-user-circle" style="color: #ffc107; margin-right: 8px;"></i>
+                        <span style="font-size: 16px; color: #333;">Account Details</span>
+                      </div>
+                      <div style="height: 2px; background-color: #ffc107; margin-bottom: 12px;"></div>
+                      
+                      <div style="display: grid; gap: 12px;">
+                        ${lines.map(line => {
+                          const [key, ...valueParts] = line.split(':');
+                          const value = valueParts.join(':').trim();
+                          if (key && value) {
+                            return `
+                              <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px;">
+                                <span style="color: #666;">${key}:</span>
+                                <span style="color: #333; word-break: break-word; overflow-wrap: break-word;">${value}</span>
+                              </div>
+                            `;
+                          }
+                          return '';
+                        }).join('')}
+                      </div>
+                    </div>
+                  </div>
+                `;
+      
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 280px;">
+                      ${formattedMessage}
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                        <div style="font-size: 10px; color: #666;">
+                          ${timestamp}
+                        </div>
+                        <button onclick="endChat()" 
+                                style="background: #dc3545; 
+                                       color: white; 
+                                       border: none; 
+                                       padding: 4px 8px; 
+                                       border-radius: 4px; 
+                                       font-size: 10px; 
+                                       cursor: pointer;">
+                          End Chat
+                        </button>
+                      </div>
+                    </div>
+                  </div>`;
+              } else {
+                // Regular message handling
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      <div style="background-color: #f8f9fa; padding: 8px 12px; border-radius: 12px 12px 12px 0;">
+                        ${message}
+                      </div>
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                        <div style="font-size: 10px; color: #666;">
+                          ${timestamp}
+                        </div>
+                        <button onclick="endChat()" 
+                                style="background: #dc3545; 
+                                       color: white; 
+                                       border: none; 
+                                       padding: 4px 8px; 
+                                       border-radius: 4px; 
+                                       font-size: 10px; 
+                                       cursor: pointer;">
+                          End Chat
+                        </button>
+                      </div>
+                    </div>
+                  </div>`;
+              }
+              
+              messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+      
+            function endChat() {
+              // Hide chatbot and show toggle button
+              const chatbot = document.getElementById('chatbot');
+              const toggleBtn = document.getElementById('chat-toggle-btn');
+              chatbot.style.display = 'none';
+              toggleBtn.style.display = 'block';
+              
+              // Refresh the page
+              window.location.reload();
+            }
+      
+            // Add Enter key handler
+            document.getElementById('chatbot-input').addEventListener('keypress', function(e) {
+              if (e.key === 'Enter') {
+                sendMessage();
+              }
+            });
+      
+            function refreshChat() {
+              const messagesDiv = document.getElementById('chatbot-messages');
+              const input = document.getElementById('chatbot-input');
+              
+              // Reset chat state
+              userName = '';
+              isFirstMessage = true;
+              
+              // Clear messages and reset input
+              messagesDiv.innerHTML = `<div><strong>Bot:</strong> Please enter your name to get started.</div>`;
+              input.value = '';
+              input.placeholder = "Start With Your Name...";
+            }
+          </script>
+      
+          <style>
+            .typing-indicator {
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              padding: 8px 12px;
+              background: #f0f0f0;
+              border-radius: 12px 12px 12px 0;
+              margin-bottom: 2px;
+            }
+            
+            .typing-dot {
+              width: 6px;
+              height: 6px;
+              background: #666;
+              border-radius: 50%;
+              animation: typingAnimation 1s infinite ease-in-out;
+            }
+            
+            .typing-dot:nth-child(1) { animation-delay: 200ms; }
+            .typing-dot:nth-child(2) { animation-delay: 300ms; }
+            .typing-dot:nth-child(3) { animation-delay: 400ms; }
+            
+            @keyframes typingAnimation {
+              0% { transform: translateY(0px); }
+              50% { transform: translateY(-5px); }
+              100% { transform: translateY(0px); }
+            }
+          </style>
+
+  <!-- Results Modal -->
+  <div class="modal fade" id="carRecommendationModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Your Perfect Car Recommendations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="recommendationResults">
+                <!-- Results will be dynamically inserted here -->
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Add this script just before the closing body tag -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const findCarBtn = document.getElementById('findCarBtn');
+    
+    findCarBtn.addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        // Get all required form elements
+        const requiredFields = {
+            'budget': document.querySelector('select[name="budget"]'),
+            'vehicle_type': document.querySelector('select[name="vehicle_type"]'),
+            'fuel_type': document.querySelector('select[name="fuel_type"]'),
+            'transmission': document.querySelector('select[name="transmission"]'),
+            'seating': document.querySelector('select[name="seating"]'),
+            'usage': document.querySelector('select[name="usage"]')
+        };
+
+        // Check if any required field is empty
+        let hasEmptyFields = false;
+        let firstEmptyField = null;
+
+        for (let [key, element] of Object.entries(requiredFields)) {
+            if (!element.value) {
+                hasEmptyFields = true;
+                element.classList.add('is-invalid'); // Add visual feedback
+                if (!firstEmptyField) {
+                    firstEmptyField = element;
+                }
+            } else {
+                element.classList.remove('is-invalid');
+            }
+        }
+
+        // If there are empty fields, show error and focus on first empty field
+        if (hasEmptyFields) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please fill in all required fields',
+                icon: 'error',
+                confirmButtonColor: '#d39e00'
+            });
+            firstEmptyField.focus();
+            return;
+        }
+
+        // If validation passes, collect form data
+        const formData = {
+            budget: requiredFields.budget.value,
+            vehicle_type: requiredFields.vehicle_type.value,
+            fuel_type: requiredFields.fuel_type.value,
+            transmission: requiredFields.transmission.value,
+            seating: requiredFields.seating.value,
+            usage: requiredFields.usage.value,
+            description: document.querySelector('textarea[name="description"]').value
+        };
+
+        // Show modal with loading spinner
+        $('#carRecommendationModal').modal('show');
+        document.getElementById('recommendationResults').innerHTML = `
+            <div class="text-center p-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mt-2">Finding your perfect car...</p>
+            </div>
+        `;
+
+        try {
+            const budgetRanges = {
+                '30-75': 'between ₹30 lakhs and ₹75 lakhs',
+                '75-100': 'between ₹75 lakhs and ₹1 crore',
+                '100-150': 'between ₹1 crore and ₹1.5 crore',
+                '150+': 'above ₹1.5 crore'
+            };
+
+            // Updated prompt to include description
+            const prompt = `As a luxury car expert in India, recommend 3 specific cars available in the Indian market based on these criteria:
+                Budget: ${budgetRanges[formData.budget]} (strictly within this range)
+                Vehicle Type: ${formData.vehicle_type}
+                Fuel Type: ${formData.fuel_type}
+                Transmission: ${formData.transmission}
+                Seating: ${formData.seating}
+                Usage: ${formData.usage}
+                ${formData.description ? `Additional Requirements: ${formData.description}` : ''}
+
+                Please provide recommendations for luxury cars that are:
+                1. Currently available in India
+                2. Prices must be strictly within the specified budget range
+                3. Include popular models from brands like BMW, Mercedes-Benz, Audi, Volvo, or Lexus
+                4. Exclude sports cars unless specifically requested
+                5. Focus on practical luxury features for Indian roads
+                ${formData.description ? '6. Pay special attention to matching the additional requirements specified' : ''}
+                
+                For each car, provide:
+                1. Full model name with variant
+                2. Exact ex-showroom price in India
+                3. Key luxury features relevant to Indian market
+                4. Performance specs
+                5. Why it suits Indian conditions and the user's requirements
+                ${formData.description ? '6. How it matches the additional requirements specified' : ''}`;
+
+            const API_KEY = 'AIzaSyD1QO8FrKu4g9GcLu5APcYwlaqwjh0yrD8';
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${API_KEY}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+            
+            if (data.error) {
+                throw new Error(data.error.message);
+            }
+
+            const aiResponse = data.candidates[0].content.parts[0].text;
+
+            // Update modal content with recommendations
+            document.getElementById('recommendationResults').innerHTML = `
+                <div class="recommendations-container">
+                    <div class="recommendation-text">
+                        ${formatRecommendations(aiResponse)}
+                    </div>
+                </div>
+            `;
+
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('recommendationResults').innerHTML = `
+                <div class="alert alert-danger">
+                    <h4>Unable to generate recommendations</h4>
+                    <p>Please try again later or contact support if the problem persists.</p>
+                    <p class="small mt-2">Error details: ${error.message}</p>
+                </div>
+            `;
+        }
+    });
+  });
+
+  // Function to format recommendations text
+  function formatRecommendations(text) {
+    let formattedText = text
+        // Remove asterisks
+        .replace(/\*/g, '')
+        // Format the title with brand highlighting
+        .replace(/(\d\.\s)(BMW|Mercedes-Benz|Audi|Volvo|Lexus)([^\n]+)/g, '<h4 class="car-title">$1<span class="brand">$2</span>$3</h4><hr class="title-separator">')
+        // Format price with rupee symbol
+        .replace(/Ex-showroom Price:\s*₹\s*(\d+\.?\d*)\s*Lakh/g, 'Ex-showroom Price: <span class="rupee">₹</span><span class="price">$1 Lakh</span>')
+        // Format Key Features section
+        .replace(/Key Features:\s*\n((?:[^\n]+\n?)*?)(?=Performance Specs:|$)/g, 
+            'Key Features:<p class="features-list">$1</p>')
+        // Add horizontal line after each car's complete description
+        .replace(/(\n\n|\n(?=\d\.))/g, '<hr class="car-separator">')
+        // Replace remaining line breaks
+        .replace(/\n/g, '<br>')
+        // Additional price formatting for any remaining price mentions
+        .replace(/(\d+\.?\d*)\s*Crore/gi, '<span class="price">$1 Crore</span>')
+        .replace(/(\d+\.?\d*)\s*Lakh/gi, '<span class="price">$1 Lakh</span>');
+
+    return formattedText;
+  }
+  </script>
+
+  <style>
+  .recommendations-container {
+    padding: 20px;
+  }
+
+  .recommendation-text {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 1.1em;
+  }
+
+  .brand {
+    color: #d39e00;
+    font-weight: bold;
+  }
+
+  .price {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  .rupee {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+
+  .modal-body {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .alert-danger {
+    background-color: #fff3f3;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .car-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #000;
+  }
+
+  .title-separator {
+    margin: 10px 0;
+    border-top: 1px solid #ddd;
+  }
+
+  .car-separator {
+    margin: 25px 0;
+    border-top: 2px solid #d39e00;
+  }
+
+  .features-list {
+    margin: 10px 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    color: #555;
+  }
+  </style>
+
+  <!-- Add this script just before the closing body tag -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Add this JavaScript before the closing body tag -->
+  <script>
+  function handleFuelTypeChange() {
+    const fuelType = document.getElementById('fuel_type').value;
+    const transmissionSelect = document.getElementById('transmission');
+
+    if (fuelType === 'electric') {
+        // Set value to automatic and disable the select
+        transmissionSelect.value = 'automatic';
+        transmissionSelect.disabled = true;
+        transmissionSelect.style.backgroundColor = '#fff';  // Keep white background
+        transmissionSelect.style.cursor = 'not-allowed';    // Show not-allowed cursor
+    } else {
+        // Enable the transmission dropdown for other fuel types
+        transmissionSelect.disabled = false;
+        transmissionSelect.value = '';  // Reset the selection
+        transmissionSelect.style.cursor = 'pointer';        // Reset cursor
+    }
+  }
+
+  function handleUsageChange() {
+    const usageSelect = document.querySelector('select[name="usage"]');
+    const vehicleTypeSelect = document.getElementById('vehicle_type');
+    
+    if (usageSelect.value === 'offroad') {
+        // Set value to SUV and disable the select
+        vehicleTypeSelect.value = 'suv';
+        vehicleTypeSelect.disabled = true;
+        vehicleTypeSelect.style.backgroundColor = '#fff';  // Keep white background
+        vehicleTypeSelect.style.cursor = 'not-allowed';    // Show not-allowed cursor
+    } else {
+        // Enable the vehicle type dropdown for other usage types
+        vehicleTypeSelect.disabled = false;
+        vehicleTypeSelect.value = '';  // Reset the selection
+        vehicleTypeSelect.style.cursor = 'pointer';        // Reset cursor
+    }
+  }
+
+  function handleVehicleTypeChange() {
+    const vehicleType = document.getElementById('vehicle_type').value;
+    const seatingSelect = document.getElementById('seating');
+    const sportzOptions = document.querySelectorAll('.sportz-option');
+    const regularOptions = document.querySelectorAll('.regular-option');
+    
+    // Reset the select first
+    seatingSelect.value = '';
+    seatingSelect.disabled = false;
+    seatingSelect.style.cursor = 'pointer';
+
+    // Hide all options first
+    sportzOptions.forEach(option => option.style.display = 'none');
+    regularOptions.forEach(option => option.style.display = 'none');
+
+    if (vehicleType === 'sedan') {
+        // Show and set to 5 seater only
+        seatingSelect.value = '5';
+        seatingSelect.disabled = true;
+        seatingSelect.style.cursor = 'not-allowed';
+        document.querySelector('option[value="5"]').style.display = '';
+    } 
+    else if (vehicleType === 'mpv') {
+        // Show and set to 7 seater only
+        seatingSelect.value = '7';
+        seatingSelect.disabled = true;
+        seatingSelect.style.cursor = 'not-allowed';
+        document.querySelector('option[value="7"]').style.display = '';
+    }
+    else if (vehicleType === 'sportz') {
+        // Show only 2 and 4 seater options
+        sportzOptions.forEach(option => option.style.display = '');
+    }
+    else if (vehicleType === '') {
+        // Show all options when no vehicle type is selected
+        sportzOptions.forEach(option => option.style.display = '');
+        regularOptions.forEach(option => option.style.display = '');
+    }
+    else {
+        // For SUV and hatchback, show regular options (5 and 7 seater)
+        regularOptions.forEach(option => option.style.display = '');
+    }
+  }
+
+  // Call the function once on page load to set initial state
+  document.addEventListener('DOMContentLoaded', handleVehicleTypeChange);
+  </script>
+</body>
+
+</html>

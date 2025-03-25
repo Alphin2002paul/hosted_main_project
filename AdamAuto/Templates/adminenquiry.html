@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam Automotive Admin Panel</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable()
+      })
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0 0 0 / 63%));
+        color: #fff;
+        overflow-x: hidden;
+      }
+      
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+      }
+      
+      #sidebar.active {
+        margin-left: -250px;
+      }
+      
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #444;
+      }
+      
+      #sidebar ul.components {
+        padding: 20px 0;
+      }
+      
+      #sidebar ul li a {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      #sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      #sidebar ul li.active > a {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      
+      #content {
+        width: 100%;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .card-header {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid #444;
+      }
+      
+      .navbar {
+        padding: 15px 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+      }
+      .btn-darkish {
+        background-color: #333;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 75px;
+        padding:4px 7px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-darkish:hover {
+        background-color: #555;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      
+      .btn-darkish:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .sidebar-footer {
+        bottom: -37px;
+      }
+    </style>
+    <!-- Add SweetAlert2 CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  </head>
+  <body>
+    <div class="d-flex">
+      <nav id="sidebar" class="bg-dark text-light ">
+        <div class="sidebar-header">
+          <h3 class="mb-0">Adam</h3><h3><span style="color: #d39e00;">Automotive</span></h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li >
+            <a href="{% url 'adminindex' %}"><i class="fas fa-user-circle"></i> User Details</a>
+          </li>
+          <li>
+            <a href="{% url 'adminadd_dtl' %}"><i class="fas fa-folder-plus"></i> Add Categories</a>
+          </li>
+          <li>
+            <a href="{% url 'category_edit' %}"><i class="fas fa-list-alt"></i> View Categories</a>
+          </li>          
+          <li>
+            <a href="{% url 'admincaradd_dtl' %}"><i class="fas fa-car"></i> List New Car</a>
+          </li>
+          <li>
+            <a href="{% url 'edit_listing' %}"><i class="fas fa-edit"></i> Edit Listing</a>
+
+          </li>
+          <li>
+            <a href="{% url 'admintestdrive' %}"><i class="fas fa-phone"></i> Slot Request</a>
+          </li>
+          <li>
+            <a href="{% url 'salereq_dsply' %}"><i class="fas fa-dollar-sign"></i> Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'certified_admin_req' %}"><i class="fas fa-award"></i> Certified Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'wholeseller_admin' %}"><i class="fas fa-warehouse fa-xs"></i> Wholesale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'service_request_view' %}"><i class="fas fa-tools"></i> Service Request</a>
+          </li>
+          <li>
+            <a href="{% url 'soldcarinfo' %}"><i class="fas fa-car-side"></i> Sold Cars</a>
+          </li>
+          <li class="active">
+            <a href="{% url 'adminenquiry' %}"><i class="fas fa-question-circle"></i> Car Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'adminfeedback' %}"><i class="fas fa-comments"></i> Feedback Details</a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="btn btn-light btn-block">LOGOUT</a>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content" class="flex-grow-1">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-align-left"></i></button>
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/logo.png' %}" alt="User" class="rounded-circle" height="30" width="35" />
+                  <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'adminprofile' %}"><i class="fas fa-user me-2"></i>Profile</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid mt-4">
+          <!-- User Details Section -->
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <h2>Enquiry <span style="color: #d39e00;">Details</span></h2>                </div>
+                <div class="card-body">
+                  <table id="myTable" class="display">
+                    <thead>
+                      <tr>
+                        <th>Sl/No</th>
+                        <th>User Name</th><th></th>
+                        <th>Email</th><th></th>
+                        <th>Phone Number</th>
+                        <th>Enquiry Details</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for enquiry in car_enquiries %}
+                        {% if enquiry.status == "Pending" %}
+                          <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ enquiry.user.first_name }} {{ enquiry.user.last_name }}</td><td></td>
+                            <td>{{ enquiry.user.email }}</td><td></td>
+                            <td>{{ enquiry.user.Phone_number }}</td>
+                            <td>
+                              <button class="btn btn-info btn-sm" onclick="showEnquiryDetails({{ enquiry.id }})">
+                                View Details
+                              </button>
+                            </td>
+                            <td>
+                              <button class="btn btn-success btn-sm" onclick="handleEnquiry({{ enquiry.id }}, 'approve')">Approve</button>
+                              <button class="btn btn-danger btn-sm" onclick="handleEnquiry({{ enquiry.id }}, 'deny')">Deny</button>
+                            </td>
+                          </tr>
+                        {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Details Section -->
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Toggle Sidebar
+        document.getElementById('sidebarCollapse').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.toggle('active')
+        })
+        
+        // User Details SweetAlert
+        document.querySelectorAll('.user-details-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const email = this.getAttribute('data-email');
+            const phone = this.getAttribute('data-phone');
+
+            Swal.fire({
+              title: 'User Details',
+              html: `
+                <p><strong>Name:</strong> ${model_name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+              `,
+              icon: 'info',
+              confirmButtonText: 'Close'
+            });
+          });
+        });
+      })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function showEnquiryDetails(enquiryId) {
+      fetch(`/get_enquiry_details/${enquiryId}/`)
+        .then(response => response.json())
+        .then(data => {
+          Swal.fire({
+            title: 'Enquiry Details',
+            html: `
+              <p><strong>Manufacturer:</strong> ${data.manufacturer}</p>
+              <p><strong>Model:</strong> ${data.model_name}</p>
+              <p><strong>Year:</strong> ${data.model_year}</p>
+              <p><strong>Color:</strong> ${data.color}</p><hr>
+              <p><strong>Description:</strong> ${data.description}</p>
+            `,
+            icon: 'info',
+            confirmButtonText: 'Close'
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Failed to load enquiry details',
+            icon: 'error',
+            confirmButtonText: 'Close'
+          });
+        });
+    }
+    </script>
+    <script>
+    function handleEnquiry(enquiryId, action) {
+      const validateInput = (value) => {
+        if (value.length < 5) {
+          return 'The reason must be at least 5 characters long.';
+        }
+        if (/[^a-zA-Z0-9\s]/.test(value)) {
+          return 'Special characters are not allowed.';
+        }
+        return null;
+      };
+
+      const title = action === 'approve' ? 'Approve Enquiry' : 'Deny Enquiry';
+      const confirmButtonText = action === 'approve' ? 'Approve' : 'Deny';
+
+      Swal.fire({
+        title: title,
+        input: 'textarea',
+        inputLabel: `Reason for ${action}`,
+        inputPlaceholder: 'Enter your reason here...',
+        showCancelButton: true,
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: 'Cancel',
+        inputValidator: (value) => {
+          return validateInput(value);
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Send the approval data to the backend
+          fetch('/approve_enquiry/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({
+              enquiryId: enquiryId,
+              action: action,
+              reason: result.value
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              Swal.fire('Success', 'Request processed successfully', 'success')
+              .then(() => {
+                // Reload the page to reflect the changes
+                location.reload();
+              });
+            } else {
+              Swal.fire('Error', 'Failed to process request', 'error');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            Swal.fire('Error', 'An unexpected error occurred', 'error');
+          });
+        }
+      });
+    }
+
+    // Function to get CSRF token
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    </script>
+  </body>
+</html>

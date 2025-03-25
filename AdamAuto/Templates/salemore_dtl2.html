@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam Automotive Admin Panel</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable()
+      })
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0 0 0 / 63%));
+        color: #fff;
+        overflow-x: hidden;
+      }
+      
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+      }
+      
+      #sidebar.active {
+        margin-left: -250px;
+      }
+      
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #444;
+      }
+      
+      #sidebar ul.components {
+        padding: 20px 0;
+      }
+      
+      #sidebar ul li a {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      #sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      #sidebar ul li.active > a {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      
+      #content {
+        width: 100%;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .card-header {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid #444;
+      }
+      
+      .navbar {
+        padding: 15px 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+      }
+      .btn-darkish {
+        background-color: #333;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 75px;
+        padding:4px 7px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-darkish:hover {
+        background-color: #555;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      
+      .btn-darkish:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .sidebar-footer {
+        bottom: -1px;
+      }
+      .block-27 ul li a, .block-27 ul li span {
+        color: #c4781f;
+        text-align: center;
+        display: inline-block;
+        width: 46px;
+        height: 45px;
+        line-height: 36px;
+        border-radius: 80%;
+        border: 1px solid #c4781f;
+    }
+      .block-27 ul li.active a, .block-27 ul li.active span {
+        background: black!important;
+        color: #fff;
+        border: 1px solid transparent; }
+        .ftco-section {
+        padding: 3em 0;
+    }
+    .ftco-section + .ftco-section {
+        padding-top: 0;
+    }
+    .mb-4 {
+        margin-bottom: -1.0rem !important;
+    }
+    .btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #0c0c0d;
+        --bs-btn-border-color: #0b0b0b;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #111112;
+        --bs-btn-hover-border-color: #0c0c0d;
+        --bs-btn-focus-shadow-rgb: 49, 132, 253;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #0c0c0d;
+        --bs-btn-active-border-color: #0e0f0f;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #191a1b;
+        --bs-btn-disabled-border-color: #131313;
+    }
+    .sidebar-footer {
+        bottom: -37px;
+    }
+    .car-details-container {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+    
+      .car-image-carousel {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+    
+      .car-details-table {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+    
+      .car-details-table th,
+      .car-details-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    
+      .car-details-table th {
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        width: 30%;
+      }
+    
+      .car-description {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+    
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+    
+      .action-buttons .btn {
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+    
+      .card-body h2 {
+        color: #d39e00;
+        margin-bottom: 1.5rem;
+      }
+    
+      .table-responsive {
+        margin-bottom: 1.5rem;
+      }
+    
+      .car-description h4 {
+        color: #d39e00;
+        margin-bottom: 1rem;
+      }
+    
+      .car-description p {
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="d-flex">
+      <nav id="sidebar" class="bg-dark text-light ">
+        <div class="sidebar-header">
+          <h3 class="mb-0">Adam</h3><h3><span style="color: #d39e00;">Automotive</span></h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li>
+            <a href="{% url 'adminindex' %}"><i class="fas fa-user-circle"></i> User Details</a>
+          </li>
+          <li>
+            <a href="{% url 'adminadd_dtl' %}"><i class="fas fa-folder-plus"></i> Add Categories</a>
+          </li>
+          <li>
+            <a href="{% url 'category_edit' %}"><i class="fas fa-list-alt"></i> View Categories</a>
+        </li>
+          <li>
+            <a href="{% url 'admincaradd_dtl' %}"><i class="fas fa-car"></i> List New Car</a>
+          </li>
+          
+          <li>
+            <a href="{% url 'edit_listing' %}"><i class="fas fa-edit"></i> Edit Listing</a>
+          </li>
+          <li>
+            <a href="{% url 'admintestdrive' %}"><i class="fas fa-phone"></i> Slot Request</a>
+          </li>
+          <li>
+            <a href="{% url 'salereq_dsply' %}"><i class="fas fa-dollar-sign"></i> Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'certified_admin_req' %}"><i class="fas fa-award"></i> Certified Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'wholeseller_admin' %}"><i class="fas fa-warehouse fa-xs"></i> Wholesale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'service_request_view' %}"><i class="fas fa-tools"></i> Service Request</a>
+          </li>
+          <li class="active">
+            <a href="{% url 'soldcarinfo' %}"><i class="fas fa-car-side"></i> Sold Cars</a>
+          </li>
+          <li>
+            <a href="{% url 'adminenquiry' %}"><i class="fas fa-question-circle"></i> Car Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'adminfeedback' %}"><i class="fas fa-comments"></i> Feedback Details</a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="btn btn-light btn-block">LOGOUT</a>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content" class="flex-grow-1">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-align-left"></i></button>
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/logo.png' %}" alt="User" class="rounded-circle" height="30" width="35" />
+                  <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'adminprofile' %}"><i class="fas fa-user me-2"></i>Profile</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid mt-4">
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="card car-details-container">
+                  <div class="card-header">
+                    <h2>Car <span style="color: #d39e00;">Details</span></h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <!-- Left side: Images and Buttons -->
+                      <div class="col-md-6 mb-4">
+                        <div id="carImageCarousel" class="carousel slide car-image-carousel" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                            {% for image in images %}
+                              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" class="d-block w-100" alt="Car Image" style="object-fit: cover; height: 400px;">
+                              </div>
+                            {% empty %}
+                              <div class="carousel-item active">
+                                <img src="{% static 'images/no_image_available.jpg' %}" class="d-block w-100" alt="No Image Available" style="object-fit: cover; height: 400px;">
+                              </div>
+                            {% endfor %}
+                          </div>
+                          {% if images.count > 1 %}
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carImageCarousel" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carImageCarousel" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          {% endif %}
+                        </div>
+                        <div class="action-buttons mt-3">
+                          <button class="btn btn-success" onclick="showUserDetails({{ car.id }}); console.log('Details button clicked');">Details</button>                                                 
+                        </div>
+                      </div>
+                      
+                      <!-- Right side: Car Details -->
+                      <div class="col-md-6">
+                        <div id="carDetails">
+                            <h2><span style="color: #ffffff;">{{ car.manufacturer }}</span> <span style="color: #d39e00;">{{ car.model }}</span></h2><hr>
+                            <div class="row">
+                            <div class="col-md-6">
+                              <p><strong>Year:</strong> {{ car.year }}</p>
+                              <p><strong>Fuel Type:</strong> {{ car.fuel_type }}</p>
+                              <p><strong>Kilometers:</strong> {{ car.kilometers }}</p>
+                              <p><strong>Ownership Status:</strong> {{ car.owner_status }}</p>
+                              <p><strong>Car Type:</strong> {{ car.car_type }}</p>
+                            </div>
+                            <div class="col-md-6">
+                              <p><strong>Price:</strong> ₹{{ car.price }}</p>
+                              <p><strong>Transmission:</strong> {{ car.transmission }}</p>
+                              <p><strong>Color:</strong> {{ car.color }}</p>
+                              <p><strong>Car Status:</strong> {{ car.status }}</p>
+                              <p><strong>Engine CC:</strong> {{ car.car_cc }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="additionalInfo" class="row mt-4" style="display: none;">
+                          <h2 style="margin-left: 17px;">More <span style="color: #d39e00;">Information</span></h2>
+                          <hr>
+                          <div class="col-md-12">
+                            <p><strong>Registration Number:</strong> {{ car.reg_number }}</p>
+                            <p><strong>Pollution Validity:</strong> {{ car.pollution_validity }}</p>
+                            <p><strong>Insurance Validity:</strong> {{ car.insurance_validity }}</p>
+                            <p><strong>Registration Validity:</strong> {{ car.tax_validity }}</p>
+                            <p><strong>Overall Condition:</strong> {{ car.condition }}</p>
+                          </div>
+                        </div>
+                        <button id="moreInfoBtn" class="btn btn-primary mt-3">More Information</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+ 
+      </div>
+    </div>
+  </div>
+  
+
+          
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Toggle Sidebar
+        document.getElementById('sidebarCollapse').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.toggle('active')
+        })
+    
+        // Handle delete/republish button clicks
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const carId = this.getAttribute('data-car-id');
+            const action = this.textContent.trim();
+    
+            fetch(`/toggle_car_status/${carId}/`, {
+              method: 'POST',
+              headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ action: action }),
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                // Reload the page after successful status update
+                window.location.reload();
+              } else {
+                console.error('Failed to update car status');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+          });
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Toggle Sidebar
+    document.getElementById('sidebarCollapse').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+
+    // Toggle More Information
+    const moreInfoBtn = document.getElementById('moreInfoBtn');
+    const additionalInfo = document.getElementById('additionalInfo');
+    
+    if (moreInfoBtn && additionalInfo) {
+        moreInfoBtn.addEventListener('click', function() {
+            console.log('More Info button clicked');
+            if (additionalInfo.style.display === 'none' || additionalInfo.style.display === '') {
+                additionalInfo.style.display = 'block';
+                moreInfoBtn.textContent = 'Less Information';
+            } else {
+                additionalInfo.style.display = 'none';
+                moreInfoBtn.textContent = 'More Information';
+            }
+        });
+    }
+
+    // Handle delete/republish button clicks
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const carId = this.getAttribute('data-car-id');
+            const action = this.textContent.trim();
+
+            fetch(`/toggle_car_status/${carId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ action: action }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    console.error('Failed to update car status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+});
+
+// Define showUserDetails in the global scope
+window.showUserDetails = function(carId) {
+    console.log('showUserDetails called with carId:', carId);
+    fetch(`/get_user_details/${carId}/`)
+        .then(response => {
+            console.log('Response received:', response);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data received:', data);
+            if (data.success) {
+                Swal.fire({
+                    title: 'User Details',
+                    html: `
+                        <p><strong>Name:</strong> ${data.user.name}</p>
+                        <p><strong>Username:</strong> ${data.user.username}</p>
+                        <p><strong>Email:</strong> ${data.user.email}</p>
+                        <p><strong>Phone:</strong> ${data.user.phone_number}</p>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'Close'
+                });
+            } else {
+                Swal.fire('Error', 'Failed to fetch user details', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire('Error', 'An error occurred while fetching user details', 'error');
+        });
+};
+
+window.cancelCar = function(carId) {
+    Swal.fire({
+        title: 'Cancel Car Listing',
+        input: 'textarea',
+        inputLabel: 'Reason for cancellation',
+        inputPlaceholder: 'Enter the reason here...',
+        inputAttributes: {
+            'aria-label': 'Reason for cancellation'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        cancelButtonText: 'Close',
+        preConfirm: (reason) => {
+            if (!reason) {
+                Swal.showValidationMessage('Please enter a reason for cancellation')
+            }
+            return reason
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/cancel_car_listing/${carId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ reason: result.value })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Cancelled',
+                        text: 'The car listing has been cancelled successfully.',
+                        icon: 'success'
+                    }).then(() => {
+                        window.location.href = '{% url "salereq_dsply" %}';
+                    });
+                } else {
+                    Swal.fire('Error', 'Failed to cancel the car listing.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Error', 'An error occurred while cancelling the car listing.', 'error');
+            });
+        }
+    });
+};
+
+window.approveCar = function(carId) {
+    Swal.fire({
+        title: 'Approve Car Listing',
+        html: `
+            <textarea id="remarks" class="swal2-textarea" placeholder="Enter remarks here..." rows="4"></textarea>
+        `,
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        cancelButtonText: 'Cancel',
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#dc3545',
+        allowOutsideClick: false,
+        didOpen: () => {
+            const confirmButton = Swal.getConfirmButton();
+            confirmButton.disabled = true;
+            
+            const remarksTextarea = Swal.getPopup().querySelector('#remarks');
+            remarksTextarea.addEventListener('input', () => {
+                confirmButton.disabled = remarksTextarea.value.trim().length === 0;
+            });
+        },
+        preConfirm: () => {
+            const remarks = Swal.getPopup().querySelector('#remarks').value;
+            if (!remarks) {
+                Swal.showValidationMessage('Please enter remarks');
+            }
+            return remarks;
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/approve_car_listing/${carId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ remarks: result.value })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Approved',
+                        text: 'The car listing has been approved successfully. An email has been sent to the user with the approval details.',
+                        icon: 'success'
+                    }).then(() => {
+                        window.location.href = '{% url "salereq_dsply" %}';
+                    });
+                } else {
+                    Swal.fire('Error', `Failed to approve the car listing: ${data.error || 'Unknown error'}`, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Error', `An error occurred while approving the car listing: ${error.message}`, 'error');
+            });
+        }
+    });
+};
+</script>
+  </body>
+</html>

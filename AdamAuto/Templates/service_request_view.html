@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam Automotive Admin Panel</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable()
+      })
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0 0 0 / 63%));
+        color: #fff;
+        overflow-x: hidden;
+      }
+      
+      #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+      }
+      
+      #sidebar.active {
+        margin-left: -250px;
+      }
+      
+      #sidebar .sidebar-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #444;
+      }
+      
+      #sidebar ul.components {
+        padding: 20px 0;
+      }
+      
+      #sidebar ul li a {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      #sidebar ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      #sidebar ul li.active > a {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      
+      .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      
+      #content {
+        width: 100%;
+        padding: 20px;
+        transition: all 0.3s;
+      }
+      
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .card-header {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid #444;
+      }
+      
+      .navbar {
+        padding: 15px 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+      }
+      .btn-darkish {
+        background-color: #333;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 75px;
+        padding:4px 7px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-darkish:hover {
+        background-color: #555;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      
+      .btn-darkish:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .sidebar-footer {
+        bottom: -37px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex">
+      <nav id="sidebar" class="bg-dark text-light ">
+        <div class="sidebar-header">
+          <h3 class="mb-0">Adam</h3><h3><span style="color: #d39e00;">Automotive</span></h3>
+        </div>
+        <ul class="list-unstyled components">
+          <li >
+            <a href="{% url 'adminindex' %}"><i class="fas fa-user-circle"></i> User Details</a>
+          </li>
+          <li>
+            <a href="{% url 'adminadd_dtl' %}"><i class="fas fa-folder-plus"></i> Add Categories</a>
+          </li>
+          <li>
+            <a href="{% url 'category_edit' %}"><i class="fas fa-list-alt"></i> View Categories</a>
+          </li>          
+          <li>
+            <a href="{% url 'admincaradd_dtl' %}"><i class="fas fa-car"></i> List New Car</a>
+          </li>
+          <li>
+            <a href="{% url 'edit_listing' %}"><i class="fas fa-edit"></i> Edit Listing</a>
+
+          </li>
+          <li>
+            <a href="{% url 'admintestdrive' %}"><i class="fas fa-phone"></i> Slot Request</a>
+          </li>
+          <li>
+            <a href="{% url 'salereq_dsply' %}"><i class="fas fa-dollar-sign"></i> Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'certified_admin_req' %}"><i class="fas fa-award"></i> Certified Sale Request</a>
+          </li>
+          <li>
+            <a href="{% url 'wholeseller_admin' %}"><i class="fas fa-warehouse fa-xs"></i> Wholesale Request</a>
+          </li>
+          <li class="active">
+            <a href="#"><i class="fas fa-tools"></i> Service Request</a>
+          </li>
+          <li>
+            <a href="{% url 'soldcarinfo' %}"><i class="fas fa-car-side"></i> Sold Cars</a>
+          </li>
+          <li>
+            <a href="{% url 'adminenquiry' %}"><i class="fas fa-question-circle"></i> Car Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'adminfeedback' %}"><i class="fas fa-comments"></i> Feedback Details</a>
+          </li>
+        </ul>
+
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="btn btn-light btn-block">LOGOUT</a>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content" class="flex-grow-1">
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-light"><i class="fas fa-align-left"></i></button>
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'images/logo.png' %}" alt="User" class="rounded-circle" height="30" width="35" />
+                  <span class="ms-2">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'adminprofile' %}"><i class="fas fa-user me-2"></i>Profile</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid mt-4">
+          <!-- User Details Section -->
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <h2>Service <span style="color: #d39e00;">Requests</span></h2>                </div>
+                <div class="card-body">
+                  <table id="myTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Manufacturer</th>
+                            <th>Model</th>
+                            <th>Preferred Date</th>
+                            <th>More Details</th> <!-- Added More Details header -->
+                            <th>User Details</th>
+                            <th>Status</th> <!-- New Status header -->
+                            <th>Action</th> <!-- Action header -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                            <tr>
+                                <td>{{ service.manufacturer }}</td> <!-- Display manufacturer -->
+                                <td>{{ service.model }}</td> <!-- Display model -->
+                                <td>{{ service.service_date }}</td> <!-- Display service date -->
+                                <td>
+                                    <button class="btn btn-info" onclick="showMoreDetails({{ service.id }})">More</button> <!-- More details button -->
+                                </td>
+                                <td>
+                                  <button class="btn btn-info" onclick="showUserDetails({{ service.user.id }})">More</button>                                </td>
+                                <td>{{ service.status }}</td> <!-- Display status -->
+                                <td>
+                                    <button class="btn btn-success" onclick="approveService({{ service.id }}, '{{ service.service_date }}')">Approve</button> <!-- Approve button -->
+                                    <button class="btn btn-danger" onclick="denyService({{ service.id }}, '{{ service.manufacturer }}', '{{ service.model }}')">Deny</button> <!-- Deny button -->
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Details Section -->
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Toggle Sidebar
+        document.getElementById('sidebarCollapse').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.toggle('active')
+        })
+      })
+    </script>
+    <script>
+      function showMoreDetails(serviceId) {
+        // Fetch vehicle details
+        $.ajax({
+            url: `/api/service/${serviceId}/`, // Adjust the URL to your API endpoint
+            method: 'GET',
+            success: function(data) {
+                console.log('API Response:', data); // Log the entire response
+    
+                // Check if the expected properties exist
+                if (data && data.manufacturer && data.model && data.service_date && data.user) {
+                    // Display details in SweetAlert
+                    Swal.fire({
+                        title: 'Vehicle Details',
+                        html: `
+                            <hr><div class="container">
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <p><strong>Manufacturer:</strong> ${data.manufacturer}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <p><strong>Model:</strong> ${data.model}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <p><strong>Transmission:</strong> ${data.transmission}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <p><strong>Fuel:</strong> ${data.fuel}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <p><strong>Year:</strong> ${data.year}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <p><strong>Prefered Service Date:</strong> ${data.service_date}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p><strong>Description Of Complaint:</strong></p>
+                                        <p>${data.problem}</p> <!-- Full width for Problem -->
+                                    </div>
+                                </div>
+                            </div>
+                        `,
+                        confirmButtonText: 'Okay'
+                    });
+                } else {
+                    console.error('Invalid data format received:', data); // Log invalid data format
+                    Swal.fire('Error', 'Invalid data format received', 'error');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('AJAX Error:', textStatus, errorThrown); // Log AJAX error
+                Swal.fire('Error', 'Could not fetch details', 'error');
+            }
+        });
+    }
+    </script>
+    
+
+<script>
+  function showUserDetails(user_id) {
+    console.log('showUserDetails called with user_id:', user_id);
+    fetch(`/get_user_details/${user_id}/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => {
+        console.log('Response received:', response);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data received:', data);
+        if (data.success) {
+            const user = data.user;
+            Swal.fire({
+                title: 'User Details',
+                html: `
+                    <strong>Name:</strong> ${user.name}<br>
+                    <strong>Username:</strong> ${user.username}<br>
+                    <strong>Email:</strong> ${user.email}<br>
+                    <strong>Phone Number:</strong> ${user.phone_number}
+                `,
+                icon: 'info',
+                confirmButtonText: 'Okay'
+            });
+        } else {
+            throw new Error(data.error || 'Failed to fetch user details');
+        }
+    })
+    .catch(error => {
+        console.error('Error in showUserDetails:', error);
+        Swal.fire('Error', `Failed to fetch user details: ${error.message}`, 'error');
+    });
+}
+// ... rest of the code remains the same
+// ... existing code ...
+
+// Function to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+
+
+    <script>
+      // ... existing code ...
+function approveService(serviceId, suggestedDate) {
+  const today = new Date();
+  const minDate = new Date();
+  minDate.setDate(today.getDate() + 6); // Minimum date is today + 6 days
+  const maxDate = new Date();
+  maxDate.setDate(today.getDate() + 30); // Maximum date is today + 30 days
+
+  Swal.fire({
+      title: 'Approve Service Request',
+      html: `
+          <p>Suggested Date: <strong>${suggestedDate}</strong></p>
+          <label for="newDate">Select New Date (Leave blank to keep current):</label>
+          <input type="date" id="newDate" class="form-control" value="${suggestedDate}" min="${minDate.toISOString().split('T')[0]}" max="${maxDate.toISOString().split('T')[0]}">
+          <label for="timeSlot">Select Time Slot:</label>
+          <select id="timeSlot" class="form-control">
+              <option value="10-11 AM">10:00 AM - 11:00 AM</option>
+              <option value="11-12 PM">11:00 AM - 12:00 PM</option>
+              <option value="12-1 PM">12:00 PM - 1:00 PM</option>
+              <option value="2-3 PM">2:00 PM - 3:00 PM</option>
+              <option value="3-4 PM">3:00 PM - 4:00 PM</option>
+              <option value="4-5 PM">4:00 PM - 5:00 PM</option>
+          </select>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Approve',
+      cancelButtonText: 'Cancel',
+      preConfirm: () => {
+          const newDate = document.getElementById('newDate').value;
+          const timeSlot = document.getElementById('timeSlot').value; // Capture the selected time slot
+          return { newDate: newDate, timeSlot: timeSlot }; // Return both newDate and timeSlot
+      }
+  }).then((result) => {
+      if (result.isConfirmed) {
+          // Format the date to YYYY-MM-DD if a new date is provided
+          const formattedDate = result.value.newDate ? new Date(result.value.newDate).toISOString().split('T')[0] : suggestedDate;
+
+          // Send the selected time slot and formatted date to the server
+          fetch(`/approve-service/${serviceId}/`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is sent
+              },
+              body: JSON.stringify({ 
+                  timeSlot: result.value.timeSlot, // Send the time slot to the server
+                  suggestedDate: formattedDate // Use formatted date
+              })
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  Swal.fire('Success', 'Service request approved!', 'success').then(() => {
+                      location.reload(); // Refresh the page after the alert is closed
+                  });
+              } else {
+                  Swal.fire('Error', data.message, 'error');
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              Swal.fire('Error', 'Could not approve service request', 'error');
+          });
+      }
+  });
+}
+
+  
+      function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  // Check if this cookie string begins with the name we want
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+  </script>
+  <script>
+    function denyService(serviceId, manufacturer, model) {
+        Swal.fire({
+            title: 'Reason for Denial',
+            input: 'textarea',
+            inputPlaceholder: 'Enter reason for denying the service request...',
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel',
+            preConfirm: (reason) => {
+                if (!reason || reason.length < 5 || /[!@#$%^&*(),.?":{}|<>]/.test(reason)) {
+                    Swal.showValidationMessage('Please enter at least 5 words without special characters.');
+                }
+                return reason;
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reason = result.value;
+
+                // Send the reason to the server
+                fetch(`/deny-service/${serviceId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is sent
+                    },
+                    body: JSON.stringify({ reason: reason, manufacturer: manufacturer, model: model })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire('Success', 'Service request denied and user notified!', 'success');
+                        location.reload(); // Refresh the page
+                    } else {
+                        Swal.fire('Error', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire('Error', 'Could not deny service request', 'error');
+                });
+            }
+        });
+    }
+</script>
+<script>
+  function denyService(serviceId, manufacturer, model) {
+      Swal.fire({
+          title: 'Reason for Denial',
+          input: 'textarea',
+          inputPlaceholder: 'Enter reason for denying the service request...',
+          showCancelButton: true,
+          confirmButtonText: 'Submit',
+          cancelButtonText: 'Cancel',
+          preConfirm: (reason) => {
+              if (!reason || reason.length < 5 || /[!@#$%^&*(),.?":{}|<>]/.test(reason)) {
+                  Swal.showValidationMessage('Please enter at least 5 words without special characters.');
+              }
+              return reason;
+          }
+      }).then((result) => {
+          if (result.isConfirmed) {
+              const reason = result.value;
+
+              // Send the reason to the server
+              fetch(`/deny-service/${serviceId}/`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is sent
+                  },
+                  body: JSON.stringify({ reason: reason, manufacturer: manufacturer, model: model })
+              })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      // Show confirmation SweetAlert
+                      Swal.fire({
+                          title: 'Success',
+                          text: 'The request has been denied. Thank you!',
+                          icon: 'success',
+                          confirmButtonText: 'Okay'
+                      }).then(() => {
+                          location.reload(); // Optionally refresh the page
+                      });
+                  } else {
+                      Swal.fire('Error', data.message, 'error');
+                  }
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  Swal.fire('Error', 'Could not deny service request', 'error');
+              });
+          }
+      });
+  }
+</script>
+  </body>
+</html>

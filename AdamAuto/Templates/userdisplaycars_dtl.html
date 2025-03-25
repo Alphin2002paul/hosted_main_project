@@ -1,0 +1,1351 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Adam Automotive - Website For Luxury Used Cars</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'displaycar/css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/bootstrap-datepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/jquery.timepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/icomoon.css' %}" />
+    <link rel="stylesheet" href="{% static 'displaycar/css/style.css' %}" />
+
+       <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .custom-btn {
+            background: #d39e00;
+            border: 1px solid #d39e00 !important;
+        }
+
+        .dropdown-menu {
+            margin-top: -1px;
+        }
+
+        .ftco-footer {
+            font-size: 16px;
+            background: #000;
+            padding: 2em 0;
+        }
+        .ftco-navbar-light.scrolled.awake {
+          margin-top: 0px;
+          -webkit-transition: .3s all ease-out;
+          -o-transition: .3s all ease-out;
+          transition: .3s all ease-out;
+      }
+      .btn.btn-primary {
+        background: #000 !important;
+        border: 1px solid #212223 !important;
+        color: #fff !important;
+    }
+      .btn.btn-secondary {
+        background: #d84d4d !important;
+        border: 1px solid #f85555 !important;
+        color: #fff !important;
+    }
+    .btn.btn-secondary {
+      background: #121111 !important;
+      border: 1px solid #121111 !important;
+      color: #fff !important;
+  }
+  .block-27 ul li a, .block-27 ul li span {
+    color: #c4781f;
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #c4781f; }
+  .block-27 ul li.active a, .block-27 ul li.active span {
+    background: black!important;
+    color: #fff;
+    border: 1px solid transparent; }
+    .ftco-section {
+    padding: 3em 0;
+}
+.ftco-section + .ftco-section {
+    padding-top: 0;
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">Adam&nbsp;<span>Automotive</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="oi oi-menu"></span> Menu</button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="{% url 'main' %}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main' %}.#ab" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#con" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="carCollectionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Car Collections
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="carCollectionDropdown">
+                        <a class="dropdown-item" href="{% url 'userdisplaycars_dtl' %}">Adam Car Collection</a>
+                        <a class="dropdown-item" href="{% url 'certified_cars' %}">Adam Certified Cars</a>
+                      </div>
+                    </li>
+                    <ul class="navbar-nav ms-auto">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ user.first_name }}</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left:-50px">
+                          <a class="dropdown-item" href="{% url 'account_dtl' %}">Account Details</a>
+                          <a class="dropdown-item" href="{% url 'liked_list' %}">Liked List</a>                         
+                          <a class="dropdown-item" href="{% url 'sellcar_dtl' %}">Sell Your Car</a>
+                          <a class="dropdown-item" href="{% url 'bookservice_dtl' %}">Book A Service</a>
+                          <a class="dropdown-item" href="{% url 'request_dtl' %}">Requests</a>
+                          <a class="dropdown-item" href="{% url 'perfect_car' %}">Perfect Car</a>
+                          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                          <!-- Add more options as needed, such as profile settings -->
+                        </div>
+                      </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-wrap ftco-degree-bg" style="background-image: url('{% static 'images/car_dis.webp' %}');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+                <div class="col-lg-8 ftco-animate">
+                    <div class="text w-100 text-center mb-md-5 pb-md-5">
+                        <h1 class="mb-4">Buy Your Dream Car Through Adam Automotive</h1>
+                        <p style="font-size: 18px;">Buying A Car is Not Just Buying a Machine It's an Emotion For Every Auto Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+          <h2>Filter Cars</h2>
+          <form method="GET" action="">
+              <div class="row">
+                  <div class="col-md-3 mb-3">
+                      <input type="text" class="form-control" name="search" placeholder="Search cars...">
+                  </div>
+                  <div class="col-md-3 mb-3">
+                      <select class="form-control" name="brand">
+                          <option value="">Select Brand</option>
+                          {% for brand in brands %}
+                              <option value="{{ brand.id }}">{{ brand.company_name }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                      <select class="form-control" name="price_range">
+                          <option value="">Select Price Range</option>
+                          <option value="1000-2000">1000-2000</option>
+                          <option value="2000-3000">2000-3000</option>
+                          <option value="3000-4000">3000-4000</option>
+                          <option value="4000-5000">4000-5000</option>
+                          <option value="5000+">Above 5000</option>
+                      </select>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                      <input type="number" class="form-control" name="year" placeholder="Year (2015+)" min="2015" max="9999">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <button type="submit" class="btn btn-primary">Apply Filters</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </section>
+    </div>
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <h2>Available&nbsp;<span style="color: #d39e00;">Stocks</span></h2>
+        <hr />
+        {% if no_cars %}
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>No filtered cars available right now.</h3>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            {% for car in page_obj %}
+                <div class="col-md-4">
+                    <div class="car-wrap rounded ftco-animate">
+                        <div id="carImageCarousel{{ car.id }}" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for car_image in car.images.all %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                        <img src="{{ car_image.image.url }}" class="d-block w-100" alt="Car Image" style="object-fit: cover; height: 200px;">
+                                    </div>
+                                {% empty %}
+                                    <div class="carousel-item active">
+                                        <img src="{% static 'images/no_image_available.jpg' %}" class="d-block w-100" alt="No Image Available" style="object-fit: cover; height: 200px;">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="carousel-control-prev" href="#carImageCarousel{{ car.id }}" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carImageCarousel{{ car.id }}" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <div class="text">
+                            <h2 class="mb-0">{{ car.manufacturer.company_name }}</h2>
+                            <div class="d-flex mb-3">
+                                <span class="mb-0" style="color:#d39e00">Model Name: <span style="color:black">{{ car.model_name.model_name }}</span></span>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <span class="mb-0" style="color:#d39e00">Price: ₹ <span style="color:black">{{ car.price }}</span></span>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <span class="mb-0" style="color:#d39e00">Status: <span style="color:red">{{ car.car_status }}</span></span>
+                            </div>
+                            <p class="d-flex mb-0 d-block">
+                                <button class="btn {% if car.id in liked_cars %}btn-secondary{% else %}btn-primary{% endif %} py-2 mr-1 like-btn" data-car-id="{{ car.id }}">
+                                    {% if car.id in liked_cars %}Remove Like{% else %}Add to Liked{% endif %}
+                                </button>
+                                <a style="width:47%" href="{% url 'car_detail' car.id %}" class="btn custom-btn py-2 ml-1">Details</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </section>          </div>
+            <div class="row mt-5">
+              <div class="col text-center">
+                <div class="block-27">
+                  <ul>
+                    {% if page_obj.has_previous %}
+                      <li><a href="?page=1">&lt;&lt;</a></li>
+                      <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                    {% endif %}
+            
+                    {% for num in page_obj.paginator.page_range %}
+                      {% if page_obj.number == num %}
+                        <li class="active"><span>{{ num }}</span></li>
+                      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+            
+                    {% if page_obj.has_next %}
+                      <li><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                      <li><a href="?page={{ page_obj.paginator.num_pages }}">&gt;&gt;</a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2"><a href="#" class="logo">Adam&nbsp;<span>Automotive</span></a></h2>
+              <p>Money may not buy happiness, but I'd rather cry in a Jaguar than on a bus.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate">
+                  <a href="https://twitter.com/"><span class="icon-twitter"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.facebook.com/"><span class="icon-facebook"></span></a>
+                </li>
+                <li class="ftco-animate">
+                  <a href="https://www.instagram.com/"><span class="icon-instagram"></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md" id="con">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="{% url 'main' %}.#ab" class="py-2 d-block">About</a></li>
+                <li><a href="#" id="termsAndConditions" class="py-2 d-block">Terms and Conditions</a></li>           
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Timing</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a class="py-2 d-block">Monday-Sunday</a>
+                </li>
+                <li>
+                  <a class="py-2 d-block">Working Hours: 9am-10pm</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li>
+                    <a><span class="icon icon-map-marker"></span><span class="text">Adam Towers, Edappally Kochi , Kerala - 683544</span></a>
+                  </li>
+                  <li>
+                    <a href="tel:+919876543210"><span class="icon icon-phone"></span><span class="text">+91 98765 43210</span></a>
+                  </li>
+                  <li>
+                    <a href="mailto:adamautomotive3@gmail.com"><span class="icon icon-envelope"></span><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adamautomotive3@gmail.com</span></a>
+                  </li> 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'displaycar/js/jquery.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/popper.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/aos.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'displaycar/js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/scrollax.min.js' %}"></script>
+    <script src="{% static 'displaycar/js/main.js' %}"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const likeButtons = document.querySelectorAll('.like-btn');
+          likeButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                  const carId = this.getAttribute('data-car-id');
+                  fetch(`/toggle_like/${carId}/`, {
+                      method: 'POST',
+                      headers: {
+                          'X-CSRFToken': '{{ csrf_token }}',
+                      },
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      if (data.is_liked) {
+                          this.textContent = 'Remove Like';
+                          this.classList.remove('btn-primary');
+                          this.classList.add('btn-secondary');
+                      } else {
+                          this.textContent = 'Add to Liked';
+                          this.classList.remove('btn-secondary');
+                          this.classList.add('btn-primary');
+                      }
+                  });
+              });
+          });
+      });
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        document.getElementById('termsAndConditions').addEventListener('click', function (e) {
+          e.preventDefault()
+          Swal.fire({
+            title: 'Terms and Conditions of Adam Automotive',
+            html: `
+                <p>1. All sales are final.</p>
+                <p>2. No Vehilces Which Has Any Kind Of Accidents And Flood Are Sold.</p>
+                <p>3. Adam Automotive reserves the right to refuse service to anyone.</p>
+                <p>4. Test drives are subject to approval and require a valid driver's license.</p>
+                <p>5. Prices are subject to change without notice.</p>
+              `,
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#d39e00'
+          })
+        })
+      </script>
+     <!-- Chatbot Integration -->
+    <div id="chatbot" style="position: fixed; bottom: 20px; right: 20px; width: 300px; max-width: 90vw; border: 1px solid #ccc; border-radius: 10px; background-color: white; display: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+      <!-- Header -->
+      <div style="padding: 12px; background-color: #000000; color: white; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 14px;">
+          <span style="color: #999999;">Adam</span>
+          <span style="color: #ffc107;">Automotive</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          {% if user.is_authenticated %}
+            <span style="font-size: 12px; color: #ffc107;">Hi, {{ user.first_name }}</span>
+          {% endif %}
+          <button onclick="toggleChatbot()" style="background: none; border: none; color: white; font-size: 18px;">×</button>
+        </div>
+      </div>
+      
+      <!-- Welcome Message -->
+      <div style="padding: 15px; text-align: left;">
+        <h4 style="margin: 0; font-size: 16px;">Hello, I am</h4>
+        <h2 style="margin: 5px 0; font-size: 24px;">
+          <span style="color: #999999;">Adam</span>
+          <span style="color: #ffc107;">Automotive</span>
+        </h2>
+        <p style="margin: 5px 0; color: #666; font-size: 14px;">Your True Automotive Assistant</p>
+      </div>
+
+      <!-- Chat Messages -->
+      <div id="chatbot-messages" style="height: 200px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; font-size: 14px;">
+        <!-- Messages will appear here -->
+      </div>
+
+      <!-- Input Area -->
+      <div style="padding: 10px; display: flex; gap: 5px;">
+        <input type="text" id="chatbot-input" placeholder="Type your message here..." 
+               style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #ccc; font-size: 14px;" />
+        <button onclick="sendMessage()" 
+                style="background-color: #000000; color: white; border: none; border-radius: 20px; padding: 8px 15px; cursor: pointer;">
+          Send
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle-btn" onclick="toggleChatbot()" 
+            style="position: fixed; bottom: 20px; right: 20px; 
+                   background-color: #000000; 
+                   color: #ffc107; 
+                   border: none; 
+                   border-radius: 50%; 
+                   width: 60px; 
+                   height: 60px; 
+                   cursor: pointer; 
+                   z-index: 1000;
+                   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   transition: transform 0.3s ease;">
+        <i class="fas fa-comments" style="font-size: 24px;"></i>
+    </button>
+
+    <!-- Add Google AI SDK -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      const API_KEY = 'AIzaSyD1QO8FrKu4g9GcLu5APcYwlaqwjh0yrD8';
+      const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent';
+
+      // Get user's first name from Django template
+      let userName = '{{ user.first_name }}';
+      let isFirstMessage = userName ? false : true;
+
+      function toggleChatbot() {
+        const chatbot = document.getElementById('chatbot');
+        const toggleBtn = document.getElementById('chat-toggle-btn');
+        
+        if (chatbot.style.display === 'none') {
+          chatbot.style.display = 'block';
+          toggleBtn.style.display = 'none';
+          
+          // Show different initial message based on login status
+          if (isFirstMessage) {
+            const messages = document.getElementById('chatbot-messages');
+            messages.innerHTML = `<div><strong>Bot:</strong> Please enter your name to get started.</div>`;
+          } else {
+            // Show welcome message for logged-in users
+            const messages = document.getElementById('chatbot-messages');
+            showWelcomeMessage();
+          }
+        } else {
+          chatbot.style.display = 'none';
+          toggleBtn.style.display = 'block';
+        }
+      }
+
+      // Add a new function to show welcome message
+      function showWelcomeMessage() {
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const welcomeMessage = `Hi ${userName}, Welcome to Adam Automotive! How can I assist you today?`;
+        const points = [
+        { text: 'Our luxury car collection', url: "{% url 'userdisplaycars_dtl' %}" },
+        { text: 'Certified Car Collection', url: "{% url 'certified_cars' %}" },
+        { text: 'Booking a service', url: "{% url 'bookservice_dtl' %}" },
+        { text: 'Sell your car To Adam', url: "{% url 'sellcar_dtl' %}" },
+        { text: 'Liked List', url: "{% url 'liked_list' %}" },
+        { text: 'Account Details', url: "{% url 'account_dtl' %}" },
+        { text: 'Perfect Car', url: "{% url 'perfect_car' %}" },
+        { text: 'Subscription Details', url: "{% url 'sub_details' %}" },
+        { text: 'Requests', url: "{% url 'request_dtl' %}" }
+        ];
+
+        messagesDiv.innerHTML = `
+          <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+            <div style="max-width: 80%;">
+              <div style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                <div id="welcome-text">${welcomeMessage}</div>
+                <div id="points-container"></div>
+              </div>
+              <div style="font-size: 10px; color: #666;">
+                ${timestamp}
+              </div>
+            </div>
+          </div>`;
+
+        // Update the points display
+        const pointsContainer = document.getElementById('points-container');
+        points.forEach((point, index) => {
+          setTimeout(() => {
+            pointsContainer.innerHTML += `
+              <div style="margin-top: 5px;">
+                • <a href="${point.url}" 
+                     style="color: #007bff; 
+                            text-decoration: none; 
+                            cursor: pointer;"
+                     onmouseover="this.style.textDecoration='underline'"
+                     onmouseout="this.style.textDecoration='none'">
+                    ${point.text}
+                  </a>
+              </div>`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+          }, (index + 1) * 500);
+        });
+      }
+
+      function redirectToService() {
+        window.location.href = "{% url 'bookservice_dtl' %}";
+      }
+
+      function redirectToCars() {
+        window.location.href = "{% url 'userdisplaycars_dtl' %}";
+      }
+     
+
+      async function sendMessage() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+        
+        if (!message) return;
+
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        // Clear input immediately
+        input.value = '';
+
+        // Add user message
+        messagesDiv.innerHTML += `
+          <div style="display: flex; justify-content: flex-end; margin: 8px 0;">
+            <div style="max-width: 80%;">
+              <div style="background-color: #000000; color: white; padding: 8px 12px; border-radius: 12px 12px 0 12px; margin-bottom: 2px;">
+                ${message}
+              </div>
+              <div style="text-align: right; font-size: 10px; color: #666;">
+                ${timestamp}
+              </div>
+            </div>
+          </div>`;
+
+        if (isFirstMessage) {
+          // Remove typing indicator immediately for first message
+          const typingIndicator = document.getElementById('typing-indicator');
+          if (typingIndicator) {
+            typingIndicator.remove();
+          }
+          
+          // Rest of first message handling
+          userName = message;
+          isFirstMessage = false;
+          
+          // Show welcome message with delayed points
+          const welcomeMessage = `Hi ${userName}, Welcome to Adam Automotive! How can I assist you today?`;
+          const points = [
+            { text: 'Our luxury car collection', url: "{% url 'userdisplaycars_dtl' %}" },
+            { text: 'Booking a service', url: "{% url 'bookservice_dtl' %}" },
+            { text: 'Selling your car', url: "{% url 'sellcar_dtl' %}" },
+            { text: 'Car pricing and availability', url: "{% url 'userdisplaycars_dtl' %}" },
+            { text: 'Liked List', url: "{% url 'liked_list' %}" },
+            { text: 'Account Details', url: "{% url 'account_dtl' %}" },
+            { text: 'Requests', url: "{% url 'request_dtl' %}" }
+          ];
+
+          messagesDiv.innerHTML += `
+            <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+              <div style="max-width: 80%;">
+                <div style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                  <div id="welcome-text">${welcomeMessage}</div>
+                  <div id="points-container"></div>
+                </div>
+                <div style="font-size: 10px; color: #666;">
+                  ${timestamp}
+                </div>
+              </div>
+            </div>`;
+
+          // Update the points display code
+          const pointsContainer = document.getElementById('points-container');
+          points.forEach((point, index) => {
+            setTimeout(() => {
+              pointsContainer.innerHTML += `
+                <div style="margin-top: 5px;">
+                  • <a href="${point.url}" 
+                       style="color: #007bff; 
+                              text-decoration: none; 
+                              cursor: pointer;"
+                       onmouseover="this.style.textDecoration='underline'"
+                       onmouseout="this.style.textDecoration='none'">
+                    ${point.text}
+                  </a>
+                </div>`;
+              messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, (index + 1) * 500);
+          });
+          
+          // Update input placeholder
+          input.placeholder = "Type your message here...";
+        } else {
+          // Regular conversation handling
+          try {
+            // Show typing indicator immediately
+            messagesDiv.innerHTML += `
+              <div id="typing-indicator" style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                <div style="max-width: 80%;">
+                  <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                  </div>
+                  <div style="font-size: 10px; color: #666;">
+                    ${timestamp}
+                  </div>
+                </div>
+              </div>`;
+
+            // Wait for 5 seconds
+            await new Promise(resolve => setTimeout(resolve, 5000));
+
+            // Remove typing indicator before showing response
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+              typingIndicator.remove();
+            }
+
+            // Check for specific user data requests
+            const userDataRequests = {
+                'account details': fetchUserInfo,
+                'profile': fetchUserInfo,
+                'liked cars': fetchLikedCars,
+                'liked list': fetchLikedCars,
+                'service': fetchServiceInfo,
+                'service info': fetchServiceInfo,
+                'enquiry': fetchEnquiryInfo,
+                'enquiries': fetchEnquiryInfo,
+                'sale': fetchSaleInfo,
+                'sale request': fetchSaleInfo,
+                'test drive': fetchTestDriveInfo,
+                'test drive booking': fetchTestDriveInfo
+            };
+
+            const messageLower = message.toLowerCase();
+            for (const [keyword, handler] of Object.entries(userDataRequests)) {
+                if (messageLower.includes(keyword)) {
+                    const response = await handler();
+                    displayBotResponse(response);
+                    return;
+                }
+            }
+
+            // Check if message is contact-related
+            const contactKeywords = ['contact', 'address', 'location', 'phone', 'email', 'reach', 'connect'];
+            const isContactQuery = contactKeywords.some(keyword => 
+              message.toLowerCase().includes(keyword)
+            );
+
+            if (isContactQuery) {
+              // Display formatted contact information
+              messagesDiv.innerHTML += `
+                <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                  <div style="max-width: 80%;">
+                    <div style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                      <p style="margin-bottom: 8px;">Here are our contact details:</p>
+                      <div style="margin-left: 5px;">
+                        <p style="margin: 5px 0;">
+                          <i class="icon icon-map-marker"></i> Adam Towers, Edappally Kochi, Kerala - 683544
+                        </p>
+                        <p style="margin: 5px 0;">
+                          <i class="icon icon-phone"></i> <a href="tel:+919876543210">+91 98765 43210</a>
+                        </p>
+                        <p style="margin: 5px 0;">
+                          <i class="icon icon-envelope"></i> <a href="mailto:adamautomotive3@gmail.com">adamautomotive3@gmail.com</a>
+                        </p>
+                        <p style="margin: 5px 0;">
+                          <i class="far fa-clock"></i> Working Hours: 9am-10pm (Monday-Sunday)
+                        </p>
+                      </div>
+                    </div>
+                    <div style="font-size: 10px; color: #666;">
+                      ${timestamp}
+                    </div>
+                  </div>
+                </div>`;
+            } else {
+              // Inside sendMessage function, before the API call, add this check:
+              const carCollectionKeywords = ['car collection', 'cars', 'collection', 'show cars', 'view cars', 'available cars'];
+              if (carCollectionKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                const carCollectionSteps = `
+                  <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-car" style="color: #ffc107; margin-right: 8px;"></i>
+                      <span style="font-weight: bold;">How to View Our Car Collection:</span>
+                    </div>
+                    
+                    <ol style="margin-left: 20px; margin-bottom: 10px;">
+                      <li style="margin-bottom: 8px;">Click on "Car Collections" in the navigation menu</li>
+                      <li style="margin-bottom: 8px;">Choose from two options:
+                        <ul style="margin-left: 20px; margin-top: 4px;">
+                          <li><a href="{% url 'userdisplaycars_dtl' %}" style="color: #007bff; text-decoration: none;">Adam Car Collection</a> - Our complete luxury car inventory</li>
+                          <li><a href="{% url 'certified_cars' %}" style="color: #007bff; text-decoration: none;">Adam Certified Cars</a> - Our certified pre-owned vehicles</li>
+                        </ul>
+                      </li>
+                      <li style="margin-bottom: 8px;">Use filters to narrow down your search by:
+                        <ul style="margin-left: 20px; margin-top: 4px;">
+                          <li>Brand</li>
+                          <li>Price range</li>
+                          <li>Year</li>
+                          <li>Mileage</li>
+                        </ul>
+                      </li>
+                      <li>Click on any car to view detailed information</li>
+                    </ol>
+                  </div>`;
+
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      ${carCollectionSteps}
+                      <div style="font-size: 10px; color: #666;">
+                        ${timestamp}
+                      </div>
+                    </div>
+                  </div>`;
+              
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                return;
+              }
+
+              // Inside sendMessage function, before the API call, add this check:
+              const certifiedCarKeywords = ['certified cars', 'certified', 'certified collection', 'adam certified'];
+              if (certifiedCarKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                const certifiedCarsInfo = `
+                  <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-certificate" style="color: #ffc107; margin-right: 8px;"></i>
+                      <span style="font-weight: bold;">Adam Certified Cars</span>
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                      Our certified pre-owned vehicles undergo rigorous inspection and meet our highest quality standards.
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                      <strong>Certification Benefits:</strong>
+                      <ul style="margin-left: 20px; margin-top: 4px;">
+                        <li>Comprehensive quality inspection</li>
+                        <li>Verified accident-free history</li>
+                        <li>Extended warranty coverage</li>
+                        <li>Premium maintenance service</li>
+                      </ul>
+                    </div>
+                    
+                    <div style="margin-top: 8px;">
+                      <a href="{% url 'certified_cars' %}" style="
+                        display: inline-block;
+                        padding: 8px 16px;
+                        background-color: #000000;
+                        color: #ffc107;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        transition: transform 0.2s;">
+                        <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>View Certified Cars
+                      </a>
+                    </div>
+                  </div>`;
+
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      ${certifiedCarsInfo}
+                      <div style="font-size: 10px; color: #666;">
+                        ${timestamp}
+                      </div>
+                    </div>
+                  </div>`;
+              
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                return;
+              }
+
+              // Add to the carCollectionKeywords check block, before the API call
+              const subscriptionKeywords = ['subscription', 'subscribe', 'membership', 'premium access', 'subscription details', 'subscription plan'];
+              if (subscriptionKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                const subscriptionInfo = `
+                  <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-crown" style="color: #ffc107; margin-right: 8px;"></i>
+                      <span style="font-weight: bold;">Adam Automotive Subscriptions</span>
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                      Unlock premium features and exclusive benefits with our subscription plans.
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                      <strong>Subscription Benefits:</strong>
+                      <ul style="margin-left: 20px; margin-top: 4px;">
+                        <li>Priority access to new car listings</li>
+                        <li>Exclusive member discounts</li>
+                        <li>Premium customer support</li>
+                        <li>Early bird access to special events</li>
+                      </ul>
+                    </div>
+                    
+                    <div style="margin-top: 8px;">
+                      <a href="{% url 'sub_details' %}" style="
+                        display: inline-block;
+                        padding: 8px 16px;
+                        background-color: #000000;
+                        color: #ffc107;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        transition: transform 0.2s;">
+                        <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>View Subscription Plans
+                      </a>
+                    </div>
+                  </div>`;
+
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      ${subscriptionInfo}
+                      <div style="font-size: 10px; color: #666;">
+                        ${timestamp}
+                      </div>
+                    </div>
+                  </div>`;
+
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                return;
+              }
+
+              // Add this check before the API call in the sendMessage function
+              const perfectCarKeywords = ['perfect car', 'find perfect car', 'car finder', 'car recommendation', 'find me a car'];
+              if (perfectCarKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                const perfectCarGuide = `
+                  <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-search" style="color: #ffc107; margin-right: 8px;"></i>
+                      <span style="font-weight: bold;">How to Find Your Perfect Car:</span>
+                    </div>
+                    
+                    <ol style="margin-left: 20px; margin-bottom: 10px;">
+                      <li style="margin-bottom: 8px;">Click on your profile dropdown menu in the top navigation bar 
+                        <i class="fas fa-chevron-down" style="color: #ffc107; margin-left: 4px;"></i>
+                      </li>
+                      <li style="margin-bottom: 8px;">Look for the "Perfect Car" option in the dropdown menu 
+                        <i class="fas fa-car" style="color: #ffc107; margin-left: 4px;"></i>
+                      </li>
+                      <li style="margin-bottom: 8px;">Click on it to access our car recommendation system</li>
+                      <li style="margin-bottom: 8px;">Fill in your preferences:
+                        <ul style="margin-left: 20px; margin-top: 4px;">
+                          <li>Budget range</li>
+                          <li>Preferred brands</li>
+                          <li>Features you need</li>
+                          <li>Type of vehicle</li>
+                        </ul>
+                      </li>
+                    </ol>
+                    
+                    <div style="margin-top: 8px;">
+                      <a href="{% url 'perfect_car' %}" style="
+                        display: inline-block;
+                        padding: 8px 16px;
+                        background-color: #000000;
+                        color: #ffc107;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        transition: transform 0.2s;">
+                        <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Find Perfect Car
+                      </a>
+                    </div>
+                  </div>`;
+
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      ${perfectCarGuide}
+                      <div style="font-size: 10px; color: #666;">
+                        ${timestamp}
+                      </div>
+                    </div>
+                  </div>`;
+
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                return;
+              }
+
+              // Add this check before the API call in the sendMessage function
+              const carComplaintKeywords = ['car complaint', 'analyze complaint', 'car problem', 'analyze car', 'find problem'];
+              if (carComplaintKeywords.some(keyword => message.toLowerCase().includes(keyword))) {
+                const complaintAnalysisGuide = `
+                  <div style="background-color: #f0f0f0; padding: 12px; border-radius: 8px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-search-plus" style="color: #ffc107; margin-right: 8px;"></i>
+                      <span style="font-weight: bold;">How to Analyze Car Complaints:</span>
+                    </div>
+                    
+                    <ol style="margin-left: 20px; margin-bottom: 10px;">
+                      <li style="margin-bottom: 8px;">Click on your profile dropdown menu in the top navigation bar 
+                        <i class="fas fa-chevron-down" style="color: #ffc107; margin-left: 4px;"></i>
+                      </li>
+                      <li style="margin-bottom: 8px;">Select "Book A Service" from the dropdown menu
+                        <i class="fas fa-wrench" style="color: #ffc107; margin-left: 4px;"></i>
+                      </li>
+                      <li style="margin-bottom: 8px;">On the Book A Service page, look for the "Analyze Car Complaints" button</li>
+                      <li style="margin-bottom: 8px;">Click the button and enter your car details:
+                        <ul style="margin-left: 20px; margin-top: 4px;">
+                          <li>Make and model</li>
+                          <li>Year</li>
+                          <li>Current issues/symptoms</li>
+                        </ul>
+                      </li>
+                    </ol>
+                    
+                    <div style="margin-top: 8px;">
+                      <a href="{% url 'bookservice_dtl' %}" style="
+                        display: inline-block;
+                        padding: 8px 16px;
+                        background-color: #000000;
+                        color: #ffc107;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        transition: transform 0.2s;">
+                        <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Go to Book A Service
+                      </a>
+                    </div>
+                  </div>`;
+
+                messagesDiv.innerHTML += `
+                  <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                    <div style="max-width: 80%;">
+                      ${complaintAnalysisGuide}
+                      <div style="font-size: 10px; color: #666;">
+                        ${timestamp}
+                      </div>
+                    </div>
+                  </div>`;
+
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                return;
+              }
+
+              // Existing API call and response handling for non-contact queries
+              const response = await fetch(API_URL + '?key=' + API_KEY, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  contents: [{
+                    parts: [{
+                      text: `
+                        Context about Adam Automotive:
+                        - Luxury used car dealership
+                        - Services: Car sales, Car service/maintenance, Car buying
+                        - Working hours: Monday-Sunday, 9am-10pm
+                        - Location: Adam Towers, Edappally Kochi, Kerala - 683544
+                        - Features: Premium car collection including BMW, Mercedes, Audi
+                        - Services include car maintenance, buying and selling cars
+                        - All cars are accident-free and flood-free
+                        
+                        User query: ${message}
+                        
+                        Please provide a helpful, natural response as a car dealership assistant. Keep responses concise and professional.
+                      `
+                    }]
+                  }]
+                })
+              });
+
+              const data = await response.json();
+              let botResponse = data.candidates[0].content.parts[0].text;
+
+              // Display bot response
+              messagesDiv.innerHTML += `
+                <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                  <div style="max-width: 80%;">
+                    <div style="background-color: #f0f0f0; padding: 8px 12px; 
+                      border-radius: 12px 12px 12px 0; margin-bottom: 2px;">
+                      ${botResponse}
+                    </div>
+                    <div style="font-size: 10px; color: #666;">
+                      ${timestamp}
+                    </div>
+                  </div>
+                </div>`;
+            }
+          } catch (error) {
+            // Remove typing indicator in case of error
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+              typingIndicator.remove();
+            }
+            
+            // Show error message
+            messagesDiv.innerHTML += `
+              <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                <div style="max-width: 80%;">
+                  <div style="background-color: #fff0f0; color: #d32f2f; padding: 8px 12px; border-radius: 12px 12px 12px 0;">
+                    I apologize, but I'm having trouble connecting right now. Please try again.
+                  </div>
+                  <div style="font-size: 10px; color: #666;">
+                    ${timestamp}
+                  </div>
+                </div>
+              </div>`;
+          }
+        }
+        
+        // Scroll to bottom after new messages
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      async function fetchUserInfo() {
+        const response = await fetch('/chatbot/get_user_info/');
+        const data = await response.json();
+        return `Here are your account details:
+            Name: ${data.name}
+            Email: ${data.email}
+            Phone: ${data.phone}
+            Address: ${data.address}
+            City: ${data.city}
+            State: ${data.state}
+            Zipcode: ${data.zipcode}`;
+      }
+
+      function getHeaderForType(type) {
+        const headerConfig = {
+          account: {
+            icon: 'fas fa-user-circle',
+            title: 'Account Details'
+          },
+          liked: {
+            icon: 'fas fa-heart',
+            title: 'Liked Cars'
+          },
+          service: {
+            icon: 'fas fa-wrench',
+            title: 'Service Requests'
+          },
+          sale: {
+            icon: 'fas fa-car',
+            title: 'Sale Requests'
+          },
+          enquiry: {
+            icon: 'fas fa-question-circle',
+            title: 'Enquiries'
+          },
+          testdrive: {
+            icon: 'fas fa-key',
+            title: 'Test Drive Requests'
+          }
+        };
+
+        const config = headerConfig[type];
+        return `
+          <div style="margin-bottom: 4px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="${config.icon}" style="color: #ffc107;"></i>
+              <span style="font-size: 16px; color: #333;">${config.title}</span>
+            </div>
+            <div style="height: 2px; background-color: #ffc107; margin-top: 4px; width: 100%;"></div>
+          </div>
+        `;
+      }
+
+      function formatResponseCard(type, content) {
+        return `
+          <div style="background-color: #fff; border-radius: 8px; max-width: 280px;">
+            <div style="padding: 12px;">
+              ${getHeaderForType(type)}
+              <div style="display: grid; gap: 12px; margin-top: 12px;">
+                ${content}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      async function fetchLikedCars() {
+        const response = await fetch('/chatbot/get_liked_cars/');
+        const data = await response.json();
+        const content = data.liked_cars.length === 0 
+          ? '<div style="color: #666;">No liked cars found.</div>'
+          : data.liked_cars.map(car => `
+              <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                <div style="color: #333; font-weight: 500;">${car.manufacturer} ${car.model}</div>
+                <div style="color: #666;">Year: ${car.year}</div>
+                <div style="color: #666;">Price: ₹${car.price}</div>
+              </div>
+            `).join('');
+        
+        return formatResponseCard('liked', content);
+      }
+
+      async function fetchServiceInfo() {
+        const response = await fetch('/chatbot/get_service_info/');
+        const data = await response.json();
+        const content = data.services.length === 0
+          ? '<div style="color: #666;">No service requests found.</div>'
+          : data.services.map(service => `
+              <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                <div style="color: #333; font-weight: 500;">${service.manufacturer} ${service.model}</div>
+                <div style="color: #666;">Date: ${service.service_date}</div>
+                <div style="color: #666;">Status: ${service.status}</div>
+                <div style="color: #666;">Problem: ${service.problem}</div>
+              </div>
+            `).join('');
+
+        return formatResponseCard('service', content);
+      }
+
+      async function fetchSaleInfo() {
+        const response = await fetch('/chatbot/get_sale_info/');
+        const data = await response.json();
+        const content = data.sales.length === 0
+          ? '<div style="color: #666;">No sale requests found.</div>'
+          : data.sales.map(sale => `
+              <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                <div style="color: #333; font-weight: 500;">${sale.manufacturer} ${sale.model}</div>
+                <div style="color: #666;">Year: ${sale.year}</div>
+                <div style="color: #666;">Price: ₹${sale.price}</div>
+                <div style="color: #666;">Status: ${sale.status}</div>
+              </div>
+            `).join('');
+
+        return formatResponseCard('sale', content);
+      }
+
+      async function fetchEnquiryInfo() {
+        const response = await fetch('/chatbot/get_enquiry_info/');
+        const data = await response.json();
+        const content = data.enquiries.length === 0
+          ? '<div style="color: #666;">No enquiries found.</div>'
+          : data.enquiries.map(enquiry => `
+              <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                <div style="color: #333; font-weight: 500;">${enquiry.manufacturer} ${enquiry.model}</div>
+                <div style="color: #666;">Year: ${enquiry.year}</div>
+                <div style="color: #666;">Status: ${enquiry.status}</div>
+                <div style="color: #666;">Description: ${enquiry.description}</div>
+              </div>
+            `).join('');
+
+        return formatResponseCard('enquiry', content);
+      }
+
+      async function fetchTestDriveInfo() {
+        const response = await fetch('/chatbot/get_test_drive_info/');
+        const data = await response.json();
+        const content = data.test_drives.length === 0
+          ? '<div style="color: #666;">No test drive bookings found.</div>'
+          : data.test_drives.map(booking => `
+              <div style="border-bottom: 1px solid #eee; padding-bottom: 8px;">
+                <div style="color: #333; font-weight: 500;">${booking.car}</div>
+                <div style="color: #666;">Date: ${booking.date}</div>
+                <div style="color: #666;">Time: ${booking.time}</div>
+                <div style="color: #666;">Status: ${booking.status}</div>
+              </div>
+            `).join('');
+
+        return formatResponseCard('testdrive', content);
+      }
+
+      function displayBotResponse(message) {
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        if (message.includes('Name:') || message.includes('Email:')) {
+          const lines = message.split('\n').filter(line => line.trim());
+          const formattedMessage = `
+            <div style="background-color: #fff; border-radius: 8px; max-width: 280px;">
+              <div style="padding: 12px;">
+                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-user-circle" style="color: #ffc107; margin-right: 8px;"></i>
+                  <span style="font-size: 16px; color: #333;">Account Details</span>
+                </div>
+                <div style="height: 2px; background-color: #ffc107; margin-bottom: 12px;"></div>
+                
+                <div style="display: grid; gap: 12px;">
+                  ${lines.map(line => {
+                    const [key, ...valueParts] = line.split(':');
+                    const value = valueParts.join(':').trim();
+                    if (key && value) {
+                      return `
+                        <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px;">
+                          <span style="color: #666;">${key}:</span>
+                          <span style="color: #333; word-break: break-word; overflow-wrap: break-word;">${value}</span>
+                        </div>
+                      `;
+                    }
+                    return '';
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+
+          messagesDiv.innerHTML += `
+            <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+              <div style="max-width: 280px;">
+                ${formattedMessage}
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                  <div style="font-size: 10px; color: #666;">
+                    ${timestamp}
+                  </div>
+                  <button onclick="endChat()" 
+                          style="background: #dc3545; 
+                                 color: white; 
+                                 border: none; 
+                                 padding: 4px 8px; 
+                                 border-radius: 4px; 
+                                 font-size: 10px; 
+                                 cursor: pointer;">
+                    End Chat
+                  </button>
+                </div>
+              </div>
+            </div>`;
+        } else {
+          // Regular message handling
+          messagesDiv.innerHTML += `
+            <div style="display: flex; justify-content: flex-start; margin: 8px 0;">
+              <div style="max-width: 80%;">
+                <div style="background-color: #f8f9fa; padding: 8px 12px; border-radius: 12px 12px 12px 0;">
+                  ${message}
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                  <div style="font-size: 10px; color: #666;">
+                    ${timestamp}
+                  </div>
+                  <button onclick="endChat()" 
+                          style="background: #dc3545; 
+                                 color: white; 
+                                 border: none; 
+                                 padding: 4px 8px; 
+                                 border-radius: 4px; 
+                                 font-size: 10px; 
+                                 cursor: pointer;">
+                    End Chat
+                  </button>
+                </div>
+              </div>
+            </div>`;
+        }
+        
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function endChat() {
+        // Hide chatbot and show toggle button
+        const chatbot = document.getElementById('chatbot');
+        const toggleBtn = document.getElementById('chat-toggle-btn');
+        chatbot.style.display = 'none';
+        toggleBtn.style.display = 'block';
+        
+        // Refresh the page
+        window.location.reload();
+      }
+
+      // Add Enter key handler
+      document.getElementById('chatbot-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+
+      function refreshChat() {
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const input = document.getElementById('chatbot-input');
+        
+        // Reset chat state
+        userName = '';
+        isFirstMessage = true;
+        
+        // Clear messages and reset input
+        messagesDiv.innerHTML = `<div><strong>Bot:</strong> Please enter your name to get started.</div>`;
+        input.value = '';
+        input.placeholder = "Start With Your Name...";
+      }
+    </script>
+
+    <style>
+      .typing-indicator {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 12px;
+        background: #f0f0f0;
+        border-radius: 12px 12px 12px 0;
+        margin-bottom: 2px;
+      }
+      
+      .typing-dot {
+        width: 6px;
+        height: 6px;
+        background: #666;
+        border-radius: 50%;
+        animation: typingAnimation 1s infinite ease-in-out;
+      }
+      
+      .typing-dot:nth-child(1) { animation-delay: 200ms; }
+      .typing-dot:nth-child(2) { animation-delay: 300ms; }
+      .typing-dot:nth-child(3) { animation-delay: 400ms; }
+      
+      @keyframes typingAnimation {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0px); }
+      }
+    </style>
+      
+</body>
+
+</html>

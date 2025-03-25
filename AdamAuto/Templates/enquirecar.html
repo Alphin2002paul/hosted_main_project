@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="{% static 'css/accounts.css' %}" rel="stylesheet" />
+    <style>
+      .error {
+        color: red;
+        font-size: 15px;
+      }
+      .k {
+        border-radius: 10%;
+      }
+      body {
+        background-color: #333; /* Darkish grey background */
+        color: #fff; /* White text color for better contrast */
+        background-image: url("{% static 'images/car2.jpg' %}");
+      }
+      element.style {
+        margin-left: 870px;
+    }
+    .purchase-card {
+      width: 80%; /* Further reduced width */
+      max-width: 350px; /* Smaller maximum width */
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      margin-bottom: 15px;
+    }
+
+    .purchase-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .purchase-card-header {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 12px;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .purchase-card-body {
+      padding: 12px;
+    }
+
+    .purchase-card-body p {
+      margin-bottom: 0.3rem;
+      font-size: 0.85em;
+    }
+
+    .purchase-card-footer {
+      background-color: #f1f3f5;
+      padding: 8px 12px;
+      text-align: right;
+    }
+
+    .btn-receipt, .btn-feedback {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 0.8em;
+    }
+
+    .btn-receipt {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      margin-right: 10px;
+    }
+
+    .btn-receipt:hover {
+      background-color: #218838;
+    }
+
+    .btn-feedback {
+      background-color: #ffc107;
+      color: #212529;
+      border: none;
+    }
+
+    .btn-feedback:hover {
+      background-color: #e0a800;
+    }
+
+    #pageIndicator {
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    #prevButton, #nextButton {
+      min-width: 100px;
+    }
+
+    .car-image {
+      width: 100%;
+      height: 120px; /* Further reduced height */
+      object-fit: cover;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .purchase-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Details | Adam Automotive</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add this line to include SweetAlert2 library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+   
+    <h1 align="center"> Enquirey Panel </h1><hr>
+    <div class="container mt-5">
+      {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+              {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+      <div class="row justify-content-center">
+        <div class="col-lg-4 pb-5">
+          <!-- Account Sidebar -->
+          <div class="author-card pb-3">
+            <div class="author-card-cover" style="background-image: url('{% static 'images/logo.png' %}');"></div>
+            <div class="author-card-profile">
+              <div class="author-card-avatar">
+                <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Customer Photo" class="k" />
+
+            </div>
+              <div class="author-card-details">
+                <h5 class="author-card-name text-lg">{{ user.first_name }} {{ user.last_name }}</h5>
+                <span class="author-card-position">Joined on<br />{{ user.date_joined }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush">
+              <a class="list-group-item" href="{% url 'account_dtl' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Overview</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'account_edit' %}"><i class="fe-icon-user text-muted"></i>Edit Profile Settings</a>
+              <a class="list-group-item active" href="{% url 'enquirecar' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Enquire a Car</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item " href="{% url 'mybookings' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Purchase History</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'sub_details' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Subscription Details</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'main' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-tag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Home page</div>
+                  </div>
+                  <span class="badge badge-secondary"></span>
+                </div>
+              </a>
+            </nav>
+          </div>
+        </div>
+        <!-- New Purchase Cards with Pagination -->
+        <div class="col-lg-8">
+          <h2 class="mb-4">Enquire About a Car</h2><hr>
+          <form id="enquireForm" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="manufacturer">Manufacturer Name</label>
+                <input type="text" class="form-control" id="manufacturer" name="manufacturer" required>
+                <small class="error" id="manufacturer-error"></small>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="model_name">Model Name</label>
+                <input type="text" class="form-control" id="model_name" name="model_name" required>
+                <small class="error" id="model_name-error"></small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="model_year">Model Year</label>
+                <input type="number" class="form-control" id="model_year" name="model_year" required>
+                <small class="error" id="model_year-error"></small>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="color">Color</label>
+                <input type="text" class="form-control" id="color" name="color" required>
+                <small class="error" id="color-error"></small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+              <small class="error" id="description-error"></small>
+            </div><br><br>
+            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        var currentIndex = 0;
+        var totalPages = {{ purchases|length }};
+        var $purchaseCards = $('.purchase-card');
+        var $currentPage = $('#currentPage');
+        var $prevButton = $('#prevButton');
+        var $nextButton = $('#nextButton');
+
+        function showCard(index) {
+          $purchaseCards.hide();
+          $purchaseCards.eq(index).show();
+          $currentPage.text(index + 1);
+          $prevButton.prop('disabled', index === 0);
+          $nextButton.prop('disabled', index === totalPages - 1);
+        }
+
+        $prevButton.click(function() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            showCard(currentIndex);
+          }
+        });
+
+        $nextButton.click(function() {
+          if (currentIndex < totalPages - 1) {
+            currentIndex++;
+            showCard(currentIndex);
+          }
+        });
+
+        // Initialize
+        showCard(currentIndex);
+
+        // Form validation
+        var $form = $('#enquireForm');
+        var $submitBtn = $('#submitBtn');
+        var fields = ['manufacturer', 'model_name', 'model_year', 'color', 'description'];
+
+        function validateField(field) {
+          var value = $('#' + field).val();
+          var error = '';
+
+          if (value.length < 2) {
+            error = 'Minimum 2 characters required';
+          } else if (/[^a-zA-Z0-9\s]/.test(value)) {
+            error = 'No special characters allowed';
+          }
+
+          $('#' + field + '-error').text(error);
+          return error === '';
+        }
+
+        function validateForm() {
+          var isValid = true;
+          fields.forEach(function(field) {
+            if (!validateField(field)) {
+              isValid = false;
+            }
+          });
+          $submitBtn.prop('disabled', !isValid);
+        }
+
+        fields.forEach(function(field) {
+          $('#' + field).on('keyup', function() {
+            validateField(field);
+            validateForm();
+          });
+        });
+
+        $form.on('submit', function(e) {
+          e.preventDefault();
+          var manufacturer = $('#manufacturer').val();
+          var model_name = $('#model_name').val();
+
+          // First, check if an enquiry already exists
+          $.ajax({
+            url: '{% url "check_existing_enquiry" %}',
+            type: 'POST',
+            data: {
+              'manufacturer': manufacturer,
+              'model_name': model_name,
+              'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+              if (response.exists) {
+                // Enquiry already exists, show SweetAlert2
+                Swal.fire({
+                  title: 'Enquiry Already Exists',
+                  text: 'You have already made an enquiry for this car model.',
+                  icon: 'info',
+                  confirmButtonText: 'OK'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = "{% url 'account_dtl' %}";
+                  }
+                });
+              } else {
+                // No existing enquiry, proceed with submission
+                submitEnquiry();
+              }
+            },
+            error: function(xhr, status, error) {
+              console.error("AJAX Error:", status, error);
+              console.log("Response Text:", xhr.responseText);
+              Swal.fire({
+                title: 'Error!',
+                text: 'Error checking existing enquiries. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        });
+
+        function submitEnquiry() {
+          $.ajax({
+            url: '{% url "submit_enquiry" %}',
+            type: 'POST',
+            data: $form.serialize(),
+            success: function(response) {
+              Swal.fire({
+                title: 'Success!',
+                text: 'Enquiry submitted successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = "{% url 'account_dtl' %}";
+                }
+              });
+              $form[0].reset();
+              validateForm();
+            },
+            error: function(xhr) {
+              Swal.fire({
+                title: 'Error!',
+                text: 'Error submitting enquiry. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

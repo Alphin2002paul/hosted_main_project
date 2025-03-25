@@ -1,0 +1,430 @@
+manufacturer,model,year,description,comfort,performance,fuel_efficiency,safety,technology
+Cadillac,CT4,2022,Mixed reviews from users. Average comfort level. Performance is decent. Fuel efficiency is average. Excellent safety features. Technology is moderate.,7,7,7,8,7
+Lotus,Evora,2020,Highly recommended by users. Average comfort level. Outstanding performance. Fuel efficiency is average. Safety could be improved. Advanced technology.,6,10,6,4,9
+Bentley,Continental GT,2016,Mixed reviews from users. Comfortable ride. Performance is decent. Fuel efficiency is poor. Safety could be improved. Technology is moderate.,8,7,5,4,6
+Mercedes-Benz,C-Class,2018,Mixed reviews from users. Comfortable ride. Outstanding performance. Fuel efficient. Safety is satisfactory. Advanced technology.,9,8,10,7,8
+Nissan,Altima,2022,Mixed reviews from users. Comfort could be improved. Performance is decent. Fuel efficiency is average. Safety is satisfactory. Lacking in technology features.,4,6,6,7,5
+Pagani,Huayra,2016,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficient. Safety could be improved. Advanced technology.,10,4,8,5,10
+Jaguar,F-Pace,2021,Mixed reviews from users. Comfort could be improved. Performance lacks power. Fuel efficient. Safety could be improved. Lacking in technology features.,4,3,8,4,3
+Chevrolet,Malibu,2015,Mixed reviews from users. Comfort could be improved. Performance is decent. Fuel efficiency is poor. Excellent safety features. Advanced technology.,5,6,3,10,9
+Fiat,500,2017,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety could be improved. Lacking in technology features.,4,3,3,4,4
+Acura,TLX,2023,Highly recommended by users. Average comfort level. Performance is decent. Fuel efficient. Excellent safety features. Lacking in technology features.,6,6,8,8,4
+Morgan,Plus 4,2015,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficiency is poor. Excellent safety features. Technology is moderate.,10,4,3,9,7
+BAC,Mono,2016,Mixed reviews from users. Average comfort level. Outstanding performance. Fuel efficiency is poor. Excellent safety features. Technology is moderate.,7,10,5,8,7
+Chevrolet,Impala,2018,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficiency is average. Excellent safety features. Technology is moderate.,5,7,6,9,7
+Acura,MDX,2023,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is poor. Excellent safety features. Lacking in technology features.,10,7,4,10,4
+Mini,Cooper,2022,Mixed reviews from users. Comfort could be improved. Performance lacks power. Fuel efficiency is average. Excellent safety features. Lacking in technology features.,3,4,6,8,4
+Hyundai,Elantra,2021,Highly recommended by users. Average comfort level. Performance lacks power. Fuel efficient. Safety could be improved. Advanced technology.,7,5,9,5,8
+Cadillac,XT5,2017,Mixed reviews from users. Comfort could be improved. Outstanding performance. Fuel efficient. Safety is satisfactory. Advanced technology.,4,9,10,7,10
+Cadillac,CT5,2018,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficiency is poor. Excellent safety features. Technology is moderate.,10,10,3,9,7
+Bentley,Bentayga,2015,Highly recommended by users. Comfort could be improved. Outstanding performance. Fuel efficiency is average. Excellent safety features. Advanced technology.,4,9,6,10,10
+Volvo,S60,2018,Mixed reviews from users. Average comfort level. Outstanding performance. Fuel efficiency is poor. Excellent safety features. Advanced technology.,7,8,4,9,8
+Koenigsegg,Agera,2016,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficiency is poor. Safety is satisfactory. Technology is moderate.,9,10,4,7,7
+Kia,Sportage,2022,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety is satisfactory. Technology is moderate.,5,3,4,7,7
+Lamborghini,Urus,2023,Mixed reviews from users. Average comfort level. Performance is decent. Fuel efficient. Excellent safety features. Lacking in technology features.,7,7,10,8,4
+Honda,Civic,2023,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Safety is satisfactory. Technology is moderate.,10,10,8,7,6
+Lincoln,Nautilus,2019,Mixed reviews from users. Average comfort level. Outstanding performance. Fuel efficiency is average. Excellent safety features. Advanced technology.,6,10,6,10,8
+Volvo,XC90,2021,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficiency is average. Excellent safety features. Lacking in technology features.,10,4,6,9,5
+Maserati,Levante,2023,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is average. Safety could be improved. Lacking in technology features.,8,7,6,5,5
+Smart,Fortwo,2018,Mixed reviews from users. Average comfort level. Performance lacks power. Fuel efficiency is average. Excellent safety features. Technology is moderate.,6,5,7,10,7
+Maserati,Ghibli,2022,Mixed reviews from users. Comfortable ride. Outstanding performance. Fuel efficiency is poor. Excellent safety features. Lacking in technology features.,8,8,5,10,5
+Volkswagen,Passat,2016,Mixed reviews from users. Average comfort level. Performance lacks power. Fuel efficiency is average. Safety is satisfactory. Advanced technology.,7,3,6,7,8
+Buick,Enclave,2021,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficient. Safety could be improved. Advanced technology.,9,3,10,5,10
+Land Rover,Defender,2017,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is average. Excellent safety features. Lacking in technology features.,10,6,6,10,5
+Mitsubishi,Outlander,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety could be improved. Lacking in technology features.,10,7,10,4,5
+GMC,Yukon,2017,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficient. Excellent safety features. Advanced technology.,3,6,8,9,8
+Ford,Mustang,2019,Mixed reviews from users. Average comfort level. Performance lacks power. Fuel efficiency is average. Safety could be improved. Lacking in technology features.,7,5,7,5,5
+Lotus,Elise,2022,Mixed reviews from users. Comfortable ride. Outstanding performance. Fuel efficiency is average. Excellent safety features. Lacking in technology features.,8,8,6,8,4
+Rimac,Concept One,2016,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Lacking in technology features.,8,10,9,9,5
+Rimac,C_Two,2015,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Excellent safety features. Technology is moderate.,3,5,3,8,7
+Porsche,911,2021,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety could be improved. Lacking in technology features.,4,4,3,5,3
+Morgan,Plus 6,2018,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Excellent safety features. Advanced technology.,10,6,8,9,8
+BAC,Mono R,2015,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is average. Safety could be improved. Lacking in technology features.,9,7,6,4,4
+Smart,Forfour,2020,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,3,8,7,6
+Hyundai,Sonata,2021,Highly recommended by users. Average comfort level. Performance lacks power. Fuel efficient. Safety could be improved. Advanced technology.,6,5,10,4,8
+Chrysler,Pacifica,2022,Mixed reviews from users. Comfort could be improved. Outstanding performance. Fuel efficiency is average. Safety could be improved. Lacking in technology features.,4,9,7,3,3
+Acura,ILX,2017,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficiency is average. Safety could be improved. Advanced technology.,10,4,7,5,9
+Genesis,G70,2021,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficient. Safety is satisfactory. Technology is moderate.,8,4,10,7,6
+Smart,EQ Forfour,2015,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is average. Excellent safety features. Technology is moderate.,9,6,6,8,6
+Mazda,CX-5,2016,Mixed reviews from users. Comfortable ride. Outstanding performance. Fuel efficiency is average. Safety could be improved. Lacking in technology features.,10,10,7,3,4
+Volvo,V60,2020,Mixed reviews from users. Comfort could be improved. Performance lacks power. Fuel efficient. Safety is satisfactory. Lacking in technology features.,5,4,8,7,4
+Acura,RDX,2020,Mixed reviews from users. Comfortable ride. Performance is decent. Fuel efficiency is poor. Safety could be improved. Advanced technology.,10,7,3,5,9
+Tesla,Model S,2022,Mixed reviews from users. Comfort could be improved. Performance is decent. Fuel efficiency is average. Safety could be improved. Advanced technology.,3,6,6,5,10
+Morgan,Plus 8,2018,Mixed reviews from users. Comfort could be improved. Performance lacks power. Fuel efficient. Safety could be improved. Lacking in technology features.,4,5,9,3,3
+Aston Martin,DBX,2022,Highly recommended by users. Average comfort level. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,6,8,9,9,8
+Smart,EQ Fortwo,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is poor. Safety is satisfactory. Advanced technology.,9,7,5,7,10
+Alfa Romeo,Giulia,2021,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficiency is average. Safety could be improved. Technology is moderate.,8,4,7,5,7
+BMW,3 Series,2017,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,4,8,7,7
+Cadillac,XT4,2019,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficient. Safety could be improved. Technology is moderate.,9,3,8,5,6
+Bugatti,Chiron,2022,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficient. Safety could be improved. Lacking in technology features.,4,7,10,5,5
+BMW,5 Series,2022,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficiency is poor. Safety is satisfactory. Lacking in technology features.,10,8,3,7,4
+Infiniti,Q50,2022,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Excellent safety features. Advanced technology.,5,5,3,10,10
+Hyundai,Tucson,2019,Mixed reviews from users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety is satisfactory. Technology is moderate.,5,3,4,6,6
+Honda,Accord,2022,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficiency is average. Safety is satisfactory. Lacking in technology features.,10,4,6,6,5
+Buick,Encore,2015,Mixed reviews from users. Comfort could be improved. Outstanding performance. Fuel efficiency is average. Excellent safety features. Lacking in technology features.,3,8,7,8,4
+Maserati,Quattroporte,2022,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficiency is average. Safety is satisfactory. Advanced technology.,4,7,7,6,8
+Hyundai,Kona,2023,Mixed reviews from users. Comfortable ride. Outstanding performance. Fuel efficient. Safety could be improved. Lacking in technology features.,8,8,9,5,4
+Lotus,Exige,2016,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety could be improved. Lacking in technology features.,4,4,4,3,3
+Tesla,Model 3,2023,Mixed reviews from users. Average comfort level. Performance is decent. Fuel efficient. Excellent safety features. Technology is moderate.,6,6,9,9,7
+Land Rover,Range Rover,2019,Mixed reviews from users. Comfortable ride. Outstanding performance. Fuel efficiency is poor. Safety could be improved. Lacking in technology features.,8,9,5,4,3
+Infiniti,QX60,2017,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety is satisfactory. Technology is moderate.,4,3,3,7,7
+Mercedes-Benz,E-Class,2022,Mixed reviews from users. Comfort could be improved. Outstanding performance. Fuel efficiency is average. Safety could be improved. Technology is moderate.,5,9,6,5,7
+Morgan,Plus 4,2015,Mixed reviews from users. Average comfort level. Outstanding performance. Fuel efficient. Safety could be improved. Technology is moderate.,7,9,10,3,6
+Dodge,Charger,2023,Highly recommended by users. Average comfort level. Performance lacks power. Fuel efficiency is poor. Safety could be improved. Lacking in technology features.,7,3,3,4,4
+Audi,A4,2022,Highly recommended by users. Average comfort level. Outstanding performance. Fuel efficiency is poor. Excellent safety features. Technology is moderate.,6,10,3,9,7
+Rimac,Concept Two,2023,Mixed reviews from users. Comfortable ride. Performance is decent. Fuel efficiency is poor. Excellent safety features. Lacking in technology features.,9,7,5,8,3
+Ford,Focus,2015,Mixed reviews from users. Comfort could be improved. Outstanding performance. Fuel efficient. Safety could be improved. Advanced technology.,4,9,8,4,9
+Lotus,Evora,2018,Mixed reviews from users. Comfort could be improved. Performance lacks power. Fuel efficiency is poor. Safety is satisfactory. Lacking in technology features.,3,4,4,7,4
+Jeep,Wrangler,2019,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficiency is poor. Safety is satisfactory. Lacking in technology features.,8,4,3,6,3
+Lotus,Elise,2018,Highly recommended by users. Average comfort level. Outstanding performance. Fuel efficiency is poor. Safety could be improved. Advanced technology.,7,9,4,5,8
+Dodge,Challenger,2023,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficiency is poor. Safety is satisfactory. Lacking in technology features.,9,8,4,7,3
+Ariel,Atom,2018,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is poor. Safety could be improved. Advanced technology.,9,6,4,3,10
+Bentley,Continental GT,2015,Highly recommended by users. Comfort could be improved. Performance lacks power. Fuel efficiency is average. Safety is satisfactory. Lacking in technology features.,4,4,7,7,3
+Caterham,Seven,2022,Highly recommended by users. Average comfort level. Outstanding performance. Fuel efficiency is average. Excellent safety features. Advanced technology.,6,9,7,9,8
+Chrysler,300,2023,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Advanced technology.,9,7,8,7,10
+Chevrolet,Camaro,2020,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficiency is poor. Excellent safety features. Lacking in technology features.,5,6,4,9,4
+Ferrari,488,2018,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficiency is average. Safety is satisfactory. Advanced technology.,8,4,7,7,8
+Rimac,Concept S,2019,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficiency is average. Excellent safety features. Lacking in technology features.,5,7,7,9,4
+Pagani,Zonda,2017,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Lacking in technology features.,10,9,9,9,5
+Jaguar,E-Pace,2022,Mixed reviews from users. Comfort could be improved. Performance is decent. Fuel efficiency is average. Safety is satisfactory. Lacking in technology features.,5,7,7,7,5
+Rolls-Royce,Phantom,2018,Highly recommended by users. Comfort could be improved. Performance is decent. Fuel efficient. Safety is satisfactory. Advanced technology.,5,7,8,7,10
+Volkswagen,Golf,2019,Highly recommended by users. Comfortable ride. Performance lacks power. Fuel efficiency is poor. Safety could be improved. Technology is moderate.,9,4,3,3,6
+moderate.,9,4,3,3,6
+Acura,NSX,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,10,9,9,10
+BMW,7 Series,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficiency is average. Safety could be improved. Technology is moderate.,10,7,6,5,7
+Audi,Q5,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Equinox,2018,Mixed reviews from users. Comfortable ride. Performance lacks power. Fuel efficiency is average. Safety is satisfactory. Technology is moderate.,8,4,6,7,7
+Ford,Explorer,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety could be improved. Lacking in technology features.,10,7,8,5,4
+Jaguar,XE,2017,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Corolla,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Camry,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Honda,CR-V,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Honda,Pilot,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,3,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,6,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Outback,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Forester,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,Jetta,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,Tiguan,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,F-150,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Ranger,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Silverado,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Colorado,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,1500,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,2500,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Canyon,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Frontier,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Titan,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Tacoma,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Tundra,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Grand Cherokee,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Compass,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Santa Fe,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Venue,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Seltos,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Sorento,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,CX-3,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,CX-30,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Crosstrek,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Ascent,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,Atlas,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,ID.4,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Bronco,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,EcoSport,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Blazer,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Trailblazer,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster City,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Savana,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Yukon XL,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Armada,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Kicks,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,4Runner,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Highlander,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Renegade,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Gladiator,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Palisade,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Kona Electric,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Niro,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Soul,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,CX-9,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5 Miata,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Impreza,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,WRX,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,Arteon,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,Beetle,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Edge,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Escape,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Suburban,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Tahoe,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster Window Van,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster Cargo Van,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Acadia,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Terrain,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Murano,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Rogue,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,RAV4,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Sequoia,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Cherokee,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Patriot,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Tucson,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Veloster,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Stinger,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Optima,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,MX-30,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,5,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Legacy,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,BRZ,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,CC,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,Passat,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Expedition,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Fusion,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Traverse,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Trax,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster City Wagon,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster City Cargo Van,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Yukon Denali,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra Denali,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Pathfinder,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Maxima,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Land Cruiser,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Highlander Hybrid,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Wrangler Unlimited,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Liberty,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Ioniq,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Nexo,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Rio,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Forte,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,2,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Outback Wilderness,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Forester Sport,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,ID.3,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,T-Roc,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mach-E,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Transit,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Bolt,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Spark,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,1500 Classic,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,3500,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 1500,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra 2500,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Versa,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Sentra,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Yaris,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Avalon,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Commander,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Compass Trailhawk,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Accent,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Elantra GT,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Cadenza,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,K900,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,3 Hatchback,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,6 Signature,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Impreza Sport,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,WRX STI,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,Atlas Cross Sport,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,ID.4 GTX,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mustang GT,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Expedition Max,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Blazer RS,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Trailblazer ACTIV,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster 1500,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster 2500,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 3500,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Yukon AT4,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Altima SR,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Maxima Platinum,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Corolla Hatchback,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Camry TRD,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Grand Cherokee L,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Gladiator Mojave,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Sonata Hybrid,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Veloster N,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Stinger GT,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Optima Hybrid,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,CX-5 Signature,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5 RF,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Legacy Limited,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,BRZ tS,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,CC R-Line,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,Passat R-Line,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Expedition King Ranch,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Fusion Energi,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Traverse High Country,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Trax Premier,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster City SLT,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster City Tradesman,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Yukon Denali XL,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra Denali HD,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Pathfinder Rock Creek,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Maxima SR,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Land Cruiser Heritage,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Highlander XSE,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Wrangler Rubicon,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Liberty Limited,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Ioniq Electric,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Nexo Blue,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Rio S,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Forte GT,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,2 Sport,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5 Club,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Outback Onyx,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Forester Limited,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,ID.3 Pro,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,T-Roc R,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mach-E GT,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Transit Connect,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Bolt EV,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Spark ACTIV,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,1500 Laramie,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,3500 Limited,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 1500 AT4,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra 2500 Denali,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Versa Note,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Sentra Nismo,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Yaris GR,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Avalon TRD,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Commander Overland,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Compass Latitude,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Wrangler Unlimited,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Liberty,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Ioniq,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Nexo,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Rio,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Forte,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,2,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Outback Wilderness,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Forester Sport,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,ID.3,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,T-Roc,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mach-E,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Transit,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Bolt,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Spark,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,1500 Classic,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,3500,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 1500,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra 2500,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Versa,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Sentra,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Yaris,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Avalon,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Commander,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Compass Trailhawk,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Accent,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Elantra GT,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Cadenza,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,K900,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,3 Hatchback,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,6 Signature,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Impreza Sport,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,WRX STI,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,Atlas Cross Sport,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,ID.4 GTX,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mustang GT,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Expedition Max,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Blazer RS,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Trailblazer ACTIV,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster 1500,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster 2500,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 3500,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Yukon AT4,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Altima SR,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Maxima Platinum,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Corolla Hatchback,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Camry TRD,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Grand Cherokee L,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Gladiator Mojave,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Sonata Hybrid,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Veloster N,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Stinger GT,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Optima Hybrid,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,CX-5 Signature,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5 RF,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Legacy Limited,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,BRZ tS,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,CC R-Line,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,Passat R-Line,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Expedition King Ranch,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Fusion Energi,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Traverse High Country,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Trax Premier,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,ProMaster City SLT,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,ProMaster City Tradesman,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Yukon Denali XL,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra Denali HD,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Pathfinder Rock Creek,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Maxima SR,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Land Cruiser Heritage,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Highlander XSE,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Wrangler Rubicon,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Liberty Limited,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Ioniq Electric,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Nexo Blue,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Porsche,Panamera,2017,Highly recommended by users. Comfortable less ride. Outstanding performance. Less Fuel efficient. Excellent safety features. Advanced technology.,2,8,2,5,6
+Kia,Rio S,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Forte GT,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,2 Sport,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5 Club,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Outback Onyx,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Forester Limited,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,ID.3 Pro,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,T-Roc R,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mach-E GT,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Transit Connect,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Bolt EV,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Spark ACTIV,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,1500 Laramie,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,3500 Limited,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 1500 AT4,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra 2500 Denali,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Versa Note,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Sentra Nismo,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Yaris GR,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Avalon TRD,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Commander Overland,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Compass Latitude,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Wrangler Unlimited,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Porsche,Panamera,2019,Highly recommended by users. Comfortable less ride. Outstanding performance. Less Fuel efficient. Excellent safety features. Moderate technology.,1,9,3,9,8
+Jeep,Liberty,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Ioniq,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Nexo,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Rio,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Forte,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,2,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,MX-5,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Outback Wilderness,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,Forester Sport,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,ID.3,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,T-Roc,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Porsche,Panamera,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Less Fuel efficient. Excellent safety features. Moderate technology.,1,8,2,7,7
+Ford,Mach-E,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Transit,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Chevrolet,Bolt,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Chevrolet,Spark,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ram,1500 Classic,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ram,3500,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+GMC,Sierra 1500,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+GMC,Sierra 2500,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Nissan,Versa,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Nissan,Sentra,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Toyota,Yaris,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Toyota,Camry TRD,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Jeep,Grand Cherokee L,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Jeep,Gladiator Mojave,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Hyundai,Sonata Hybrid,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Hyundai,Veloster N,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Kia,Stinger GT,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Kia,Optima Hybrid,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Mazda,3 Hatchback,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Mazda,6 Signature,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Subaru,Impreza Sport,2021,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Subaru,WRX STI,2020,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Volkswagen,Atlas Cross Sport,2019,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Volkswagen,ID.4 GTX,2021,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Ford,Mustang GT,2020,Highly recommended by users. Comfortable ride. Performance is decent. Fuel efficient. Safety is satisfactory. Technology is moderate.,9,7,8,7,7
+Ford,Expedition Max,2019,Highly recommended by users. Comfortable ride. Outstanding performance. Fuel efficient. Excellent safety features. Advanced technology.,10,9,9,9,10
+Porsche,Panamera,2017,Highly recommended by users. Comfortable ride. Outstanding performance. Less Fuel efficient. Excellent safety features. Advanced technology.,6,6,6,6,6

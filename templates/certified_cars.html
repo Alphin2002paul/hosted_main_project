@@ -1,0 +1,40 @@
+<!-- Add this modal HTML somewhere in your template -->
+<div class="modal fade" id="subscriptionExpiredModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Subscription Expired</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your subscription has expired. Please renew to continue accessing certified cars.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'sub_details' %}" class="btn btn-primary">Renew Subscription</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add this JavaScript at the bottom of your template -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    {% if subscription_expired %}
+        var modal = new bootstrap.Modal(document.getElementById('subscriptionExpiredModal'));
+        modal.show();
+    {% endif %}
+    
+    // For any buttons that should trigger the modal for expired subscriptions
+    const certifiedButtons = document.querySelectorAll('.certified-car-btn');
+    certifiedButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            {% if subscription_expired %}
+                e.preventDefault();
+                var modal = new bootstrap.Modal(document.getElementById('subscriptionExpiredModal'));
+                modal.show();
+            {% endif %}
+        });
+    });
+});
+</script> 

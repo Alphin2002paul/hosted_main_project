@@ -1,0 +1,1170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="{% static 'css/accounts.css' %}" rel="stylesheet" />
+    <style>
+      .error {
+        color: red;
+        font-size: 15px;
+      }
+      .k {
+        border-radius: 10%;
+      }
+      body {
+        background-color: #333; /* Darkish grey background */
+        color: #fff; /* White text color for better contrast */
+        background-image: url("{% static 'images/car2.jpg' %}");
+      }
+      element.style {
+        margin-left: 870px;
+    }
+    .purchase-card {
+      width: 80%; /* Further reduced width */
+      max-width: 350px; /* Smaller maximum width */
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      margin-bottom: 15px;
+    }
+
+    .purchase-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .purchase-card-header {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 12px;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .purchase-card-body {
+      padding: 12px;
+    }
+
+    .purchase-card-body p {
+      margin-bottom: 0.3rem;
+      font-size: 0.85em;
+    }
+
+    .purchase-card-footer {
+      background-color: #f1f3f5;
+      padding: 8px 12px;
+      text-align: right;
+    }
+
+    .btn-receipt, .btn-feedback {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 0.8em;
+    }
+
+    .btn-receipt {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      margin-right: 10px;
+    }
+
+    .btn-receipt:hover {
+      background-color: #218838;
+    }
+
+    .btn-feedback {
+      background-color: #ffc107;
+      color: #212529;
+      border: none;
+    }
+
+    .btn-feedback:hover {
+      background-color: #e0a800;
+    }
+
+    #pageIndicator {
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    #prevButton, #nextButton {
+      min-width: 100px;
+    }
+
+    .car-image {
+      width: 100%;
+      height: 120px; /* Further reduced height */
+      object-fit: cover;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .purchase-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .badge-success {
+      background-color: #28a745;
+      color: white;
+    }
+    
+    .badge-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+    
+    .badge {
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8em;
+    }
+    
+    .list-unstyled li {
+      margin-bottom: 5px;
+      color: #333;
+    }
+    
+    .fe-icon-check {
+      color: #28a745;
+    }
+
+    .subscription-card {
+        max-width: 600px;
+        margin: 1.5rem auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .subscription-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .subscription-header {
+        background: linear-gradient(135deg, #0061f2 0%, #00a6ff 100%);
+        color: white;
+        padding: 1.2rem;
+        text-align: center;
+    }
+
+    .subscription-header h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .subscription-body {
+        padding: 1.5rem;
+    }
+
+    .subscription-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .info-label {
+        color: #666;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .info-value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .status-badge.active {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+
+    .status-badge.inactive {
+        background: #ffebee;
+        color: #c62828;
+    }
+
+    .benefits-section {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .benefits-section h4 {
+        color: #333;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .benefits-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+        color: #555;
+    }
+
+    .benefits-list i {
+        color: #2e7d32;
+    }
+
+    .subscription-footer {
+        padding: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        background: #f8f9fa;
+        flex-wrap: wrap;
+    }
+
+    .btn-change, .btn-cancel {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-change {
+        background: #0061f2;
+        color: white;
+    }
+
+    .btn-change:hover {
+        background: #0056d6;
+        transform: translateY(-2px);
+    }
+
+    .btn-cancel {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-cancel:hover {
+        background-color: #c82333;
+        transform: translateY(-2px);
+    }
+
+    /* Add animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subscription-card {
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+
+    .modal-header {
+        border-bottom: none;
+        padding: 20px 30px;
+    }
+
+    .modal-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        padding: 30px;
+    }
+
+    .plan-card {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .plan-header {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .plan-header h3 {
+        color: white;
+        margin: 0;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .plan-content {
+        padding: 30px;
+        background: white;
+    }
+
+    .price {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .currency {
+        font-size: 24px;
+        color: #d39e00;
+    }
+
+    .amount {
+        font-size: 48px;
+        font-weight: bold;
+        color: #d39e00;
+    }
+
+    .period {
+        font-size: 24px;
+        color: #666;
+    }
+
+    .features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+    }
+
+    .features li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .features li i {
+        color: #d39e00;
+        margin-right: 10px;
+    }
+
+    .choose-plan {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .choose-plan {
+        background: #000;
+        color: white;
+    }
+
+    .choose-plan.premium {
+        background: #d39e00;
+        color: white;
+    }
+
+    .choose-plan:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Add these styles for the cancel button and modal */
+    .btn-cancel {
+        background-color: #dc3545;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        border: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+        background-color: #c82333;
+        transform: translateY(-2px);
+    }
+
+    #cancelSubscriptionModal .modal-content {
+        border-radius: 15px;
+    }
+
+    #cancelSubscriptionModal .modal-header {
+        border-bottom: none;
+        padding: 20px;
+    }
+
+    #cancelSubscriptionModal .modal-body {
+        padding: 20px;
+        text-align: center;
+        font-size: 1.1em;
+    }
+
+    #cancelSubscriptionModal .modal-footer {
+        border-top: none;
+        padding: 20px;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #cancelSubscriptionModal .btn {
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+    }
+
+    #cancelSubscriptionModal .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+    #cancelSubscriptionModal .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+    .btn-download, .btn-view-ads, .btn-cancel {
+      background-color: #0061f2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      width: 180px;
+      height: 45px;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-view-ads {
+      background-color: #28a745;
+    }
+
+    .btn-cancel {
+      background-color: #dc3545;
+    }
+
+    .btn-download:hover {
+      background-color: #0056d6;
+      transform: translateY(-2px);
+    }
+
+    .btn-view-ads:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+    }
+
+    .btn-cancel:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+    }
+
+    .subscription-footer {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background: #f8f9fa;
+      flex-wrap: wrap;
+    }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Details | Adam Automotive</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add this line to include SweetAlert2 library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body>
+   
+    <h1 align="center"> Subscription Details Panel</h1><hr>
+    <div class="container mt-5">
+      {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+              {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+      <div class="row justify-content-center">
+        <div class="col-lg-4 pb-5">
+          <!-- Account Sidebar -->
+          <div class="author-card pb-3">
+            <div class="author-card-cover" style="background-image: url('{% static 'images/logo.png' %}');"></div>
+            <div class="author-card-profile">
+              <div class="author-card-avatar">
+                <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Customer Photo" class="k" />
+
+            </div>
+              <div class="author-card-details">
+                <h5 class="author-card-name text-lg">{{ user.first_name }} {{ user.last_name }}</h5>
+                <span class="author-card-position">Joined on<br />{{ user.date_joined }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush">
+              <a class="list-group-item" href="{% url 'account_dtl' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Overview</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'account_edit' %}"><i class="fe-icon-user text-muted"></i>Edit Profile Settings</a>
+              <a class="list-group-item" href="{% url 'enquirecar' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Enquire a Car</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item " href="{% url 'mybookings' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Purchase History</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item active" href="{% url 'sub_details' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Subscription Details</div>
+                  </div>
+                  
+                </div>
+              </a>
+              <a class="list-group-item" href="{% url 'main' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-tag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">Home page</div>
+                  </div>
+                  <span class="badge badge-secondary"></span>
+                </div>
+              </a>
+            </nav>
+          </div>
+        </div>
+        <!-- New Purchase Cards with Pagination -->
+        <div class="col-lg-8">
+          <h2 class="mb-4 text-center">Subscription Details</h2><hr>
+          {% if subscription and subscription.is_active %}
+          <!-- Subscription Card -->
+          <div class="subscription-card">
+            <div class="subscription-header">
+              <h3>Current Subscription Plan</h3>
+            </div>
+            <div class="subscription-body">
+              <div class="subscription-info">
+                <div class="info-item">
+                  <span class="info-label"><i class="fas fa-crown"></i> Type of Membership</span>
+                  <span class="info-value">{{ subscription.subscription_type|title|default:"Free Plan" }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label"><i class="fas fa-calendar-alt"></i> Start Date</span>
+                  <span class="info-value">{{ subscription.start_date|date:"F d, Y"|default:"N/A" }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label"><i class="fas fa-hourglass-end"></i> End Date</span>
+                  <span class="info-value">{{ subscription.end_date|date:"F d, Y"|default:"N/A" }}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label"><i class="fas fa-info-circle"></i> Status</span>
+                  <span class="status-badge {% if subscription and subscription.subscription_type %}active{% else %}inactive{% endif %}">
+                    {% if subscription and subscription.subscription_type %}Active{% else %}Inactive{% endif %}
+                  </span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label"><i class="fas fa-money-bill"></i> Amount Paid</span>
+                  <span class="info-value">{% if subscription %}₹{{ subscription.amount }}{% else %}$0{% endif %}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label"><i class="fas fa-credit-card"></i> Payment Mode</span>
+                  <span class="info-value">{{ subscription.payment_mode|default:"None" }}</span>
+                </div>
+              </div>
+              <div class="benefits-section">
+                <h4><i class="fas fa-star"></i> Plan Benefits</h4>
+                <ul class="benefits-list">
+                  {% if not subscription %}
+                    <li><i class="fas fa-check-circle"></i> Basic Access to Car Listings</li>
+                    <li><i class="fas fa-check-circle"></i> View Car Details and Specifications</li>
+                    <li><i class="fas fa-check-circle"></i> Basic Search Functionality</li>
+                    <li><i class="fas fa-check-circle"></i> Basic Profile Management</li>
+                  {% elif subscription.subscription_type == 'premium' %}
+                    <li><i class="fas fa-check-circle"></i>Premium Access to Certified Sales</li>
+                    <li><i class="fas fa-check-circle"></i>List Multiple Advertisment</li>
+                    <li><i class="fas fa-check-circle"></i>Listing Duration</li>
+                  {% elif subscription.subscription_type == 'standard' %}
+                    <li><i class="fas fa-check-circle"></i>Standard Access to Certified Sales</li>
+                    <li><i class="fas fa-check-circle"></i>List Multiple Advertisment</li>
+                    <li><i class="fas fa-check-circle"></i>30 days Listing Duration</li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+            <div class="subscription-footer">
+              {% if subscription %}
+                  <button class="btn-download" onclick="window.open('{% url 'subscription_receipt' subscription.id %}', '_blank')">
+                      <i class="fas fa-download"></i> Download Invoice
+                  </button>
+                  <button class="btn-view-ads" onclick="window.location.href='{% url 'listedcar_sub' %}'">
+                      <i class="fas fa-list"></i> View Ads
+                  </button>
+                  <button class="btn-cancel" onclick="showCancellationModal()">
+                      <i class="fas fa-times-circle"></i> Cancel Subscription
+                  </button>
+              {% else %}
+                <button class="btn-change" data-toggle="modal" data-target="#subscriptionModal">
+                  <i class="fas fa-plus-circle"></i> Upgrade to Premium
+                </button>
+              {% endif %}
+            </div>
+          </div>
+          {% else %}
+          <!-- Show subscription modal when no active subscription -->
+          <div class="text-center">
+            <h3>No Active Subscription</h3>
+            <p>Your subscription has expired or you haven't subscribed yet.</p>
+            <button class="btn-change mt-3" data-toggle="modal" data-target="#subscriptionModal">
+              <i class="fas fa-plus-circle"></i> Get Subscription
+            </button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        var currentIndex = 0;
+        var totalPages = {{ purchases|length }};
+        var $purchaseCards = $('.purchase-card');
+        var $currentPage = $('#currentPage');
+        var $prevButton = $('#prevButton');
+        var $nextButton = $('#nextButton');
+
+        function showCard(index) {
+          $purchaseCards.hide();
+          $purchaseCards.eq(index).show();
+          $currentPage.text(index + 1);
+          $prevButton.prop('disabled', index === 0);
+          $nextButton.prop('disabled', index === totalPages - 1);
+        }
+
+        $prevButton.click(function() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            showCard(currentIndex);
+          }
+        });
+
+        $nextButton.click(function() {
+          if (currentIndex < totalPages - 1) {
+            currentIndex++;
+            showCard(currentIndex);
+          }
+        });
+
+        // Initialize
+        showCard(currentIndex);
+
+        // Form validation
+        var $form = $('#enquireForm');
+        var $submitBtn = $('#submitBtn');
+        var fields = ['manufacturer', 'model_name', 'model_year', 'color', 'description'];
+
+        function validateField(field) {
+          var value = $('#' + field).val();
+          var error = '';
+
+          if (value.length < 2) {
+            error = 'Minimum 2 characters required';
+          } else if (/[^a-zA-Z0-9\s]/.test(value)) {
+            error = 'No special characters allowed';
+          }
+
+          $('#' + field + '-error').text(error);
+          return error === '';
+        }
+
+        function validateForm() {
+          var isValid = true;
+          fields.forEach(function(field) {
+            if (!validateField(field)) {
+              isValid = false;
+            }
+          });
+          $submitBtn.prop('disabled', !isValid);
+        }
+
+        fields.forEach(function(field) {
+          $('#' + field).on('keyup', function() {
+            validateField(field);
+            validateForm();
+          });
+        });
+
+        $form.on('submit', function(e) {
+          e.preventDefault();
+          var manufacturer = $('#manufacturer').val();
+          var model_name = $('#model_name').val();
+
+          // First, check if an enquiry already exists
+          $.ajax({
+            url: '{% url "check_existing_enquiry" %}',
+            type: 'POST',
+            data: {
+              'manufacturer': manufacturer,
+              'model_name': model_name,
+              'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+              if (response.exists) {
+                // Enquiry already exists, show SweetAlert2
+                Swal.fire({
+                  title: 'Enquiry Already Exists',
+                  text: 'You have already made an enquiry for this car model.',
+                  icon: 'info',
+                  confirmButtonText: 'OK'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = "{% url 'account_dtl' %}";
+                  }
+                });
+              } else {
+                // No existing enquiry, proceed with submission
+                submitEnquiry();
+              }
+            },
+            error: function(xhr, status, error) {
+              console.error("AJAX Error:", status, error);
+              console.log("Response Text:", xhr.responseText);
+              Swal.fire({
+                title: 'Error!',
+                text: 'Error checking existing enquiries. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        });
+
+        function submitEnquiry() {
+          $.ajax({
+            url: '{% url "submit_enquiry" %}',
+            type: 'POST',
+            data: $form.serialize(),
+            success: function(response) {
+              Swal.fire({
+                title: 'Success!',
+                text: 'Enquiry submitted successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = "{% url 'account_dtl' %}";
+                }
+              });
+              $form[0].reset();
+              validateForm();
+            },
+            error: function(xhr) {
+              Swal.fire({
+                title: 'Error!',
+                text: 'Error submitting enquiry. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        }
+      });
+    </script>
+    <!-- Subscription Modal -->
+    <div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="subscriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="subscriptionModalLabel">
+                        <span>Adam</span>
+                        <span style="color: #d39e00;">Automotive</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Standard Plan -->
+                        <div class="col-md-6">
+                            <div class="plan-card">
+                                <div class="plan-header" style="background: #000;">
+                                    <h3>Standard</h3>
+                                </div>
+                                <div class="plan-content">
+                                    <div class="price">
+                                        <span class="currency">₹</span>
+                                        <span class="amount">199</span>
+                                        <span class="period">/month</span>
+                                    </div>
+                                    <ul class="features">
+                                        <li><i class="fas fa-check"></i> Standard Access to Certified Sales</li>
+                                        <li><i class="fas fa-check"></i> Can List Multiple Advertisement</li>
+                                        <li><i class="fas fa-check"></i> 30 days Listing Duration</li>
+                                    </ul>
+                                    <button onclick="initializePayment('standard', 199)" class="choose-plan">Choose Plan</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Premium Plan -->
+                        <div class="col-md-6">
+                            <div class="plan-card">
+                                <div class="plan-header" style="background: #d39e00;">
+                                    <h3>Premium</h3>
+                                </div>
+                                <div class="plan-content">
+                                    <div class="price">
+                                        <span class="currency">₹</span>
+                                        <span class="amount">599</span>
+                                        <span class="period">/Year</span>
+                                    </div>
+                                    <ul class="features">
+                                        <li><i class="fas fa-check"></i> Premium Access to Certified Sales</li>
+                                        <li><i class="fas fa-check"></i> Can List Multiple Advertisement</li>
+                                        <li><i class="fas fa-check"></i> No Listing Duration</li>
+                                    </ul>
+                                    <button onclick="initializePayment('premium', 599)" class="choose-plan premium">Choose Plan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add this confirmation modal -->
+    <div class="modal fade" id="cancelSubscriptionModal" tabindex="-1" role="dialog" aria-labelledby="cancelSubscriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelSubscriptionModalLabel">Cancel Subscription</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel your membership? This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Keep My Subscription</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmCancellation()">Yes, Cancel Subscription</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Update the cancel button to trigger the modal -->
+    <script>
+    function showCancellationModal() {
+        $('#cancelSubscriptionModal').modal('show');
+    }
+
+    function confirmCancellation() {
+        fetch('/cancel-subscription/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({
+                user_email: '{{ request.user.email }}',
+                user_name: '{{ request.user.first_name }}'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Close the modal
+                $('#cancelSubscriptionModal').modal('hide');
+                
+                // Show success message
+                Swal.fire({
+                    title: 'Subscription Cancelled',
+                    text: 'Your subscription has been successfully cancelled. A confirmation email has been sent.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    // Redirect to main page
+                    window.location.href = "{% url 'main' %}";
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: data.message || 'An error occurred while cancelling your subscription.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'An error occurred while processing your request.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    }
+
+    // Update the button's onclick handler
+    document.querySelector('.btn-cancel').onclick = showCancellationModal;
+    </script>
+    <!-- Add this before closing body tag -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    function initializePayment(subscriptionType, amount) {
+        var options = {
+            key: 'rzp_test_JzWQBIcsdLXbrZ',
+            amount: amount * 100,
+            currency: 'INR',
+            name: 'Adam Automotive',
+            description: subscriptionType + ' Subscription',
+            handler: function (response) {
+                handlePaymentSuccess(response, subscriptionType, amount);
+            },
+            prefill: {
+                name: '{{ request.user.username }}',
+                email: '{{ request.user.email }}'
+            },
+            theme: {
+                color: '#F37254'
+            }
+        };
+        
+        var rzp = new Razorpay(options);
+        rzp.open();
+    }
+
+    function handlePaymentSuccess(response, subscriptionType, amount) {
+        console.log('Handling payment success:', response);
+
+        const data = {
+            razorpay_payment_id: response.razorpay_payment_id,
+            subscription_type: subscriptionType,
+            amount: amount,
+            user_email: '{{ request.user.email }}',
+            user_name: '{{ request.user.first_name }}'
+        };
+
+        console.log('Sending data to server:', data);
+
+        fetch('/process-subscription/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Send confirmation email
+                fetch('/send-subscription-email/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        subscription_type: subscriptionType,
+                        amount: amount,
+                        payment_id: response.razorpay_payment_id,
+                        user_email: '{{ request.user.email }}',
+                        user_name: '{{ request.user.first_name }}'
+                    })
+                })
+                .then(response => response.json())
+                .then(emailData => {
+                    console.log('Email sending response:', emailData);
+                    if (emailData.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Subscription successful! A confirmation email has been sent to your registered email address.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        console.error('Email sending failed:', emailData.message);
+                        Swal.fire({
+                            title: 'Partial Success',
+                            text: `Subscription successful! However, email sending failed: ${emailData.message}`,
+                            icon: 'warning',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Email sending error:', error);
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Subscription successful! (Email confirmation failed)',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: data.message || 'An error occurred',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred while processing your subscription.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script>
+    <script>
+    function downloadInvoice() {
+        // Get the subscription details from your template context
+        const subscriptionData = {
+            subscription_type: '{{ subscription.subscription_type }}',
+            start_date: '{{ subscription.start_date|date:"F d, Y" }}',
+            end_date: '{{ subscription.end_date|date:"F d, Y" }}',
+            amount: '{{ subscription.amount }}',
+            payment_mode: '{{ subscription.payment_mode }}',
+            user_name: '{{ user.first_name }} {{ user.last_name }}',
+            user_email: '{{ user.email }}'
+        };
+
+        // Make AJAX call to generate invoice
+        fetch('/generate-subscription-invoice/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(subscriptionData)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.blob();
+            }
+            throw new Error('Network response was not ok');
+        })
+        .then(blob => {
+            // Create a URL for the blob
+            const url = window.URL.createObjectURL(blob);
+            // Create a temporary link element
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `subscription_invoice_${subscriptionData.subscription_type}.pdf`;
+            // Append to body, click and remove
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Failed to generate invoice. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    }
+    </script>
+  </body>
+</html>

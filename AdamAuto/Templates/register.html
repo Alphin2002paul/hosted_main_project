@@ -1,0 +1,307 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Sign Up | Adam Automotive</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css1/css/style.css' %}">
+    
+    <style>
+        .blur-background {
+            position: fixed;
+            top: -12px;
+            left: -12px;
+            width: 103%;
+            height: 104%;
+            background-image: url({% static 'images/car2.jpeg' %});
+            background-size: cover;
+            filter: blur(8px); /* Adjust the blur intensity as needed */
+            z-index: -1;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-group:last-child {
+            margin-right: 0;
+        }
+        
+        select.form-control option {
+            color: black !important;
+            background-color: white !important;
+        }
+    </style>
+
+
+</head>
+<body class="img" style="height: 826px;">
+<div class="blur-background"></div>
+<section class="ftco-section">
+    <div class="container1">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-1">
+                <h2 class="heading-section">Sign Up</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <h3 class="mb-4 text-center">Don't have an account?</h3>
+                    <form method="post" action="" class="signin-form">
+                        {% csrf_token %}
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" class="form-control" name="name" placeholder="First Name" required>
+                                <span id="text1" class="error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="name1" class="form-control" name="name1" placeholder="Last Name" required>
+                                <span id="text1" class="error"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" id="email" class="form-control" name="email" placeholder="Email Address" required>
+                                <span id="text2" class="error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="phone" class="form-control" name="phone" placeholder="Phone Number" required>
+                                <span id="text3" class="error"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="username" class="form-control" name="username" placeholder="Username" required>
+                                <span id="text4" class="error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
+                                <span id="text5" class="error"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input id="confirm-password-field" type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+                                <span id="text6" class="error"></span>
+                            </div>
+                            <div class="form-group">
+                                <select id="user-type" class="form-control" name="user_type" required>
+                                    <option value="" selected disabled>Select User Type</option>
+                                    <option value="customer" >Customer</option>
+                                    <option value="dealer">Dealer</option>
+                                </select>
+                                <span id="text7" class="error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="" style="width: 100%; padding: 10px 20px; border-radius: 50px; background-color: white; color: black; border: none; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease;"
+                            onmouseover="this.style.backgroundColor='black'; this.style.color='white';"
+                            onmouseout="this.style.backgroundColor='white'; this.style.color='black';"id="register">
+                            Sign Up
+                        </button>
+                        </div>
+                        
+                        <div class="form-group d-md-flex">
+                           <div class="w-50">
+                                <!-- <label class="checkbox-wrap checkbox-primary">Remember Me
+                                    <input type="checkbox" name="remember" checked>
+                                    <span class="checkmark"></span>
+                                </label>-->
+                            </div>
+                            <div class="w-50 text-md-right">
+                               
+                            </div>
+                        </div>
+                    </form>
+                    <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                    <div class="social d-flex text-center">
+                         <a href="{% url 'login' %}" class="px-2 py-2 ml-md-1 rounded"><span class="fa fa-sign-in mr-2"></span> Signin</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        var mode1 = 1;
+        var mode2 = 1;
+        var mode3 = 1;
+        var mode4 = 1;
+        var mode5 = 1;
+        var mode6 = 1;
+    
+        $("#text1").hide();
+        $("#text2").hide();
+        $("#text3").hide();
+        $("#text4").hide();
+        $("#text5").hide();
+        $("#text6").hide();
+    
+        var regexEmail = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+        var regexPhone = /^[789]\d{9}$/;
+        var regexPassword = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
+        var regexUsername = /^.{5,12}$/; // At least 5 characters
+
+    
+        $("#name").keyup(function() {
+            var name = $(this).val();
+            if (name.length < 3) {
+                $("#text1").show().text("At least 3 characters long.");
+                mode1 = 0;
+            } else {
+                $("#text1").hide();
+                mode1 = 1;
+            }
+            checkRegisterButton();
+        });
+    
+        $("#phone").on('input', function() {
+            var phone = $(this).val();
+            if (!regexPhone.test(phone)) {
+                $("#text3").show().text("Invalid phone number");
+                mode3 = 0;
+            } else {
+                $("#text3").hide();
+                mode3 = 1;
+            }
+            checkRegisterButton();
+        });
+    
+        $("#username").on('input', function() {
+            var username = $(this).val();
+            if (!regexUsername.test(username)) {
+                $("#text4").show().text("Username must be at least 5 characters long and contain at least one special character.");
+                mode4 = 0;
+            } else {
+                $("#text4").hide();
+                $.ajax({
+                    url: '/check_username/',  // URL to the Django view
+                    type: 'post',
+                    data: {
+                        username: username,
+                        csrfmiddlewaretoken: '{{ csrf_token }}' // Include CSRF token
+                    },
+                    success: function(response) {
+                        if (response.exists) {
+                            $("#text4").show().text("Username already taken.");
+                            mode4 = 0;
+                        } else {
+                            $("#text4").hide();
+                            mode4 = 1;
+                        }
+                        checkRegisterButton();
+                    }
+                });
+            }
+        });
+    
+        $("#password-field").on('input', function() {
+            var password = $(this).val();
+            if (!regexPassword.test(password)) {
+                $("#text5").show().text("Password must be at least 6 characters long, contain at least one special character, and one capital letter.");
+                mode5 = 0;
+            } else {
+                $("#text5").hide();
+                mode5 = 1;
+            }
+            checkRegisterButton();
+        });
+    
+        $("#confirm-password-field").keyup(function() {
+            var password = $("#password-field").val();
+            var confirmPassword = $(this).val();
+            if (password !== confirmPassword) {
+                $("#text6").show().text("Passwords do not match.");
+                mode6 = 0;
+            } else {
+                $("#text6").hide();
+                mode6 = 1;
+            }
+            checkRegisterButton();
+        });
+    
+        function checkRegisterButton() {
+            if (mode1 === 1 && mode2 === 1 && mode3 === 1 && mode4 === 1 && mode5 === 1 && mode6 === 1) {
+                $("#register").prop('disabled', false);
+            } else {
+                $("#register").prop('disabled', true);
+            }
+        }
+    
+        $("#register").on('click', function(event) {
+            if (mode1 === 1 && mode2 === 1 && mode3 === 1 && mode4 === 1 && mode5 === 1 && mode6 === 1) {
+                // Allow form submission
+            } else {
+                // Prevent form submission
+                event.preventDefault();
+            }
+        });
+    });
+    
+    $(document).ready(function() {
+        var regexEmail = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+        var mode2 = 1;  // Initialize mode2 as 1
+    
+        $("#email").keyup(function() {
+            var email = $(this).val();
+            if (!email.match(regexEmail)) {
+                $("#text2").show().text("Invalid email format.");
+                mode2 = 0;
+            } else {
+                $("#text2").hide();
+                $.ajax({
+                    url: '/check_email/',  // URL to the Django view
+                    type: 'post',
+                    data: {
+                        email: email,
+                        csrfmiddlewaretoken: '{{ csrf_token }}' // Include CSRF token
+                    },
+                    success: function(response) {
+                        if (response.exists) {
+                            $("#text2").show().text("Email already taken.");
+                            mode2 = 0;
+                        } else {
+                            $("#text2").hide();
+                            mode2 = 1;
+                        }
+                        checkRegisterButton();
+                    }
+                });
+            }
+        });
+    
+        function checkRegisterButton() {
+            // Implement your button enabling/disabling logic here
+        }
+    });
+</script>
+</body>
+</html>
