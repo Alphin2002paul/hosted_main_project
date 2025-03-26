@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'AdamAuto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'AdamAutomotiveCloud_degreeeach',
-        'USER':'AdamAutomotiveCloud_degreeeach',
-        'PASSWORD':'e098744919cd5d23ae251659dc7b3b08b7fb81cb',
-        'HOST':'artul.h.filess.io',
+        'NAME':'adamautodb_exampleme',
+        'USER':'adamautodb_exampleme',
+        'PASSWORD':'84487e9efe36b76f347b2f1f105f9585366d9e1f',
+        'HOST':'hy7xl.h.filess.io',
         'PORT':'61000',
         'CONN_MAX_AGE': None,  # This keeps the connection open indefinitely
         'OPTIONS': {
